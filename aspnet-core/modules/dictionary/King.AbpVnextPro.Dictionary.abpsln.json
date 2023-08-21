@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "King.AbpVnextPro.Dictionary": {
+      "path": "King.AbpVnextPro.Dictionary.abpmdl.json"
+    }
+  }
+}

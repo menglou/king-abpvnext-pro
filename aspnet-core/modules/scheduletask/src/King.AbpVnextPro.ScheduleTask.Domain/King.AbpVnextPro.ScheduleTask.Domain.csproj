@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.ScheduleTask</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.ScheduleTask.Domain</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\King.AbpVnextPro.ScheduleTask.Domain.Shared\King.AbpVnextPro.ScheduleTask.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

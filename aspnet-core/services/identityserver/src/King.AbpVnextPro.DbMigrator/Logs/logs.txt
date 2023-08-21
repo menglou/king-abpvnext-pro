@@ -1,0 +1,43 @@
+2023-07-20 11:22:12.149 +08:00 [INF] Started database migrations...
+2023-07-20 11:22:12.155 +08:00 [INF] Migrating schema for host database...
+2023-07-20 11:22:15.493 +08:00 [INF] Executing host database seed...
+2023-07-20 11:22:16.498 +08:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @__ef_filter__p_1='?' (DbType = Boolean), @__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Avatar], [a].[ConcurrencyStamp], [a].[CreationTime], [a].[CreatorId], [a].[DeleterId], [a].[DeletionTime], [a].[Email], [a].[EmailConfirmed], [a].[ExtraProperties], [a].[Introduction], [a].[IsActive], [a].[IsDeleted], [a].[IsExternal], [a].[LastModificationTime], [a].[LastModifierId], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[Name], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Surname], [a].[TenantId], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AbpUsers] AS [a]
+WHERE (((@__ef_filter__p_0 = CAST(1 AS bit)) OR ([a].[IsDeleted] = CAST(0 AS bit))) AND ((@__ef_filter__p_1 = CAST(1 AS bit)) OR ([a].[TenantId] IS NULL))) AND ([a].[NormalizedUserName] = @__normalizedUserName_0)
+ORDER BY [a].[Id]
+2023-07-20 11:22:16.536 +08:00 [ERR] An exception occurred while iterating over the results of a query for context type 'King.AbpVnextPro.EntityFrameworkCore.AbpVnextProDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): 列名 'Avatar' 无效。
+列名 'Introduction' 无效。
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:0e50600e-9414-4f3b-a242-3b6e38c74458
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): 列名 'Avatar' 无效。
+列名 'Introduction' 无效。
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__188_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SplitQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:0e50600e-9414-4f3b-a242-3b6e38c74458
+Error Number:207,State:1,Class:16

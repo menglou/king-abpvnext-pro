@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Institution</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.Institution.Application.Contracts</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.Authorization" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts"  />
+    <ProjectReference Include="..\King.AbpVnextPro.Institution.Domain.Shared\King.AbpVnextPro.Institution.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

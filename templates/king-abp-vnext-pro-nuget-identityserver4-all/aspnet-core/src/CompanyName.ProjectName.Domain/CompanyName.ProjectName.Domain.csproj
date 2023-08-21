@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\IdentityServer\src\King.AbpVnextPro.IdentityServer.Domain\King.AbpVnextPro.IdentityServer.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\dictionary\src\King.AbpVnextPro.Dictionary.Domain\King.AbpVnextPro.Dictionary.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\filemanagement\src\King.AbpVnextPro.File.Domain\King.AbpVnextPro.File.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\institution\src\King.AbpVnextPro.Institution.Domain\King.AbpVnextPro.Institution.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\Notification\src\King.AbpVnextPro.Notice.Domain\King.AbpVnextPro.Notice.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\paycenter\src\King.AbpVnextPro.PayCenter.Domain\King.AbpVnextPro.PayCenter.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\scheduletask\src\King.AbpVnextPro.ScheduleTask.Domain\King.AbpVnextPro.ScheduleTask.Domain.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.Domain.Shared\CompanyName.ProjectName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" />
+  </ItemGroup>
+
+</Project>

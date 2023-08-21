@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+ 
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+  </PropertyGroup>
+
+ 
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Application.Contracts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\OpenIdictBasic\src\King.AbpVnextPro.Openiddict.Application.Contracts\King.AbpVnextPro.Openiddict.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\dictionary\src\King.AbpVnextPro.Dictionary.Application.Contracts\King.AbpVnextPro.Dictionary.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\filemanagement\src\King.AbpVnextPro.File.Application.Contracts\King.AbpVnextPro.File.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\institution\src\King.AbpVnextPro.Institution.Application.Contracts\King.AbpVnextPro.Institution.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\Notification\src\King.AbpVnextPro.Notice.Application.Contracts\King.AbpVnextPro.Notice.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\paycenter\src\King.AbpVnextPro.PayCenter.Application.Contracts\King.AbpVnextPro.PayCenter.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\scheduletask\src\King.AbpVnextPro.ScheduleTask.Application.Contracts\King.AbpVnextPro.ScheduleTask.Application.Contracts.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.Domain.Shared\CompanyName.ProjectName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+ 
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.IdentityServer</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.IdentityServer.HttpApi.Client</PackageId>
+    <PackageOutputPath>E:\CSWLTemplate\kingabpvnextpropack</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.HttpApi.Client" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" />
+    <PackageReference Include="Volo.Abp.Http.Client" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi.Client" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi.Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="**\*generate-proxy.json" />
+    <Content Remove="**\*generate-proxy.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\King.AbpVnextPro.IdentityServer.Application.Contracts\King.AbpVnextPro.IdentityServer.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

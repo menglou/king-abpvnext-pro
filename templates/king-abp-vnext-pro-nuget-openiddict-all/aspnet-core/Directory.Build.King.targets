@@ -1,0 +1,67 @@
+﻿<Project>
+  <!--    King.AbpPro包-->
+  <ItemGroup>
+    <PackageReference Update="Kings.AbpVnextPro.Core" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Paylink.Alipy" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Paylink.WeChat" Version="MyVersion"/>
+
+
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.HttpApi.Client" Version="MyVersion"/>
+
+
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.HttpApi.Client" Version="MyVersion"/>
+
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Dictionary.HttpApi.Client" Version="MyVersion"/>
+
+    <PackageReference Update="Kings.AbpVnextPro.File.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.File.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.File.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.File.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.File.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.File.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.File.HttpApi.Client" Version="MyVersion"/>
+
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.ScheduleTask.HttpApi.Client" Version="MyVersion"/>
+
+    <PackageReference Update="Kings.AbpVnextPro.Institution.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Institution.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Institution.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Institution.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Institution.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Institution.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Institution.HttpApi.Client" Version="MyVersion"/>
+
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.PayCenter.HttpApi.Client" Version="MyVersion"/>
+
+  </ItemGroup>
+</Project>

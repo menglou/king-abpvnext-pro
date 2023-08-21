@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Notice</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.Notice.EntityFrameworkCore</PackageId>
+    <PackageOutputPath>E:\CSWLTemplate\kingabpvnextpropack</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    <ProjectReference Include="..\King.AbpVnextPro.Notice.Domain\King.AbpVnextPro.Notice.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
+  </ItemGroup>
+</Project>

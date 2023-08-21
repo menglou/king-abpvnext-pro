@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.IdentityServer</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.IdentityServer.HttpApi</PackageId>
+    <PackageOutputPath>E:\CSWLTemplate\kingabpvnextpropack</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.HttpApi" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\King.AbpVnextPro.IdentityServer.Application.Contracts\King.AbpVnextPro.IdentityServer.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

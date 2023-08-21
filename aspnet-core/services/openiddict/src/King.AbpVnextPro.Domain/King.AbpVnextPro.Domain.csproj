@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\modules\BasicManagement\OpenIdictBasic\src\King.AbpVnextPro.Openiddict.Domain\King.AbpVnextPro.Openiddict.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\dictionary\src\King.AbpVnextPro.Dictionary.Domain\King.AbpVnextPro.Dictionary.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\filemanagement\src\King.AbpVnextPro.File.Domain\King.AbpVnextPro.File.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\institution\src\King.AbpVnextPro.Institution.Domain\King.AbpVnextPro.Institution.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\Notification\src\King.AbpVnextPro.Notice.Domain\King.AbpVnextPro.Notice.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\paycenter\src\King.AbpVnextPro.PayCenter.Domain\King.AbpVnextPro.PayCenter.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\scheduletask\src\King.AbpVnextPro.ScheduleTask.Domain\King.AbpVnextPro.ScheduleTask.Domain.csproj" />
+    <ProjectReference Include="..\King.AbpVnextPro.Domain.Shared\King.AbpVnextPro.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.OpenIddict.Domain" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" />
+  </ItemGroup>
+
+</Project>

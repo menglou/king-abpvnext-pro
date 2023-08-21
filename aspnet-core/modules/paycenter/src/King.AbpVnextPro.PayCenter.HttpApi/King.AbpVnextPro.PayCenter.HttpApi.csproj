@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.PayCenter</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.PayCenter.HttpApi</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QRCoder"  />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
+    <ProjectReference Include="..\King.AbpVnextPro.PayCenter.Application.Contracts\King.AbpVnextPro.PayCenter.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

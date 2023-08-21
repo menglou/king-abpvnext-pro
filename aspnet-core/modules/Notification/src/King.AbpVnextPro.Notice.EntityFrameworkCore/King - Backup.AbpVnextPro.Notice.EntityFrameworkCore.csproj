@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Notice</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    <ProjectReference Include="..\King.AbpVnextPro.Notice.Domain\King.AbpVnextPro.Notice.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

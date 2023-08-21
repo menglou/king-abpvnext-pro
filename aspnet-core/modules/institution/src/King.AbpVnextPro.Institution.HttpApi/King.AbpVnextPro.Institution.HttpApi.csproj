@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Institution</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.Institution.HttpApi</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
+    <ProjectReference Include="..\King.AbpVnextPro.Institution.Application.Contracts\King.AbpVnextPro.Institution.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

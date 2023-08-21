@@ -1,0 +1,8 @@
+{
+  "culture": "en",
+  "texts": {
+    "King.AbpVnextPro.Institution:010001": "You can not delete your own account!",
+    "King.AbpVnextPro.Institution:010002": "Can not set more than {MaxUserMembershipCount} organization unit for a user!",
+    "King.AbpVnextPro.Institution:010004": "There is already an organization unit with name {0}. Two units with same name can not be created in same level."
+  }
+}

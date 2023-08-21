@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.PayCenter</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.PayCenter.Application.Contracts</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Application.Contracts" />
+    <PackageReference Include="System.ComponentModel.Annotations" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.Authorization" />
+    <ProjectReference Include="..\..\..\..\frameworks\src\King.AbpVnextPro.Paylink.Alipy\King.AbpVnextPro.Paylink.Alipy.csproj" />
+    <ProjectReference Include="..\..\..\..\frameworks\src\King.AbpVnextPro.Paylink.WeChat\King.AbpVnextPro.Paylink.WeChat.csproj" />
+    <ProjectReference Include="..\King.AbpVnextPro.PayCenter.Domain.Shared\King.AbpVnextPro.PayCenter.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

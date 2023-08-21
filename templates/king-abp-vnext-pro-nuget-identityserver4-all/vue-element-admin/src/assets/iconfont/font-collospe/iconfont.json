@@ -1,0 +1,23 @@
+{
+  "id": "2761854",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13119205",
+      "name": "收起",
+      "font_class": "shouqi",
+      "unicode": "e7d3",
+      "unicode_decimal": 59347
+    },
+    {
+      "icon_id": "13119206",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e7d4",
+      "unicode_decimal": 59348
+    }
+  ]
+}

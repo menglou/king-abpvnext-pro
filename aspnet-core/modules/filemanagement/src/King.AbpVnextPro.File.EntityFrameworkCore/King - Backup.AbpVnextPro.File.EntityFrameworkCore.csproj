@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+ 
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.File</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore"  />
+    <ProjectReference Include="..\King.AbpVnextPro.File.Domain\King.AbpVnextPro.File.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

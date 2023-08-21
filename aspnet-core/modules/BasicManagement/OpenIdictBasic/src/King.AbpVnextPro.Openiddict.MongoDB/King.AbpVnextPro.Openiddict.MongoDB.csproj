@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Openiddict</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.MongoDB" Version="6.0.0" />
+    <ProjectReference Include="..\King.AbpVnextPro.Openiddict.Domain\King.AbpVnextPro.Openiddict.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

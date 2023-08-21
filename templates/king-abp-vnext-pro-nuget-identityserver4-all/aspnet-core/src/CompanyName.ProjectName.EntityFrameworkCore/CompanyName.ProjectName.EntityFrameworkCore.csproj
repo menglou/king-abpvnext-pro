@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\IdentityServer\src\King.AbpVnextPro.IdentityServer.EntityFrameworkCore\King.AbpVnextPro.IdentityServer.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\dictionary\src\King.AbpVnextPro.Dictionary.EntityFrameworkCore\King.AbpVnextPro.Dictionary.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\filemanagement\src\King.AbpVnextPro.File.EntityFrameworkCore\King.AbpVnextPro.File.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\institution\src\King.AbpVnextPro.Institution.EntityFrameworkCore\King.AbpVnextPro.Institution.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\Notification\src\King.AbpVnextPro.Notice.EntityFrameworkCore\King.AbpVnextPro.Notice.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\paycenter\src\King.AbpVnextPro.PayCenter.EntityFrameworkCore\King.AbpVnextPro.PayCenter.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\scheduletask\src\King.AbpVnextPro.ScheduleTask.EntityFrameworkCore\King.AbpVnextPro.ScheduleTask.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.Domain\CompanyName.ProjectName.Domain.csproj" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" />
+    <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

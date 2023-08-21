@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.WorkFlow</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc"  />
+    <ProjectReference Include="..\King.AbpVnextPro.WorkFlow.Application.Contracts\King.AbpVnextPro.WorkFlow.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

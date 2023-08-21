@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "King.AbpVnextPro.File.Domain.Shared": {
+      "path": "src/King.AbpVnextPro.File.Domain.Shared/King.AbpVnextPro.File.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.Domain": {
+      "path": "src/King.AbpVnextPro.File.Domain/King.AbpVnextPro.File.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.Application.Contracts": {
+      "path": "src/King.AbpVnextPro.File.Application.Contracts/King.AbpVnextPro.File.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.Application": {
+      "path": "src/King.AbpVnextPro.File.Application/King.AbpVnextPro.File.Application.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.EntityFrameworkCore": {
+      "path": "src/King.AbpVnextPro.File.EntityFrameworkCore/King.AbpVnextPro.File.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.MongoDB": {
+      "path": "src/King.AbpVnextPro.File.MongoDB/King.AbpVnextPro.File.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.HttpApi": {
+      "path": "src/King.AbpVnextPro.File.HttpApi/King.AbpVnextPro.File.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.HttpApi.Client": {
+      "path": "src/King.AbpVnextPro.File.HttpApi.Client/King.AbpVnextPro.File.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "King.AbpVnextPro.File.TestBase": {
+      "path": "test/King.AbpVnextPro.File.TestBase/King.AbpVnextPro.File.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "King.AbpVnextPro.File.EntityFrameworkCore.Tests": {
+      "path": "test/King.AbpVnextPro.File.EntityFrameworkCore.Tests/King.AbpVnextPro.File.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "King.AbpVnextPro.File.MongoDB.Tests": {
+      "path": "test/King.AbpVnextPro.File.MongoDB.Tests/King.AbpVnextPro.File.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "King.AbpVnextPro.File.Domain.Tests": {
+      "path": "test/King.AbpVnextPro.File.Domain.Tests/King.AbpVnextPro.File.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "King.AbpVnextPro.File.Application.Tests": {
+      "path": "test/King.AbpVnextPro.File.Application.Tests/King.AbpVnextPro.File.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "King.AbpVnextPro.File.HttpApi.Host": {
+      "path": "host/King.AbpVnextPro.File.HttpApi.Host/King.AbpVnextPro.File.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "King.AbpVnextPro.File.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/King.AbpVnextPro.File.HttpApi.Client.ConsoleTestApp/King.AbpVnextPro.File.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "King.AbpVnextPro.File.AuthServer": {
+      "path": "host/King.AbpVnextPro.File.AuthServer/King.AbpVnextPro.File.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "King.AbpVnextPro.File.Host.Shared": {
+      "path": "host/King.AbpVnextPro.File.Host.Shared/King.AbpVnextPro.File.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

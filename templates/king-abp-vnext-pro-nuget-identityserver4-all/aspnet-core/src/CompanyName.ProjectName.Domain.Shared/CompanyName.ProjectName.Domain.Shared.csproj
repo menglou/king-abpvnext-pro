@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\ProjectName\*.json" />
+    <Content Remove="Localization\ProjectName\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\IdentityServer\src\King.AbpVnextPro.IdentityServer.Domain.Shared\King.AbpVnextPro.IdentityServer.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\dictionary\src\King.AbpVnextPro.Dictionary.Domain.Shared\King.AbpVnextPro.Dictionary.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\filemanagement\src\King.AbpVnextPro.File.Domain.Shared\King.AbpVnextPro.File.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\institution\src\King.AbpVnextPro.Institution.Domain.Shared\King.AbpVnextPro.Institution.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\Notification\src\King.AbpVnextPro.Notice.Domain.Shared\King.AbpVnextPro.Notice.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\paycenter\src\King.AbpVnextPro.PayCenter.Domain.Shared\King.AbpVnextPro.PayCenter.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\scheduletask\src\King.AbpVnextPro.ScheduleTask.Domain.Shared\King.AbpVnextPro.ScheduleTask.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

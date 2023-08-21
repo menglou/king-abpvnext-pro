@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro</RootNamespace>
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.HttpApi" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\modules\BasicManagement\OpenIdictBasic\src\King.AbpVnextPro.Openiddict.HttpApi\King.AbpVnextPro.Openiddict.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\dictionary\src\King.AbpVnextPro.Dictionary.HttpApi\King.AbpVnextPro.Dictionary.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\filemanagement\src\King.AbpVnextPro.File.HttpApi\King.AbpVnextPro.File.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\institution\src\King.AbpVnextPro.Institution.HttpApi\King.AbpVnextPro.Institution.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\Notification\src\King.AbpVnextPro.Notice.HttpApi\King.AbpVnextPro.Notice.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\paycenter\src\King.AbpVnextPro.PayCenter.HttpApi\King.AbpVnextPro.PayCenter.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\scheduletask\src\King.AbpVnextPro.ScheduleTask.HttpApi\King.AbpVnextPro.ScheduleTask.HttpApi.csproj" />
+    <ProjectReference Include="..\King.AbpVnextPro.Application.Contracts\King.AbpVnextPro.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

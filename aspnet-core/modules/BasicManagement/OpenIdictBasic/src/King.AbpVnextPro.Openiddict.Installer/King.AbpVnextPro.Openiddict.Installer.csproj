@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+        <RootNamespace>King.AbpVnextPro.Openiddict</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="..\..\King.AbpVnextPro.Openiddict.abpmdl.json" />
+      <EmbeddedResource Include="..\..\King.AbpVnextPro.Openiddict.abpmdl.json" />
+    </ItemGroup>
+
+</Project>

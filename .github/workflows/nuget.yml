@@ -1,0 +1,27 @@
+name: Nuget
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  Push-Nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: | 
+           6.0.x
+           7.0.x
+          include-prerelease: True
+      - name: Setting Version
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF:10}
+      - name: Build
+        run: dotnet build aspnet-core/King.AbpVnext.Nuget.sln
+      - name: Pack
+        run: dotnet pack aspnet-core/King.AbpVnext.Nuget.sln  --include-source --include-symbols /p:Configuration=Release -p:PackageVersion=${GITHUB_REF:10} --output nupkgs
+      - name: Push
+        run: dotnet nuget push nupkgs/*.symbols.nupkg -k ${{secrets.NUGET_KEY}} -s https://api.nuget.org/v3/index.json

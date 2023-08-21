@@ -1,0 +1,14 @@
+{
+  "culture": "en",
+  "texts": {
+    "MyAccount": "My account",
+    "SamplePageMessage": "A sample page for the Notice module",
+    "NotificationHub:100001": "Receiver Not Null",
+    "NotificationHub:100002": "Message Not Exist",
+    "NotificationHub:100003": "MessageType Unknown",
+    "NotificationHub:100004": "User UnSubscription",
+    "NotificationHub:100005": "Message Title NotNull",
+    "NotificationHub:100006": "Message Content NotNull",
+    "NotificationHub:100007": "Message Receiver NotNull"
+  }
+}

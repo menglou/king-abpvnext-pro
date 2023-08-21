@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.ScheduleTask</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.ScheduleTask.EntityFrameworkCore</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    <ProjectReference Include="..\King.AbpVnextPro.ScheduleTask.Domain\King.AbpVnextPro.ScheduleTask.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "MyAccount": "我的账户",
+    "SamplePageMessage": "Notice模块的示例页面",
+    "NotificationHub:100001": "接收人不能为空",
+    "NotificationHub:100002": "消息不存在",
+    "NotificationHub:100003": "未知的消息类型",
+    "NotificationHub:100004": "当前用户未订阅消息",
+    "NotificationHub:100005": "消息标题不能为空",
+    "NotificationHub:100006": "消息内容不能为空"
+  }
+}

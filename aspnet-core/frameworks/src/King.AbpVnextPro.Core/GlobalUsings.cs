@@ -1,0 +1,15 @@
+﻿global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.Diagnostics;
+global using System.Globalization;
+global using System.Text;
+global using System.Text.RegularExpressions;
+global using System.Web;
+global using King.AbpVnextPro.Core;
+global using Volo.Abp.Modularity;
+global using Aliyun.Acs.Core;
+global using Aliyun.Acs.Core.Exceptions;
+global using Aliyun.Acs.Core.Http;
+global using Aliyun.Acs.Core.Profile;
+global using System.Text.Json;
+global using MimeKit;

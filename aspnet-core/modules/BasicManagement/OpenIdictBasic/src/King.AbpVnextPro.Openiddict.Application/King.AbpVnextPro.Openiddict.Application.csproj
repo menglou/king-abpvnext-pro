@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Openiddict</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.Openiddict.Application</PackageId>
+    <PackageOutputPath>E:\CSWLTemplate\kingabpvnextpropack</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.Account.Application" />
+    <PackageReference Include="Volo.Abp.AutoMapper" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" />
+    <PackageReference Include="Volo.Abp.Identity.Application" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" />
+    <ProjectReference Include="..\King.AbpVnextPro.Openiddict.Application.Contracts\King.AbpVnextPro.Openiddict.Application.Contracts.csproj" />
+    <ProjectReference Include="..\King.AbpVnextPro.Openiddict.Domain\King.AbpVnextPro.Openiddict.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
+  </ItemGroup>
+</Project>

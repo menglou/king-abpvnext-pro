@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <PackageId>Kings.AbpVnextPro.WebGateway</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\King.AbpVnextPro.Shared.Hosting.Gateways\King.AbpVnextPro.Shared.Hosting.Gateways.csproj" />
+  </ItemGroup>
+
+</Project>

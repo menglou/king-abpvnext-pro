@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "King.AbpVnextPro.PayCenter": {
+      "path": "King.AbpVnextPro.PayCenter.abpmdl.json"
+    }
+  }
+}

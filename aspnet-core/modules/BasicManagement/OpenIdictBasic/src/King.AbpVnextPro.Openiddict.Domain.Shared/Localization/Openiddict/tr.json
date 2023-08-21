@@ -1,0 +1,7 @@
+{
+  "culture": "tr",
+  "texts": {
+    "MyAccount":  "Hesabım",
+    "SamplePageMessage": "Openiddict modulünden örnek bir sayfa"
+  }
+}

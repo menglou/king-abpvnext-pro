@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.ScheduleTask</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.ScheduleTask.HttpApi</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" />
+    <ProjectReference Include="..\King.AbpVnextPro.ScheduleTask.Application.Contracts\King.AbpVnextPro.ScheduleTask.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "ManageYourProfile": "管理个人资料",
+    "File": "文件",
+    "Upload": "上传",
+    "Permission:File": "文件",
+    "Permission:Upload": "上传",
+    "Permission:FileManagement.AllowedMaxFileSize": "允许最大文件大小",
+    "DisplayName:FileManagement.AllowedMaxFileSize": "允许最大文件大小",
+    "Description:FileManagement.AllowedMaxFileSize": "允许最大文件大小（kb）",
+    "DisplayName:FileManagement.AllowedUploadFormats": "允许上传格式",
+    "Permission:FileManagement.AllowedUploadFormats": "允许上传格式",
+    "Description:FileManagement.AllowedUploadFormats": "允许上传格式（多种格式使用‘,’隔开）",
+    "FileManagement.ExceedsTheMaximumSize": "文件超过最大上传大小（{0}kb）！",
+    "FileManagement.NotValidFormat": "无效的文件格式！",
+    "FileManagement.NotHave": "上传的文件不能为空"
+  }
+}

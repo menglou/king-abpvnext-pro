@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "King.AbpVnextPro.ScheduleTask.Host.Shared": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:17011;http://localhost:17012"
+    }
+  }
+}

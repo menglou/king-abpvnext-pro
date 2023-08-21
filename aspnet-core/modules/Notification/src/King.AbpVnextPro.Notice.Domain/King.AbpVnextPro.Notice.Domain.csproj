@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Notice</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.Notice.Domain</PackageId>
+    <PackageOutputPath>E:\CSWLTemplate\kingabpvnextpropack</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" />
+
+    <PackageReference Include="Volo.Abp.Ddd.Domain" />
+    <ProjectReference Include="..\King.AbpVnextPro.Notice.Domain.Shared\King.AbpVnextPro.Notice.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*.json" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+{
+  "culture": "en",
+  "texts": {
+    "Permission:ScheduleTaskManager": "ScheduleTaskManager",
+    "Permission:ScheduleTask": "ScheduleTask",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete",
+    "Permission:Start": "Start",
+    "Permission:Stop": "Stop",
+    "Permission:Pause": "Pause",
+    "Permission:Resume": "Resume",
+    "Permission:RunOnce": "RunOnce"
+  }
+}

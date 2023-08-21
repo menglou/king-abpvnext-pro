@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "King.AbpVnextPro.IdentityServer": {
+      "path": "King.AbpVnextPro.IdentityServer.abpmdl.json"
+    }
+  }
+}

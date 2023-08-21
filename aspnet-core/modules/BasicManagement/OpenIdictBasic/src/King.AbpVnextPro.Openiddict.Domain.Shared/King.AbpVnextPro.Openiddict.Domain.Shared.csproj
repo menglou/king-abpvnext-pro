@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.Openiddict</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+    <PackageId>Kings.AbpVnextPro.Openiddict.Domain.Shared</PackageId>
+    <PackageOutputPath>E:\CSWLTemplate\kingabpvnextpropack</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.Identity.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.Validation" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Openiddict\*.json" />
+    <Content Remove="Localization\Openiddict\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Localization\Volo\AuditLogging\Localization\en.json" />
+    <None Remove="Localization\Volo\AuditLogging\Localization\zh-Hans.json" />
+    <None Remove="Localization\Volo\Identity\Localization\en.json" />
+    <None Remove="Localization\Volo\Identity\Localization\zh-Hans.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Volo\Identity\Localization\zh-Hans.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Volo\AuditLogging\Localization\en.json" />
+    <EmbeddedResource Include="Localization\Volo\AuditLogging\Localization\zh-Hans.json" />
+    <EmbeddedResource Include="Localization\Volo\Identity\Localization\en.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\frameworks\src\King.AbpVnextPro.Core\King.AbpVnextPro.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.PayCenter</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.PayCenter.EntityFrameworkCore</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    <ProjectReference Include="..\King.AbpVnextPro.PayCenter.Domain\King.AbpVnextPro.PayCenter.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot');
+  src:  url('icomoon.eot#iefix') format('embedded-opentype'),
+    url('icomoon.ttf') format('truetype'),
+    url('icomoon.woff') format('woff'),
+    url('icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon1-"], [class*=" icon1-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon1-dot:before {
+  content: "\e900";
+}
+.icon1-cup1:before {
+  content: "\e901";
+}
+.icon1-cup2:before {
+  content: "\e902";
+}
+.icon1-cup3:before {
+  content: "\e903";
+}
+.icon1-clock:before {
+  content: "\e904";
+}
+.icon1-down:before {
+  content: "\e905";
+}
+.icon1-cube:before {
+  content: "\e906";
+}
+.icon1-plane:before {
+  content: "\e907";
+}
+.icon1-train:before {
+  content: "\e908";
+}
+.icon1-bus:before {
+  content: "\e909";
+}
+.icon1-bag:before {
+  content: "\e90a";
+}
+.icon1-up:before {
+  content: "\e90b";
+}

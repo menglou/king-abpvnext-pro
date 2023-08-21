@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net6.0;net7.0</TargetFrameworks>
+    <PackageId>Kings.AbpVnextPro.Paylink.Alipy</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="System.Text.Json" Version="$(SystemTextJsonPackageVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsHttpPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1' or '$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net7.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\King.AbpVnextPro.Localization\King.AbpVnextPro.Localization.csproj" />
+    <ProjectReference Include="..\King.AbpVnextPro.Paylink.Security\King.AbpVnextPro.Paylink.Security.csproj" />
+  </ItemGroup>
+
+</Project>

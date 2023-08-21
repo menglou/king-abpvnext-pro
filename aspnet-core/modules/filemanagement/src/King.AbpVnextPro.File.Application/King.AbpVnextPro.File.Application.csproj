@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.File</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.File.Application</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" />
+    <ProjectReference Include="..\King.AbpVnextPro.File.Application.Contracts\King.AbpVnextPro.File.Application.Contracts.csproj" />
+    <ProjectReference Include="..\King.AbpVnextPro.File.Domain\King.AbpVnextPro.File.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

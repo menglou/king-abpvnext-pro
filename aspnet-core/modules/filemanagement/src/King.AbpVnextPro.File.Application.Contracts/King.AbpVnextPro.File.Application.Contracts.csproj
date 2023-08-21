@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+ 
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>King.AbpVnextPro.File</RootNamespace>
+    <PackageId>Kings.AbpVnextPro.File.Application.Contracts</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.Application.Contracts" Version="1.5.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.Authorization" />
+    <ProjectReference Include="..\King.AbpVnextPro.File.Domain.Shared\King.AbpVnextPro.File.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
