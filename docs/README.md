@@ -1,7 +1,9 @@
 # 连接
 
 1. [文档地址](https://menglou.github.io/)
+   
 2. [Gitee 国内用户可访问该地址在线预览](https://zljlm.gitee.io/)
+   
 3. [预览地址](https://menglou.github.io/)
 
 # 快速开始
@@ -15,14 +17,14 @@
 
 # 生成项目
 
-### identityserver4 
-1. nuget包形式的identityserver4 鉴权方式的版本
-2. abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心,计划任务
++ identityserver4 
+  - nuget包形式的identityserver4 鉴权方式的版本
+  - abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心,计划任务
 ><font size="5">king.abp new -t pro.id4.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
 
-### openiddict
-1. nuget包形式的identityserver4 鉴权方式的版本
-2. abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心，计划任务
++ openiddict
+  - nuget包形式的identityserver4 鉴权方式的版本
+  - abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心，计划任务
 ><font size="5">king.abp new -t pro.openiddict.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
 
 # 功能
@@ -68,24 +70,24 @@
 # 如何贡献
 
 非常欢迎你的加入！提一个 Issue 或者提交一个 Pull Request。
-##### Pull Request:
-1. Fork 代码!
-2. 创建自己的分支: git checkout -b feat/xxxx
-3. 提交你的修改: git commit -am 'feat(function): add xxxxx'
-4. 推送您的分支: git push origin feat/xxxx
-5. 提交pull request
++ Pull Request:
+  - Fork 代码!
+  - 创建自己的分支: git checkout -b feat/xxxx
+  - 提交你的修改: git commit -am 'feat(function): add xxxxx'
+  - 推送您的分支: git push origin feat/xxxx
+  - 提交pull request
 
 # Git 贡献提交规范
-
-1. feat 增加新功能
-2. fix 修复问题/BUG
-3. style 代码风格相关无影响运行结果的
-4. perf 优化/性能提升
-5. refactor 重构
-6. revert 撤销修改
-7. test 测试相关
-8. docs 文档/注释
-9. chore 依赖更新/脚手架配置修改等
++ 参考
+  - feat 增加新功能
+  - fix 修复问题/BUG
+  - style 代码风格相关无影响运行结果的
+  - perf 优化/性能提升
+  - refactor 重构
+  - revert 撤销修改
+  - test 测试相关
+  - docs 文档/注释
+  - chore 依赖更新/脚手架配置修改等
 
 
 # 加入组织
