@@ -1,7 +1,3 @@
-* [指南](/md/guide)
+* [指南](/zh-cn/introduce)
 
-* 生态系统
-  * king-abpvnext-pro identityserver4 template
-  * king-abpvnext-pro openiddict template
-  * king-abpvnext-pro simplity template
-* 国内站点(gitee)
+* [国内站点(gitee)]()

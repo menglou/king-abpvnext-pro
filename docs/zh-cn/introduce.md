@@ -3,67 +3,83 @@
 
 ## 安装
 ##### 先决条件
-```sh
+<div style="background-color:#282c34;border-radius:6px;color:#fff;padding:8px 5px">
+<ul class="condition">
+<li>dotnet core 6.0.0 以上版本</li>
+<li>nodejs 16+</li>
+<li>npm</li>
+<li>sqlserver</li>
+<li>redis(可选)</li>
+<li>rabbitmq(可选)</li>
+</ul>
+</div>
 
-1. dotnet core 6.0.0 以上版本
-2. nodejs 16+
-3. npm
-4. sqlserver
-5. redis(可选)
-6. rabbitmq(可选)
-
-```
 ##### 创建新项目(脚手架的安装更新与删除)
 1. 安装Cli
 ><font size="5">dotnet tool install -g King.AbpVnextPro.Cli</font>
 2. 更新Cli
 ><font size="5">dotnet tool update -g  King.AbpVnextPro.Cli</font>
 3. 卸载Cli
-><font size="5">dotnet tool uninstall -g King.AbpVnextPro.Cli</font>
+><font size="5">dotnet tool uninstall -g King.AbpVnextPro.Cli  --no-cache</font>
 
 #### 生成项目
-  ##### identityserver4 
+
+##### identityserver4 
 1. nuget包形式的identityserver4 鉴权方式的版本
-2. abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心
+2. abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心,计划任务
 ><font size="5">king.abp new -t pro.id4.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
-  ##### openiddict
+
+##### openiddict
 1. nuget包形式的identityserver4 鉴权方式的版本
-2. abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心
+2. abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心，计划任务
 ><font size="5">king.abp new -t pro.openiddict.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
+
 ## 功能
+
 #### 功能列表
-```sh
-
-1. 用户管理
-2. 角色管理
-3. 审计日志
-4. 登录日志
-5. 计划任务
-6. 集成事件
-7. SinglaR 消息通知(站内信)
-8. 多语言
-9. 数据字典
-10. 文件管理
-11. 职能机构
-12. 支付中心
-13. 工作流
-14. ES 日志
-15. 配置中心
-16. 多租户
-
-```
+<div style="background-color:#282c34;border-radius:6px;color:#fff;padding:8px 0px">
+<ul class="condition">
+<li>用户管理</li>
+<li>角色管理</li>
+<li>审计日志</li>
+<li>登录日志</li>
+<li>计划任务</li>
+<li>集成事件</li>
+<li>SinglaR 消息通知(站内信)</li>
+<li>多语言</li>
+<li>数据字典</li>
+<li>文件管理</li>
+<li>支付中心</li>
+<li>工作流</li>
+<li>ES 日志</li>
+<li>配置中心</li>
+<li>多租户</li>
+</ul>
+</div>
 
 #### 部分页面展示
-![登录页](/_media/login.png)
-![配置中心](/_media/settting.png)
-![计划任务](/_media/scheduletask.png)
-![用户管理](/_media/user.png)
+<img src="/_media/login.png"  align=center style="margin-bottom:20px" />
+
+<img src="/_media/settting.png"  align=center style="margin-bottom:20px" />
+
+<img src="/_media/scheduletask.png"  align=center style="margin-bottom:20px" />
+
+<img src="/_media/audlog.png"  align=center style="margin-bottom:20px" />
+
+<img src="/_media/tenant.png"  align=center style="margin-bottom:20px" />
+
+<img src="/_media/department.png"  align=center style="margin-bottom:20px" />
+
+<img src="/_media/user.png"  align=center style="margin-bottom:50px" />
 
 ## 目录结构
 ##### 后端项目结构
-```sh
 
-├── Directory.Build.props nuget 版本控制
+<div >
+  <pre style="background-color:#282c34;border-radius:6px;color:#fff;color:#fff">
+├── Directory.Build.targets nuget 公共版本控制
+├── Directory.Build.Microsoft.targets  微软nuget版本控制
+├── Directory.Build.Volo nuget  abpVnext 版本控制
 ├── frameworks # 公共模块
 │       ├── src #
 │           ├── King.AbpVnextPro.CAP # dotnetcore.cap
@@ -109,10 +125,13 @@
 │                  ├── CompanyName.ProjectName.HttpApi.Host # 项目 host
 │                   └── CompanyName.ProjectName.DbMigrator # 迁移控制台程序
 │          ├── vue-element-admin  # 前端源码
+ </pre>
+</div>
 
-```
 ##### 前端项目结构
-```sh
+
+<div >
+  <pre style="background-color:#282c34;border-radius:6px;color:#fff;color:#fff">
 
 ├── build                      # 构建相关
 ├── public                     # 静态资源
@@ -143,7 +162,8 @@
 ├── vue.config.js              # vue-cli 配置
 ├── postcss.config.js          # postcss 配置
 └── package.json               # package.json
-```
+ </pre>
+</div>
 
 ## Browsers Support
 <font size="3">Modern browsers and Internet Explorer 10+.</font>
@@ -156,27 +176,32 @@
 ## 加入组织
 
 欢迎大家加入群聊 QQ群：[1145603937]() 进行交流,或者扫码加入
-<img src="/_media/qq.png"  />
+
+<img src="/_media/qq.png"  align=center />
 
 ## 生态圈
-  ### 1.Vue 生态圈
 
-   1. [Vue Router](https://router.vuejs.org/)是 vue 官方的路由。它能快速的帮助你构建一个单页面或者多页面的项目。
-   2. [Vuex](https://vuex.vuejs.org/) 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。它能解决你很多全局状态或者组件之间通信的问题。
-   3. [Vue CLI](https://cli.vuejs.org/) 是官方提供的一个 vue 项目脚手架，本项目也是基于它进行构建的。它帮你封装了大量的 webpack、babel 等其它配置，让你能花更少的精力在搭建环境上，从而能更专注于页面代码的编写。不过所有的脚手架都是针对大部分情况的，所以一些特殊的需求还是需要自己进行配置。建议先阅读一遍它的文档，对一些配置有一些基本的了解。
-   4. [Vetur](https://github.com/vuejs/vetur)] 是 VS Code 的插件. 如果你使用 VS Code 来写 vue 的话，这个插件是必不可少的。
-   5. [Axios](http://www.axios-js.com/zh-cn/docs/) 是一个基于 promise 的 HTTP 库,可以用在浏览器和 node.js 中。 axios Axios 是一个基于 promise 的 HTTP 库,可以用在浏览器和 node.js 中。
+##### Vue 生态圈
+
+1. [Vue Router](https://router.vuejs.org/)是 vue 官方的路由。它能快速的帮助你构建一个单页面或者多页面的项目。
+2. [Vuex](https://vuex.vuejs.org/) 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。它能解决你很多全局状态或者组件之间通信的问题。
+3. [Vue CLI](https://cli.vuejs.org/) 是官方提供的一个 vue 项目脚手架，本项目也是基于它进行构建的。它帮你封装了大量的 webpack、babel 等其它配置，让你能花更少的精力在搭建环境上，从而能更专注于页面代码的编写。不过所有的脚手架都是针对大部分情况的，所以一些特殊的需求还是需要自己进行配置。建议先阅读一遍它的文档，对一些配置有一些基本的了解。
+4. [Vetur](https://github.com/vuejs/vetur)] 是 VS Code 的插件. 如果你使用 VS Code 来写 vue 的话，这个插件是必不可少的。
+5. [Axios](http://www.axios-js.com/zh-cn/docs/) 是一个基于 promise 的 HTTP 库,可以用在浏览器和 node.js 中。 axios Axios 是一个基于 promise 的 HTTP 库,可以用在浏览器和 node.js 中。
    
-  ### 2.AbpVnext 生态圈
-   1. [Abp CLI](https://docs.abp.io/en/abp/latest/CLI)是官方提供的一个 abp vnext 项目脚手架，本项目也是基于它进行构建的。它帮你封装了一些常用的基础模块，让你能花更少的精力在基础环境搭建商，从而能更专注于业务逻辑的编写。不过所有的脚手架都是针对大部分情况的，所以一些特殊的需求还是需要自己进行配置。建议先阅读一遍它的文档，对一些配置有一些基本的了解。
-   2. [IdentityServer4](https://identityserver4.readthedocs.io/) 是一款包含和实现了 OpenID Connect 和 OAuth 2.0 协议的，适用于 ASP.NET Core 的框架，AbpVnext 6.0.0 以前的版本
-   3. [OpenIddict](https://blog.goodsxx.cn/)OpenIddict 是一个开源且通用的框架，用于在任何 ASP.NET Core 2.1（及更高版本）和传统的 ASP.NET 4.6.1（及更高版本）应用程序中构建符合标准的 OAuth 2.0 / OpenID Connect 服务器
-   4. [Redis](https://redis.io/)是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set --有序集合)和hash（哈希类型）            Redis 是一个高性能的key-value数据库,所以一般用来做缓存，用于实现分布式锁和并发控制，热点数据的存储来减少关系数据库的访问压力
-   5. [RabbitMQ](https://www.rabbitmq.com/)是一个开源的消息代理的队列服务器，用来通过普通协议在完全不同的应用之间共享数据。其主要功能特点是如流量消峰，应用解耦，异步处理，数据并发处理
-   6. [Quartz.net](https://github.com/quartznet/quartznet)是一个Github开源项目，用于创建一个免费商业用途的作业调度框架。主要协助用来处理一些定时任务，通过调度器执行，其丰富的Corn 表达式可以配置各种各样的运行时间
+##### AbpVnext 生态圈
+
+1. [Abp CLI](https://docs.abp.io/en/abp/latest/CLI)是官方提供的一个 abp vnext 项目脚手架，本项目也是基于它进行构建的。它帮你封装了一些常用的基础模块，让你能花更少的精力在基础环境搭建商，从而能更专注于业务逻辑的编写。不过所有的脚手架都是针对大部分情况的，所以一些特殊的需求还是需要自己进行配置。建议先阅读一遍它的文档，对一些配置有一些基本的了解。
+2. [IdentityServer4](https://identityserver4.readthedocs.io/) 是一款包含和实现了 OpenID Connect 和 OAuth 2.0 协议的，适用于 ASP.NET Core 的框架，AbpVnext 6.0.0 以前的版本
+1. [OpenIddict](https://blog.goodsxx.cn/)OpenIddict 是一个开源且通用的框架，用于在任何 ASP.NET Core 2.1（及更高版本）和传统的 ASP.NET 4.6.1（及更高版本）应用程序中构建符合标准的 OAuth 2.0 / OpenID Connect 服务器
+2. [Redis](https://redis.io/)是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set --有序集合)和hash（哈希类型）            Redis 是一个高性能的key-value数据库,所以一般用来做缓存，用于实现分布式锁和并发控制，热点数据的存储来减少关系数据库的访问压力
+3. [RabbitMQ](https://www.rabbitmq.com/)是一个开源的消息代理的队列服务器，用来通过普通协议在完全不同的应用之间共享数据。其主要功能特点是如流量消峰，应用解耦，异步处理，数据并发处理
+4. [Quartz.net](https://github.com/quartznet/quartznet)是一个Github开源项目，用于创建一个免费商业用途的作业调度框架。主要协助用来处理一些定时任务，通过调度器执行，其丰富的Corn 表达式可以配置各种各样的运行时间
 
 ## 捐赠
+
 > Star就是对该项目的最大肯定!
+>
 > 如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
 
 <table  align="center">
@@ -202,5 +227,8 @@
   td img{
     width:330px !important;
     height: 300px !important;
+  }
+  .condition li{
+    height:40px
   }
 </style>
