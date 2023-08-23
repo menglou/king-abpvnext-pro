@@ -92,7 +92,7 @@
 
 欢迎大家加入群聊 QQ群：[1145603937]() 进行交流,或者扫码加入
 
-<img src="/_media/qq.png"  align=center />
+<img src="_media/qq.png"  align=center />
 
 
 ## 捐赠
@@ -101,13 +101,13 @@
 >
 > 如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
 
-<table  align="center">
+<table  align="left">
 	<tr>
 		<td>
 			<center>
         <font >微信</font>
       	<br/>
-				<img src="_media/wechat.png"  />
+				<img  src="_media/wechat.png"  />
 			</center>
 		</td>
 		<td>
@@ -120,12 +120,3 @@
 	</tr>
 </table>
 
-<style>
-  td img{
-    width:330px !important;
-    height: 300px !important;
-  }
-  .condition li{
-    height:40px
-  }
-</style>
