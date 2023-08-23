@@ -1,22 +1,15 @@
-name: SyncToGitee
-on:
-  push:
-    branches:
-      - main
-jobs:
-  repo-sync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source codes
-        uses: actions/checkout@v3
+name: Sync To Gitee
 
-      - name: Mirror the Github organization repos to Gitee.
-        uses: Yikun/hub-mirror-action@master
-        with:
-          src: 'github/menglou'    						# 这里改为自己github账号名称，如github/xiaoming
-          dst: 'gitee/zljlm'     						# 这里改为gitee上账号名称，如gitee/xiaoming
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  	# 这是生成的私钥，下面第3步会讲
-          dst_token:  ${{ secrets.GITEE_TOKEN }}     	# 这是gitee上生成的token，下面会讲
-          force_update: true
-          static_list: "menglou.github.io"   					# 同步的仓库名称，这里为YOLO2COCO，意思是会自动同步该仓库到gitee下同名仓库
-          debug: true
+on: [push, delete, create]
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sync to Gitee
+              uses: wearerequired/git-mirror-action@master
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+              with:
+                  source-repo:git@github.com:menglou/menglou.github.io.git
+                  destination-repo:git@gitee.com:zljlm/menglou.github.io.git
