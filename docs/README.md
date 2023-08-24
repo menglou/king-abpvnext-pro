@@ -51,19 +51,19 @@
 </div>
 
 ### 部分页面展示
-<img src="_media/login.png"  align=center style="margin-bottom:20px" />
+<img src="./_media/login.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/settting.png"  align=center style="margin-bottom:20px" />
+<img src="./_media/settting.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/scheduletask.png"  align=center style="margin-bottom:20px" />
+<img src="./_media/scheduletask.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/audlog.png"  align=center style="margin-bottom:20px" />
+<img src="./_media/audlog.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/tenant.png"  align=center style="margin-bottom:20px" />
+<img src="./_media/tenant.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/department.png"  align=center style="margin-bottom:20px" />
+<img src="./_media/department.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/user.png"  align=center style="margin-bottom:50px" />
+<img src="./_media/user.png"  align=center style="margin-bottom:50px" />
 
 
 

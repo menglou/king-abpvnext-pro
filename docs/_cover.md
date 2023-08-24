@@ -98,6 +98,7 @@
       color:#fff;
       font-size:20px
   }
+ 
   .contentdiv{
       display:inline-flex;
       flex-direction: column;
