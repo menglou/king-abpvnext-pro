@@ -28,7 +28,7 @@
   </div>
   <div class="btndiv">
       <span style="margin-right:10px;border: 1px solid #42b983;">
-         <a href="https://github.com/menglou/menglou.github.io.git" >Github</a>
+         <a href="https://github.com/menglou/king-abpvnext-pro.git" >Github</a>
       </span>
       <span style="margin-left:10px;background-color:#42b983">
         <a href="#/zh-cn/introduce" >快速上手 →</a>

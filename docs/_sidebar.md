@@ -11,5 +11,5 @@
    * [EfCore 分表分库](zh-cn/dbshare)
 * 其他
    * [常见问题](zh-cn/familiar)
-   * [更新记录](https://github.com/menglou/menglou.github.io/releases)
+   * [更新记录](https://github.com/menglou/king-abpvnext-pro.git/releases)
 

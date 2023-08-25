@@ -2,7 +2,7 @@
 
 1. [文档地址](https://menglou.github.io/)
    
-2. [Gitee 国内用户可访问该地址在线预览](https://zljlm.gitee.io/)
+2. [Gitee 国内用户可访问该地址在线预览](https://zljlm.gitee.io/king-abpvnext-pro)
    
 3. [预览地址](https://menglou.github.io/)
 
