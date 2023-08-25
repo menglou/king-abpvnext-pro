@@ -101,15 +101,27 @@
     window.addEventListener('resize', function () {
       console.log(window.innerWidth);
       if (window.innerWidth > 768) {
-        document.querySelector('.app-nav').style.width = 'calc(100% - 300px)'
+        if(document.querySelector('main').className == "hidden"){
+          document.querySelector('.app-nav').style.width = '0px'
+        }
+        else{
+          document.querySelector('.app-nav').style.width = 'calc(100% - 300px)'
+        }
+        
       }
       else {
-        document.querySelector('.app-nav').style.width = '100%'
+        if(document.querySelector('main').className == "hidden"){
+          document.querySelector('.app-nav').style.width = '0px'
+        }
+        else{
+          document.querySelector('.app-nav').style.width = '100%'
+        }
+        
       }
     })
     const observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
-        debugger
+        
         let s = mutation.target.className
         if (s == "hidden") {
           document.querySelector('.app-nav').style.width = '0px'
@@ -145,7 +157,7 @@
       });
     });
 
-    //observer.observe(document.querySelector('main'), { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.querySelector('main'), { attributes: true, attributeFilter: ["class"] });
     observerbody.observe(document.querySelector('body'), { attributes: true, attributeFilter: ["class"] });
   });
 
