@@ -1,15 +1,3 @@
-<!-- <img src="/_media/icon.jpg" align="center" style="border-radius:6px">
-
-# King-AbpVnext-Pro<small>4.0.2</small>
-
-> 一个神奇的文档网站生成器。
-
-
-
-[GitHub](https://github.com/menglou/menglou.github.io.git)
-[快速上手 → ](/zh-cn/introduce) -->
-
-
 
 <div class="cover-container">
   <div>
