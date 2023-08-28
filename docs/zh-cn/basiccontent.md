@@ -2,7 +2,7 @@
 
 + 扩展方法
   
-<img src="/_media/extendmethod.png"  />
+<img src="../_media/extendmethod.png"  />
 
 + 通用方法
    - 阿里云发短信
@@ -12,7 +12,7 @@
    - 微信小程序登录获取openid，获取手机号等
   
 
-  <img src="/_media/commonmethod.png"  />
+  <img src="../_media/commonmethod.png"  />
 
 ---
 
@@ -24,7 +24,7 @@
 
 ##### 概览
 
-<img  src="/_media/settting.png"  align=center style="height:300px" />
+<img  src="../_media/settting.png"  align=center style="height:300px" />
 
 ##### 配置步骤
 
@@ -36,12 +36,12 @@
     <tr>
       <td>
         <center>
-              <img src="/_media/setttingdefine.png" />
+              <img src="../_media/setttingdefine.png" />
         </center>
       </td>
       <td>
         <center>
-          <img src="/_media/settingdefinestatic.png"  />
+          <img src="../_media/settingdefinestatic.png"  />
         </center>
       </td>
     </tr>
@@ -65,7 +65,7 @@
 
 + xxx.xxx.Doamin.Shared Localization 文件夹下面配置相应本地化
    
-   <img  src="/_media/settinglocalization.png"  align=center  />
+   <img  src="../_media/settinglocalization.png"  align=center  />
 
 + 读取设置值
    - ISettingProvider
