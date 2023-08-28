@@ -1,7 +1,7 @@
 
 <div class="cover-container">
   <div>
-    <img src="/_media/icon.jpg" align="center" style="border-radius:6px">
+    <img src="./_media/icon.jpg" align="center" style="border-radius:6px">
   </div>
   <div style="margin-top:15px">
     <h1>
