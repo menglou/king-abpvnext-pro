@@ -12,7 +12,7 @@
    - 微信小程序登录获取openid，获取手机号等
   
 
-  <img src="./_media/commonmethod.png"  />
+  <img src="./../_media/commonmethod.png"  />
 
 ---
 
