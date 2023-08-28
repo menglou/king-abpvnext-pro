@@ -1,4 +1,4 @@
-name: Sync To Gitee
+name: Sync To ghpages Gitee
 
 on: 
   push:
