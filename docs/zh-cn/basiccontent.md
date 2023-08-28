@@ -2,7 +2,7 @@
 
 + 扩展方法
   
-<img src="./_media/extendmethod.png"  />
+<img src="_media/extendmethod.png"  />
 
 + 通用方法
    - 阿里云发短信
