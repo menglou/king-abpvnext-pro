@@ -165,7 +165,7 @@
 ## 通知中心模块
  + 集成 Abp Vnext SignalR,实现类似站内信模块
    - 发送消息会在前端右上角，根据不同消息等级有不同的窗体提示。
-   <img src="/_media/notciesigla.png" />
+   <img src="_media/notciesigla.png" />
    - 在右上角灯泡按钮可以看到接受的消息(消息一般是针对用户发送的，通知是一些广播类的消息如公告)
    
     <table  align="center">
@@ -174,14 +174,14 @@
                 <center>
                 <font >消息</font>
                 <br/>
-                <img src="/_media/noticenotice.png"  />
+                <img src="_media/noticenotice.png"  />
                 </center>
             </td>
             <td>
                 <center>
             <font >通知</font>
             <br/>
-                    <img src="/_media/noticecommon.png" />
+                    <img src="_media/noticecommon.png" />
                 </center>
             </td>
         </tr>

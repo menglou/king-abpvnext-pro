@@ -43,7 +43,7 @@
   
    - 右键单击.DbMigrator 项目,设置为启动项目运行，按 F5(或 Ctrl + F5) 运行应用程序. 它将具有如下所示的输出:
   
-  <img src="/_media/dbmigrator.png" align=center />
+  <img src="_media/dbmigrator.png" align=center />
 
 >初始的种子数据在数据库中创建了 admin 用户(密码为1q2w3E*) 用于登录应用程序. 所以, 对于新数据库至少使用 .DbMigrator 一次.
 
@@ -95,19 +95,19 @@
 </div>
 
 #### 部分页面展示
-<img src="/_media/login.png"  align=center style="margin-bottom:20px" />
+<img src="_media/login.png"  align=center style="margin-bottom:20px" />
 
-<img src="/_media/settting.png"  align=center style="margin-bottom:20px" />
+<img src="_media/settting.png"  align=center style="margin-bottom:20px" />
 
-<img src="/_media/scheduletask.png"  align=center style="margin-bottom:20px" />
+<img src="_media/scheduletask.png"  align=center style="margin-bottom:20px" />
 
-<img src="/_media/audlog.png"  align=center style="margin-bottom:20px" />
+<img src="_media/audlog.png"  align=center style="margin-bottom:20px" />
 
-<img src="/_media/tenant.png"  align=center style="margin-bottom:20px" />
+<img src="_media/tenant.png"  align=center style="margin-bottom:20px" />
 
-<img src="/_media/department.png"  align=center style="margin-bottom:20px" />
+<img src="_media/department.png"  align=center style="margin-bottom:20px" />
 
-<img src="/_media/user.png"  align=center style="margin-bottom:50px" />
+<img src="_media/user.png"  align=center style="margin-bottom:50px" />
 
 ## 目录结构
 ##### 后端项目结构
@@ -215,7 +215,7 @@
 
 欢迎大家加入群聊 QQ群：[1145603937]() 进行交流,或者扫码加入
 
-<img src="/_media/qq.png"  align=center />
+<img src="_media/qq.png"  align=center />
 
 ## 生态圈
 
@@ -257,14 +257,14 @@
 			<center>
         <font >微信</font>
       	<br/>
-				<img src="/_media/wechat.png"  />
+				<img src="_media/wechat.png"  />
 			</center>
 		</td>
 		<td>
 			<center>
         <font >支付宝</font>
         <br/>
-				<img src="/_media/alipay.png" />
+				<img src="_media/alipay.png" />
 			</center>
 		</td>
 	</tr>

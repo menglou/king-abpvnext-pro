@@ -20,7 +20,7 @@
   
      - <font size="4">前端(src/store/user.js) 修改 scope 和 client_id，client_secret</font>
   
-     <img src="/_media/frontnotice.png" />
+     <img src="_media/frontnotice.png" />
      
      - <font size="4">如何在数据库查找自己的 scope 和 client_id，client_secret</font>
         - <font size="3">IdentityServerClients表中的 ClientId 字段对应前端的client_id</font>
@@ -32,7 +32,7 @@
   + <font size="5">Openiddict 版本的 版本的</font>
      - <font size="4">前端(src/store/user.js) 修改 scope 和 client_id，client_secret</font>
   
-     <img src="/_media/frontnotice.png" />
+     <img src="_media/frontnotice.png" />
      
      - <font size="4">如何在数据库查找自己的 scope 和 client_id，client_secret</font>
         - <font size="3">OpenIddictApplications表中的 ClientId 字段对应前端的client_id</font>
