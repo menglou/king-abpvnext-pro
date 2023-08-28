@@ -51,19 +51,19 @@
 </div>
 
 ### 部分页面展示
-<img src="_media/login.png"  align=center style="margin-bottom:20px" />
+<img src="king-abpvnext-pro/_media/login.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/settting.png"  align=center style="margin-bottom:20px" />
+<img src="king-abpvnext-pro/_media/settting.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/scheduletask.png"  align=center style="margin-bottom:20px" />
+<img src="king-abpvnext-pro/_media/scheduletask.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/audlog.png"  align=center style="margin-bottom:20px" />
+<img src="king-abpvnext-pro/_media/audlog.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/tenant.png"  align=center style="margin-bottom:20px" />
+<img src="king-abpvnext-pro/_media/tenant.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/department.png"  align=center style="margin-bottom:20px" />
+<img src="king-abpvnext-pro/_media/department.png"  align=center style="margin-bottom:20px" />
 
-<img src="_media/user.png"  align=center style="margin-bottom:50px" />
+<img src="king-abpvnext-pro/_media/user.png"  align=center style="margin-bottom:50px" />
 
 
 
@@ -94,7 +94,7 @@
 
 欢迎大家加入群聊 QQ群：[1145603937]() 进行交流,或者扫码加入
 
-<img src="_media/qq.png"  align=center />
+<img src="king-abpvnext-pro/_media/qq.png"  align=center />
 
 
 ## 捐赠
@@ -109,14 +109,14 @@
 			<center>
         <font >微信</font>
       	<br/>
-				<img  src="_media/wechat.png"  />
+				<img  src="king-abpvnext-pro/_media/wechat.png"  />
 			</center>
 		</td>
 		<td>
 			<center>
         <font >支付宝</font>
         <br/>
-				<img src="_media/alipay.png" />
+				<img src="king-abpvnext-pro/_media/alipay.png" />
 			</center>
 		</td>
 	</tr>
