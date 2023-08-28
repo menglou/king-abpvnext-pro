@@ -2,7 +2,7 @@
 
 + 扩展方法
   
-<img src="../_media/extendmethod.png"  />
+<img src="./_media/extendmethod.png"  />
 
 + 通用方法
    - 阿里云发短信
@@ -12,7 +12,7 @@
    - 微信小程序登录获取openid，获取手机号等
   
 
-  <img src="../_media/commonmethod.png"  />
+  <img src="./_media/commonmethod.png"  />
 
 ---
 
