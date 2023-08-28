@@ -11,5 +11,6 @@ jobs:
               env:
                   SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
               with:
+                  ref: main
                   source-repo: git@github.com:menglou/king-abpvnext-pro.git
                   destination-repo: git@gitee.com:zljlm/king-abpvnext-pro.git
