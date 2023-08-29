@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gh-pages
+      - king-abpvnext-pro
 jobs:
     syncghpages:
         runs-on: ubuntu-latest
