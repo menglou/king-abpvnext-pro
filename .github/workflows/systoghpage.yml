@@ -1,10 +1,10 @@
 name: SyncGhPageToGitee
-on:
-  push:
-    branches: [gh-pages]
+on: push
+   
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/gh-pages'
     steps:
       - name: Checkout source codes
         uses: actions/checkout@v3
