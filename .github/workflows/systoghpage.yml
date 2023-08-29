@@ -1,18 +1,22 @@
-name: Sync To ghpages Gitee
-
-on: 
+name: SyncGhPageToGitee
+on:
   push:
     branches:
       - king-abpvnext-pro
-
 jobs:
-    sync:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Sync To ghpages Gitee
-              uses: wearerequired/git-mirror-action@master
-              env:
-                  SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
-              with:
-                  source-repo: git@github.com:menglou/king-abpvnext-pro.git
-                  destination-repo: git@gitee.com:zljlm/king-abpvnext-pro.git
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source codes
+        uses: actions/checkout@v3
+
+      - name: Mirror the Github king-abpvnext-pro repos to Gitee. # 同步这个分支到 gitee 这个分支是用来做 项目的官网文档的
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: 'github/menglou'    						# 这里改为自己github账号名称，如github/xiaoming
+          dst: 'gitee/zljlm'     						# 这里改为gitee上账号名称，如gitee/xiaoming
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  	# 这是生成的私钥，下面第3步会讲
+          dst_token:  ${{ secrets.GITEE_TOKEN }}     	# 这是gitee上生成的token，下面会讲
+          force_update: true
+          static_list: "king-abpvnext-pro"   					# 同步的仓库名称，这里为YOLO2COCO，意思是会自动同步该仓库到gitee下同名仓库
+          debug: true
