@@ -1,12 +1,10 @@
 name: Sync ghpages To Gitee
 
-on: 
-  push:
-    branches:
-     - ghpages
+on: [ push ]
 jobs:
     sync:
         runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/ghpages'
         steps:
             - name: Sync ghpages to Gitee
               uses: wearerequired/git-mirror-action@master
