@@ -2,8 +2,8 @@ name: Sync ghpages To Gitee
 
 on: 
   push:
-   branches:
-    - ghpages
+   branches: [ghpages]
+   
 
 jobs:
     syncghpages:
