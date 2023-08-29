@@ -11,9 +11,9 @@
 1. 安装Cli
 ><font size="5">dotnet tool install -g Kings.AbpVnextPro.Cli</font>
 2. 更新Cli
-><font size="5">dotnet tool update -g  Kings.AbpVnextPro.Cli</font>
+><font size="5">dotnet tool update -g  Kings.AbpVnextPro.Cli  --no-cache</font>
 3. 卸载Cli
-><font size="5">dotnet tool uninstall -g Kings.AbpVnextPro.Cli  --no-cache</font>
+><font size="5">dotnet tool uninstall -g Kings.AbpVnextPro.Cli </font>
 
 # 生成项目
 

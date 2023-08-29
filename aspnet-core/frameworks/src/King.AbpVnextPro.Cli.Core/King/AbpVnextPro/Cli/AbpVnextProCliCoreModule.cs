@@ -17,7 +17,7 @@ public class AbpVnextProCliCoreModule: AbpModule
         {
             options.Owner = "menglou";
             options.GiteeOwner = "zljlm";
-            options.RepositoryId = "king-abp-vnext-pro";
+            options.RepositoryId = "king-abpvnext-pro";
             options.Token = "king-abp-vnext-proghp_VoZ695yqcy9gIvBISEwsking-abp-vnext-proYEbSyuOK8w3ihAEb";
             options.Templates = new List<AbpProTemplateOptions>()
             {
