@@ -3,7 +3,6 @@ name: Sync ghpages To Gitee
 on: 
   push:
     branches:
-     - main
      - ghpages
 jobs:
     sync:
