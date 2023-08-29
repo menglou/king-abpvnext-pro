@@ -1,21 +1,17 @@
-name: 镜像仓库到 Gitee
-on:
+name: Sync To Gitee
+
+on: 
   push:
     branches:
-      - ghpages
-env:
-  # 仓库名称
-  REPO_NAME: ${{ github.event.repository.name }}
-
+      - 'king-abpvnet-pro/ghpages'
 jobs:
-  mirror-to-gitee:
-    name: 同步到 Gitee
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Mirror repo to Gitee.
-        uses: abersheeran/sync-gitee-mirror@v1-beta
-        with:
-          repository: menglou/${{ env.REPO_NAME }}
-          username: zljlm
-          password: ${{ secrets.GITEE_PASSWORD }}
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sync to Gitee
+              uses: wearerequired/git-mirror-action@master
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+              with:
+                  source-repo: git@github.com:menglou/king-abpvnext-pro.git
+                  destination-repo: git@gitee.com:zljlm/king-abpvnext-pro.git
