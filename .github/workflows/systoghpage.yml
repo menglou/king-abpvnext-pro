@@ -2,7 +2,7 @@ name: SyncGhPageToGitee
 on:
   push:
     branches:
-      - king-abpvnext-pro
+      - gh-pages
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
