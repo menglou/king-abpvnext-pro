@@ -1,4 +1,4 @@
-name: Sync To Gitee
+name: Sync ghpages To Gitee
 
 on: 
   push:
@@ -8,7 +8,7 @@ jobs:
     sync:
         runs-on: ubuntu-latest
         steps:
-            - name: Sync to Gitee
+            - name: Sync ghpages to Gitee
               uses: wearerequired/git-mirror-action@master
               env:
                   SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
