@@ -3,8 +3,8 @@ name: Sync To Gitee
 on: 
   push:
     branches:
-     - main
-     - ghpages
+      - main
+
 jobs:
     sync:
         runs-on: ubuntu-latest
