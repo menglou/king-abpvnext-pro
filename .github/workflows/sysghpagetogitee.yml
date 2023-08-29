@@ -1,9 +1,7 @@
 name: Sync ghpages To Gitee
 
-on: 
-  push:
-    branches:
-      - ghpages
+on: [push]
+
 jobs:
     syncghpages:
         runs-on: ubuntu-latest
