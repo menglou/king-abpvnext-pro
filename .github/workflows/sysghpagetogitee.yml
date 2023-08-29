@@ -3,7 +3,8 @@ name: Sync ghpages To Gitee
 on: 
   push:
     branches:
-      - 'king-abpvnet-pro/ghpages'
+     - main
+     - ghpages
 jobs:
     sync:
         runs-on: ubuntu-latest
