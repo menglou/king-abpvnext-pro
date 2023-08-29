@@ -1,7 +1,0 @@
-{
-  "modules": {
-    "King.AbpVnextPro.WorkFlow": {
-      "path": "King.AbpVnextPro.WorkFlow.abpmdl.json"
-    }
-  }
-}

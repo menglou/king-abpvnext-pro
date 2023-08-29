@@ -1,7 +1,0 @@
-{
-  "modules": {
-    "King.AbpVnextPro.Institution": {
-      "path": "King.AbpVnextPro.Institution.abpmdl.json"
-    }
-  }
-}

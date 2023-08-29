@@ -1,7 +1,0 @@
-{
-  "modules": {
-    "King.AbpVnextPro.ScheduleTask": {
-      "path": "King.AbpVnextPro.ScheduleTask.abpmdl.json"
-    }
-  }
-}

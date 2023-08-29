@@ -1,7 +1,0 @@
-{
-  "modules": {
-    "King.AbpVnextPro.Openiddict": {
-      "path": "King.AbpVnextPro.Openiddict.abpmdl.json"
-    }
-  }
-}

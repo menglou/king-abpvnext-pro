@@ -1,8 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
-    <PackageId>Kings.AbpVnextPro.Paylink.Security</PackageId>
-  </PropertyGroup>
-
-</Project>
