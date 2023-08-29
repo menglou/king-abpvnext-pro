@@ -1,8 +1,7 @@
 name: SyncGhPageToGitee
 on:
   push:
-    branches:
-      - gh-pages
+    branches: [gh-pages]
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
@@ -18,5 +17,5 @@ jobs:
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  	# 这是生成的私钥，下面第3步会讲
           dst_token:  ${{ secrets.GITEE_TOKEN }}     	# 这是gitee上生成的token，下面会讲
           force_update: true
-          static_list: "king-abpvnext-pro"   					# 同步的仓库名称，这里为YOLO2COCO，意思是会自动同步该仓库到gitee下同名仓库
+          static_list: "king-abpvnext-pro"   					# 同步的仓库名称，这里为king-abpvnext-pro，意思是会自动同步该仓库到gitee下同名仓库
           debug: true
