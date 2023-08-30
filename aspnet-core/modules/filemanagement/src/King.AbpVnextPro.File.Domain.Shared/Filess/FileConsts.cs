@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace King.AbpVnextPro.File.Files
+namespace King.AbpVnextPro.File.Filess
 {
     public class FileConsts
     {

@@ -10,15 +10,16 @@ using Volo.Abp.Validation;
 using Volo.Abp;
 using King.AbpVnextPro.File.Settings;
 
-namespace King.AbpVnextPro.File.Files
+namespace King.AbpVnextPro.File.Filess
 {
-    public class FilesAppService : FileAppService, IFileAppService
+    public class FilesAppService : FileAppService, IFilesAppService
     {
-        protected IFileManager FileManager { get; }
-
-        public FilesAppService(IFileManager fileManager)
+        protected IFilesManager FileManager { get; }
+        protected ISettingProvider _settingProvider;
+        public FilesAppService(IFilesManager fileManager, ISettingProvider settingProvider)
         {
             FileManager = fileManager;
+            _settingProvider= settingProvider;
         }
 
         public virtual async Task<FileDto> FindByBlobNameAsync(string blobName)
@@ -35,7 +36,7 @@ namespace King.AbpVnextPro.File.Files
             };
         }
 
-        [Authorize]
+       
         public virtual async Task<string> CreateAsync(FileDto input)
         {
             await CheckFile(input);
@@ -43,6 +44,13 @@ namespace King.AbpVnextPro.File.Files
             var file = await FileManager.CreateAsync(input.FileName, input.Bytes);
 
             return file.BlobName;
+        }
+
+        public virtual async Task<bool> DeleteAsync(string blobName)
+        {
+            var res = await FileManager.DeleteAsync(blobName);
+
+            return res;
         }
 
         protected virtual async Task CheckFile(FileDto input)
@@ -56,8 +64,8 @@ namespace King.AbpVnextPro.File.Files
                     });
             }
 
-            var allowedMaxFileSize = await SettingProvider.GetAsync<int>(FileSettings.AllowedMaxFileSize);//kb
-            var allowedUploadFormats = (await SettingProvider.GetOrNullAsync(FileSettings.AllowedUploadFormats))
+            var allowedMaxFileSize = await _settingProvider.GetAsync<int>(FileSettings.AllowedMaxFileSize);//kb
+            var allowedUploadFormats = (await _settingProvider.GetOrNullAsync(FileSettings.AllowedUploadFormats))
                 ?.Split(",", StringSplitOptions.RemoveEmptyEntries);
 
             if (input.Bytes.Length > allowedMaxFileSize * 1024)

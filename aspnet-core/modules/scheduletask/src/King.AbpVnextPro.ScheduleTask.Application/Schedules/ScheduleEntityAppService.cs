@@ -149,6 +149,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                 RunLoop=tasksQz.RunLoop,
                 AssemblyName=tasksQz.AssemblyName,
                 ClassName=tasksQz.ClassName,
+                MethodName=tasksQz.MethodName,
+                FileName=tasksQz.FileName,
                 StartDate = tasksQz.StartDate,
                 EndDate = tasksQz.EndDate,
                 IsHaveRetry=tasksQz.IsHaveRetry,
@@ -442,6 +444,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                     schedule.CronExpression = input.CronExpression;
                     schedule.AssemblyName = input.AssemblyName;
                     schedule.ClassName = input.ClassName;
+                    schedule.MethodName = input.MethodName;
+                    schedule.FileName= input.FileName;
                     schedule.StartDate = input.StartDate;
                     schedule.EndDate = input.EndDate;
                     schedule.IsHaveRetry = input.IsHaveRetry;
@@ -451,6 +455,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                     schedule.IsAllowSms = input.IsAllowSms;
                     schedule.IsAllowSignarl = input.IsAllowSignarl;
                     schedule.TenantId = CurrentTenant.Id;
+
+
 
                     var res = await _scheduleEntityRepository.UpdateAsync(schedule);
 
@@ -491,7 +497,11 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                             scheduleKeeperEntitys.Add(scheduleKeeperEntity);
                         }
                     }
+
+
                     await _scheduleKeeperEntityRepository.InsertManyAsync(scheduleKeeperEntitys);
+
+
 
                 }
 

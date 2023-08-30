@@ -9,9 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="Quartz" />
+    <PackageReference Include="SharpZipLib"  />
     <PackageReference Include="Volo.Abp.AutoMapper" />
     <PackageReference Include="Volo.Abp.Ddd.Application" />
     <ProjectReference Include="..\..\..\..\frameworks\src\King.AbpVnextPro.Core\King.AbpVnextPro.Core.csproj" />
+    <ProjectReference Include="..\..\..\filemanagement\src\King.AbpVnextPro.File.Application\King.AbpVnextPro.File.Application.csproj" />
     <ProjectReference Include="..\..\..\Notification\src\King.AbpVnextPro.Notice.Application\King.AbpVnextPro.Notice.Application.csproj" />
     <ProjectReference Include="..\King.AbpVnextPro.ScheduleTask.Application.Contracts\King.AbpVnextPro.ScheduleTask.Application.Contracts.csproj" />
     <ProjectReference Include="..\King.AbpVnextPro.ScheduleTask.Domain\King.AbpVnextPro.ScheduleTask.Domain.csproj" />

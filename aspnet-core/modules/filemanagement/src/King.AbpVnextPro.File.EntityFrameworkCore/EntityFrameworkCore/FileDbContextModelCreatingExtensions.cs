@@ -1,4 +1,4 @@
-﻿using King.AbpVnextPro.File.Files;
+﻿using King.AbpVnextPro.File.Filess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Volo.Abp;
@@ -33,7 +33,7 @@ public static class FileDbContextModelCreatingExtensions
         });
         */
 
-        builder.Entity<Files.File>(b =>
+        builder.Entity<Files>(b =>
         {
             //Configure table & schema name
             b.ToTable("Files", FileDbProperties.DbSchema);

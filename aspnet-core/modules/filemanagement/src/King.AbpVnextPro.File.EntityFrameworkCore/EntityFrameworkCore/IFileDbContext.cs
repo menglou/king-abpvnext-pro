@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using King.AbpVnextPro.File.Files;
+using King.AbpVnextPro.File.Filess;
 
 namespace King.AbpVnextPro.File.EntityFrameworkCore;
 
@@ -12,5 +12,5 @@ public interface IFileDbContext : IEfCoreDbContext
      * DbSet<Question> Questions { get; }
      */
 
-    DbSet<King.AbpVnextPro.File.Files.File> Files { get; }
+    DbSet<Files> Files { get; }
 }

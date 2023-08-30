@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace King.AbpVnextPro.File.Files
+namespace King.AbpVnextPro.File.Filess
 {
     public class FileDto
     {

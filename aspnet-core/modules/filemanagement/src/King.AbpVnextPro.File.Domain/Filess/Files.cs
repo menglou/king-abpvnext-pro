@@ -6,9 +6,9 @@ using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp;
 
-namespace King.AbpVnextPro.File.Files
+namespace King.AbpVnextPro.File.Filess
 {
-    public class File : FullAuditedAggregateRoot<Guid>, IMultiTenant
+    public class Files : FullAuditedAggregateRoot<Guid>, IMultiTenant
     {
         public virtual Guid? TenantId { get; protected set; }
 
@@ -20,9 +20,9 @@ namespace King.AbpVnextPro.File.Files
 
         public virtual long ByteSize { get; protected set; }
 
-        protected File() { }
+        protected Files() { }
 
-        public File(Guid id, Guid? tenantId, [NotNull] string fileName, [NotNull] string blobName, long byteSize) : base(id)
+        public Files(Guid id, Guid? tenantId, [NotNull] string fileName, [NotNull] string blobName, long byteSize) : base(id)
         {
             TenantId = tenantId;
             FileName = Check.NotNullOrWhiteSpace(fileName, nameof(fileName));

@@ -3,7 +3,7 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
 using Volo.Abp;
-using King.AbpVnextPro.File.Files;
+using King.AbpVnextPro.File.Filess;
 
 namespace King.AbpVnextPro.File;
 

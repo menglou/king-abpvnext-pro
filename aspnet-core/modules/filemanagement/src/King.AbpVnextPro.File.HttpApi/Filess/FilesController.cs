@@ -8,17 +8,17 @@ using Microsoft.Extensions.Localization;
 using Volo.Abp;
 using Volo.Abp.Http;
 
-namespace King.AbpVnextPro.File.Files
+namespace King.AbpVnextPro.File.Filess
 {
     [RemoteService]
     [Route("api/file-management/files")]
     public class FilesController : FileController
     {
-        protected IFileAppService FileAppService { get; }
-        public FilesController(IFileAppService fileAppService)
+        protected IFilesAppService FileAppService { get; }
+        public FilesController(IFilesAppService fileAppService)
         {
             FileAppService = fileAppService;
-           
+
         }
 
         [HttpGet]
@@ -27,6 +27,15 @@ namespace King.AbpVnextPro.File.Files
         {
             var fileDto = await FileAppService.FindByBlobNameAsync(blobName);
             return File(fileDto.Bytes, MimeTypes.GetByExtension(Path.GetExtension(fileDto.FileName)));
+        }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("{blobName}")]
+        public virtual async Task<bool> DeleteAsync(string blobName)
+        {
+            var res = await FileAppService.DeleteAsync(blobName);
+            return res;
         }
 
         [HttpPost]

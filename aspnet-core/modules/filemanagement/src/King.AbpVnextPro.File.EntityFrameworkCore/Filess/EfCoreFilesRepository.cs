@@ -9,15 +9,15 @@ using Volo.Abp;
 using King.AbpVnextPro.File.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace King.AbpVnextPro.File.Files
+namespace King.AbpVnextPro.File.Filess
 {
-    public class EfCoreFileRepository : EfCoreRepository<IFileDbContext, File, Guid>, IFileRepository
+    public class EfCoreFilesRepository : EfCoreRepository<IFileDbContext, Files, Guid>, IFilesRepository
     {
-        public EfCoreFileRepository(IDbContextProvider<IFileDbContext> dbContextProvider) : base(dbContextProvider)
+        public EfCoreFilesRepository(IDbContextProvider<IFileDbContext> dbContextProvider) : base(dbContextProvider)
         {
         }
 
-        public async Task<File> FindByBlobNameAsync(string blobName)
+        public async Task<Files> FindByBlobNameAsync(string blobName)
         {
             Check.NotNullOrWhiteSpace(blobName, nameof(blobName));
             var dbset = await GetDbSetAsync();

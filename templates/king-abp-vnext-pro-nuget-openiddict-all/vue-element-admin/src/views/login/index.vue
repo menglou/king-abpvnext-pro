@@ -338,6 +338,7 @@ export default {
             })
             .catch((error) => {
               this.loading = false
+              this.loadVeriCode()
             })
         } else {
           return false

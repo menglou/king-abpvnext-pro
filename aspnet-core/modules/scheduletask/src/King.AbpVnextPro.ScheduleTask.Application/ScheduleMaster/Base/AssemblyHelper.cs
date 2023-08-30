@@ -11,31 +11,19 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Base
 {
     public class AssemblyHelper
     {
-        /// <summary>
-        /// 获取程序集的完整路径
-        /// </summary>
-        /// <param name="sid"></param>
-        /// <param name="assemblyName"></param>
-        /// <returns></returns>
-        public static string GetTaskAssemblyPath(Guid sid, string assemblyName)
-        {
-            string path = $"\\www\\root\\{sid}\\{assemblyName}.dll";
-            return $"{Directory.GetCurrentDirectory()}{path}".Replace('\\', Path.DirectorySeparatorChar);
-        }
+
         /// <summary>
         /// 创建程序集实例
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="sid"></param>
-        /// <param name="assemblyName"></param>
+        /// <param name="assemblyPath"></param>
         /// <param name="className"></param>
         /// <param name="alcWeakRef"></param>
         /// <returns></returns>
-        public static TaskInstance CreateTaskInstance(ScheduleTaskAssemblyContext context, Guid sid, string assemblyName, string className, out WeakReference alcWeakRef)
+        public static TaskInstance CreateTaskInstance(ScheduleTaskAssemblyContext context, string assemblyPath,  string className, out WeakReference alcWeakRef)
         {
             try
             {
-                string assemblyPath = GetTaskAssemblyPath(sid, assemblyName);
                 //加载 assemblyPath 程序集到 MyAssemblyContext 上下文中
                 Assembly clib = context.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(assemblyPath)));
 
@@ -62,11 +50,10 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Base
         /// <summary>
         /// 加载应用程序域
         /// </summary>
-        /// <param name="assemblyName"></param>
+        /// <param name="assemblyPath"></param>
         /// <returns></returns>
-        public static ScheduleTaskAssemblyContext LoadAssemblyContext(Guid sid, string assemblyName)
+        public static ScheduleTaskAssemblyContext LoadAssemblyContext(string assemblyPath)
         {
-            string assemblyPath = GetTaskAssemblyPath(sid, assemblyName);
             ScheduleTaskAssemblyContext loadContext = new ScheduleTaskAssemblyContext(assemblyPath);
             return loadContext;
         }

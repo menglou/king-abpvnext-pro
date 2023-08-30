@@ -33,6 +33,10 @@ public static class ReplacePackageReferenceExtensions
                 //替换掉 计划模块中引用 notice 模块的
                  .Replace("<ProjectReference Include=\"..\\..\\..\\Notification\\src\\King.AbpVnextPro.Notice.Application\\King.AbpVnextPro.Notice.Application.csproj\" />",
                     "<PackageReference Include=\"Kings.AbpVnextPro.Notice.Application.csproj\" />")
+
+                 //替换掉 计划模块中引用 file 模块的
+                 .Replace("<ProjectReference Include=\"..\\..\\..\\Notification\\src\\King.AbpVnextPro.File.Application\\King.AbpVnextPro.File.Application.csproj\" />",
+                    "<PackageReference Include=\"Kings.AbpVnextPro.File.Application.csproj\" />")
             ;
     }
 

@@ -44,7 +44,8 @@ namespace King.AbpVnextPro;
     typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
     typeof(AbpAccountWebIdentityServerModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(AbpBlobStoringFileSystemModule)
 )]
 public class AbpVnextProHttpApiHostModule : AbpModule
 {
@@ -125,7 +126,7 @@ public class AbpVnextProHttpApiHostModule : AbpModule
                 {
                     container.UseFileSystem(fileSystem =>
                     {
-                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "upload");
+                        fileSystem.BasePath = Path.Combine(hostingEnvironment.WebRootPath, "upload");
                     });
                 }
             });

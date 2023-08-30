@@ -22,6 +22,7 @@ namespace King.AbpVnextPro.ScheduleTask;
     typeof(AbpAutoMapperModule),
     typeof(AbpVnextProCoreModule),
     typeof(NoticeApplicationModule)
+    
     )]
 public class ScheduleTaskApplicationModule : AbpModule
 {

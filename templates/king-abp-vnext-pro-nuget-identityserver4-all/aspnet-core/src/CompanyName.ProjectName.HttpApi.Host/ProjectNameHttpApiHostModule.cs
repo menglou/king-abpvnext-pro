@@ -45,7 +45,8 @@ namespace CompanyName.ProjectName;
     typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
     typeof(AbpAccountWebIdentityServerModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(AbpBlobStoringFileSystemModule)
 )]
 public class ProjectNameHttpApiHostModule : AbpModule
 {
@@ -106,7 +107,7 @@ public class ProjectNameHttpApiHostModule : AbpModule
                 {
                     container.UseFileSystem(fileSystem =>
                     {
-                        fileSystem.BasePath = Path.Combine(hostingEnvironment.ContentRootPath, "upload");
+                        fileSystem.BasePath = Path.Combine(hostingEnvironment.WebRootPath, "upload");
                     });
                 }
             });

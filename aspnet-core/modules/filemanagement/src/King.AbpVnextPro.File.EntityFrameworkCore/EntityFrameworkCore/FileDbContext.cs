@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using King.AbpVnextPro.File.Filess;
 
 namespace King.AbpVnextPro.File.EntityFrameworkCore;
 
@@ -17,7 +18,7 @@ public class FileDbContext : AbpDbContext<FileDbContext>, IFileDbContext
 
     }
 
-    public DbSet<Files.File> Files { get; set; }
+    public DbSet<Files> Files { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
