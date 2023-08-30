@@ -49,6 +49,11 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         public string ClassName { get; set; }
 
         /// <summary>
+        /// 执行方法名称
+        /// </summary>
+        public string MethodName { get; set; }
+
+        /// <summary>
         /// 任务状态
         /// </summary>
         public ScheduleStatus Status { get; set; }
