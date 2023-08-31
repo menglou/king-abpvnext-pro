@@ -151,6 +151,8 @@
                 :multiple="false"
                 :show-file-list="true"
                 :file-list="fileList"
+                :limit="1"
+                :on-exceed="handleExceed"
                 :on-change="handleChange"
                 :on-remove="handleRemove"
                 :before-upload="beforeUpload"
@@ -347,6 +349,28 @@ export default {
     },
     //创建计划任务弹窗关闭
     addscheduletaskmodalclose() {
+      if (this.fileName != "") {
+        this.deletefile(this.fileName);
+      }
+      this.callbackmethod = null;
+      this.activeName = "first";
+      this.$refs.form.resetFields();
+      this.fileList = [];
+      this.scheduletaskform.httpRequestUrl = "";
+      this.scheduletaskform.httpMethod = "POST";
+      this.scheduletaskform.httpContentType = "form-data";
+      this.scheduletaskform.httpHeaders = "";
+      this.scheduletaskform.httpBody = "";
+      this.scheduletaskform.assemblyName = "";
+      this.scheduletaskform.className = "";
+      this.scheduletaskform.methodName = "";
+      this.fileName = "";
+      this.scheduletaskadddialogFormVisible = false;
+    },
+    addscheduletaskmodalnewclose() {
+      if (this.fileName != "") {
+        this.deletefile(this.fileName);
+      }
       this.callbackmethod = null;
       this.activeName = "first";
       this.$refs.form.resetFields();
@@ -434,7 +458,7 @@ export default {
               type: "success",
             });
             this.callbackmethod();
-            this.addscheduletaskmodalclose();
+            this.addscheduletaskmodalnewclose();
           });
         } else {
           return false;
@@ -450,11 +474,14 @@ export default {
         this.uploadfile();
       }
     },
+    handleExceed(files, fileList) {
+      this.$message.warning(`当前限制选择 1 个文件`);
+    },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
-    handleRemove(file, fileList) {
-      deletefile(this.fileName).then((res) => {
+    deletefile(fileName) {
+      deletefile(fileName).then((res) => {
         this.$notify({
           title: "提示",
           message: "文件删除成功",
@@ -463,6 +490,9 @@ export default {
         this.fileName = "";
         this.fileList = [];
       });
+    },
+    handleRemove(file, fileList) {
+      this.deletefile(this.fileName);
     },
     beforeUpload(file) {
       //获取文件后缀名
