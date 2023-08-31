@@ -44,7 +44,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         {
 
             Guid scheduleid = GuidGenerator.Create();
-            ScheduleEntity main = new ScheduleEntity(scheduleid, task.Title, task.JobGroup, task.JobType, task.Remark, task.RunLoop, task.CronExpression, task.AssemblyName, task.ClassName, ScheduleStatus.Stop, task.StartDate, task.EndDate, null, null, 0, task.IsHaveRetry, task.MaxRetryCount, task.RetryInterval, 0, task.IsAllowMail, task.IsAllowSms, task.IsAllowSignarl, CurrentTenant.Id);
+            ScheduleEntity main = new ScheduleEntity(scheduleid, task.Title, task.JobGroup, task.JobType, task.Remark, task.RunLoop, task.CronExpression, task.AssemblyName, task.ClassName, task.MethodName,task.FileName, ScheduleStatus.Stop, task.StartDate, task.EndDate, null, null, 0, task.IsHaveRetry, task.MaxRetryCount, task.RetryInterval, 0, task.IsAllowMail, task.IsAllowSms, task.IsAllowSignarl, CurrentTenant.Id);
             //程序集任务
             if (task.JobType == JobTypeEnum.Assembly)
             {

@@ -141,6 +141,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
          string cronExpression ,
          string assemblyName ,
          string className ,
+         string methodName,
+         string fileName,
          ScheduleStatus status ,
          DateTime? startDate ,
          DateTime? endDate ,
@@ -165,6 +167,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
             CronExpression = cronExpression;
             AssemblyName = assemblyName;
             ClassName = className;
+            MethodName = methodName;
+            FileName = fileName;
             Status = status;
             StartDate = startDate;
             EndDate = endDate;
