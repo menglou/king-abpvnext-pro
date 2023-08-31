@@ -73,7 +73,7 @@
             </el-form-item>
           </el-tab-pane>
           <el-tab-pane
-            v-if="scheduletaskform.jobType == 1"
+            v-if="scheduletaskform.jobTypeName == 'Http任务'"
             label="元数据配置"
             name="second"
           >
@@ -124,7 +124,7 @@
             <!-- </el-form> -->
           </el-tab-pane>
           <el-tab-pane
-            v-if="scheduletaskform.jobType == 2"
+            v-if="scheduletaskform.jobTypeName == '程序集任务'"
             label="元数据配置"
             name="third"
           >
@@ -148,6 +148,8 @@
                 :multiple="false"
                 :show-file-list="true"
                 :file-list="fileList"
+                :limit="1"
+                :on-exceed="handleExceed"
                 :on-change="handleChange"
                 :on-remove="handleRemove"
                 :before-upload="beforeUpload"
@@ -343,12 +345,15 @@ export default {
       this.userlist = await getalluserlist();
       this.scheduletaskeditdialogFormVisible = true;
       var res = await getscheduleinfo(id);
-      var fileRes = await getfileinfo(res.fileName);
-      console.log('fileRes',fileRes);
+      // if (res.jobType == 2) {
+      //   var fileRes = await getfileinfo(res.fileName);
+      // }
       this.scheduletaskform.id = res.id;
       this.scheduletaskform.title = res.title;
       this.scheduletaskform.jobGroup = res.jobGroup;
       this.scheduletaskform.jobType = res.jobType;
+      this.scheduletaskform.jobTypeName =
+        res.jobType == 1 ? "Http任务" : "程序集任务";
       this.scheduletaskform.runLoop = res.runLoop;
       this.scheduletaskform.cronExpression = res.cronExpression;
       this.scheduletaskform.startDate = this.dateFormat(
@@ -403,6 +408,20 @@ export default {
     },
     //编辑计划任务弹窗关闭
     editscheduletaskmodalclose() {
+      if (
+        this.fileName != this.scheduletaskform.fileName &&
+        this.fileName != ""
+      ) {
+        this.deletefile(this.fileName);
+      }
+      this.callbackmethod = null;
+      this.activeName = "first";
+      this.userlist = [];
+      this.fileList = [];
+      this.fileName = "";
+      this.scheduletaskeditdialogFormVisible = false;
+    },
+    editscheduletaskmodalnewclose() {
       this.callbackmethod = null;
       this.activeName = "first";
       this.userlist = [];
@@ -412,6 +431,18 @@ export default {
     },
     //提交计划任务到数据库
     savescheduletask() {
+      if (this.scheduletaskform.jobTypeName == "程序集任务") {
+        if (this.fileName == "") {
+          this.$message.error("请选择文件!");
+          return false;
+        }
+        if (
+          this.fileName != this.scheduletaskform.fileName &&
+          this.scheduletaskform.fileName != ""
+        ) {
+          this.deletefile(this.scheduletaskform.fileName);
+        }
+      }
       let param = {
         id: this.scheduletaskform.id,
         title: this.scheduletaskform.title,
@@ -476,10 +507,9 @@ export default {
               type: "success",
             });
             this.callbackmethod();
-            this.editscheduletaskmodalclose();
+            this.editscheduletaskmodalnewclose();
           });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
@@ -492,12 +522,15 @@ export default {
         this.fileList = fileList.slice(-1);
         this.uploadfile();
       }
+    },    
+    handleExceed(files, fileList) {
+      this.$message.warning(`当前限制选择 1 个文件`);
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
-    handleRemove(file, fileList) {
-      deletefile(this.fileName).then((res) => {
+    deletefile(filename) {
+      deletefile(filename).then((res) => {
         this.$notify({
           title: "提示",
           message: "文件删除成功",
@@ -505,6 +538,9 @@ export default {
         });
         this.fileName = "";
       });
+    },
+    handleRemove(file, fileList) {
+      this.deletefile(this.fileName);
     },
     beforeUpload(file) {
       //获取文件后缀名
