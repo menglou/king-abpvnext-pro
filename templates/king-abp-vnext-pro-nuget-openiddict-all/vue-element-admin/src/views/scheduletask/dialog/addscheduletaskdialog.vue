@@ -19,7 +19,7 @@
             <el-form-item label="任务类型" prop="jobTypeName">
               <el-radio-group v-model="scheduletaskform.jobTypeName">
                 <el-radio label="Http任务"></el-radio>
-                <el-radio disabled label="程序集任务"></el-radio>
+                <el-radio label="程序集任务"></el-radio>
               </el-radio-group>
             </el-form-item>
             <el-form-item label="任务名称" prop="title">
@@ -78,7 +78,11 @@
               ></el-switch>
             </el-form-item>
           </el-tab-pane>
-          <el-tab-pane label="元数据配置" name="second">
+          <el-tab-pane
+            v-if="scheduletaskform.jobTypeName == 'Http任务'"
+            label="元数据配置"
+            name="second"
+          >
             <!-- <el-form :model="scheduletaskform" label-width="110px"> -->
             <el-form-item prop="httpRequestUrl" label="请求地址">
               <el-input v-model="scheduletaskform.httpRequestUrl"></el-input>
@@ -125,7 +129,38 @@
             </el-form-item>
             <!-- </el-form> -->
           </el-tab-pane>
-          <el-tab-pane label="异常报警通知" name="third">
+          <el-tab-pane
+            v-if="scheduletaskform.jobTypeName == '程序集任务'"
+            label="元数据配置"
+            name="third"
+          >
+            <el-form-item prop="assemblyName" label="程序集名称">
+              <el-input v-model="scheduletaskform.assemblyName"></el-input>
+            </el-form-item>
+            <el-form-item prop="className" label="执行类名称">
+              <el-input v-model="scheduletaskform.className"></el-input>
+            </el-form-item>
+            <el-form-item prop="methodName" label="执行方法名称">
+              <el-input v-model="scheduletaskform.methodName"></el-input>
+            </el-form-item>
+            <el-form-item label="程序包" prop="attachmentfile">
+              <el-upload
+                action="#"
+                ref="upload"
+                :auto-upload="false"
+                :multiple="false"
+                :show-file-list="true"
+                :file-list="fileList"
+                :on-change="handleChange"
+                :on-remove="handleRemove"
+                :before-upload="beforeUpload"
+                :http-request="uploadHttpRequest"
+              >
+                <el-button size="small" type="primary">选择文件</el-button>
+              </el-upload>
+            </el-form-item>
+          </el-tab-pane>
+          <el-tab-pane label="异常报警通知" name="fourth">
             <!-- <el-form :model="scheduletaskform" label-width="110px"> -->
             <el-form-item label="监护人" prop="keeperInfo">
               <el-select
@@ -156,7 +191,7 @@
             </el-form-item>
             <!-- </el-form> -->
           </el-tab-pane>
-          <el-tab-pane label="执行异常重试" name="fourth">
+          <el-tab-pane label="执行异常重试" name="fifth">
             <!-- <el-form :model="scheduletaskform" label-width="110px"> -->
             <el-form-item label="是否重试" prop="isHaveRetry">
               <el-switch
@@ -204,7 +239,7 @@
 <script>
 import { getalluserlist } from "@/api/identity/user";
 import { addscheduletask } from "@/api/scheduletask/index";
-
+import { uploadfile, deletefile } from "@/api/file/index";
 import moment from "moment";
 export default {
   data() {
@@ -240,6 +275,7 @@ export default {
         httpContentType: "form-data",
         httpHeaders: "",
         httpBody: "",
+        methodName: "",
       },
 
       rules: {
@@ -254,8 +290,14 @@ export default {
             trigger: "change",
           },
         ],
+        keeperInfo: [
+          { required: true, message: "请选择监护人", trigger: "change" },
+        ],
       },
       userlist: [],
+
+      fileList: [],
+      fileName: "",
     };
   },
   watch: {
@@ -275,7 +317,19 @@ export default {
           this.rules.httpMethod = [
             { required: true, message: "请选择请求方式", trigger: "change" },
           ];
+          delete this.rules["assemblyName"];
+          delete this.rules["className"];
+          delete this.rules["methodName"];
         } else {
+          this.rules.assemblyName = [
+            { required: true, message: "请输入程序集名称", trigger: "blur" },
+          ];
+          this.rules.className = [
+            { required: true, message: "请输入执行类名称", trigger: "blur" },
+          ];
+          this.rules.methodName = [
+            { required: true, message: "请输入执行方法名称", trigger: "blur" },
+          ];
           delete this.rules["httpRequestUrl"];
           delete this.rules["httpMethod"];
         }
@@ -296,10 +350,26 @@ export default {
       this.callbackmethod = null;
       this.activeName = "first";
       this.$refs.form.resetFields();
+      this.fileList = [];
+      this.scheduletaskform.httpRequestUrl = "";
+      this.scheduletaskform.httpMethod = "POST";
+      this.scheduletaskform.httpContentType = "form-data";
+      this.scheduletaskform.httpHeaders = "";
+      this.scheduletaskform.httpBody = "";
+      this.scheduletaskform.assemblyName = "";
+      this.scheduletaskform.className = "";
+      this.scheduletaskform.methodName = "";
+      this.fileName = "";
       this.scheduletaskadddialogFormVisible = false;
     },
     //提交计划任务到数据库
     savescheduletask() {
+      if (this.scheduletaskform.jobTypeName == "程序集任务") {
+        if (this.fileList.length == 0) {
+          this.$message.error("请选择文件!");
+          return false;
+        }
+      }
       let param = {
         title: this.scheduletaskform.title,
         jobGroup: this.scheduletaskform.jobGroup,
@@ -337,6 +407,8 @@ export default {
             : "application/json",
         headers: this.scheduletaskform.httpHeaders,
         body: this.scheduletaskform.httpBody,
+        methodName: this.scheduletaskform.methodName,
+        fileName: this.fileName,
       };
       let keeperInfo = [];
       for (let i of this.scheduletaskform.keeperInfo) {
@@ -365,13 +437,65 @@ export default {
             this.addscheduletaskmodalclose();
           });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
     },
     //验证表单有效性
     checkformValidate() {},
+    handleChange(file, fileList) {
+      const IsZip = this.beforeUpload(file);
+      if (IsZip) {
+        this.fileList = fileList.slice(-1);
+        this.uploadfile();
+      }
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`);
+    },
+    handleRemove(file, fileList) {
+      deletefile(this.fileName).then((res) => {
+        this.$notify({
+          title: "提示",
+          message: "文件删除成功",
+          type: "success",
+        });
+        this.fileName = "";
+        this.fileList = [];
+      });
+    },
+    beforeUpload(file) {
+      //获取文件后缀名
+      var filetype = file.name.replace(/.+\./, "");
+      const types = ["zip"];
+      const isZip = types.includes(filetype);
+      if (!isZip) {
+        this.fileList = [];
+        this.$message.error("程序包只能上传 ZIP格式文件!");
+      }
+      return isZip;
+    },
+    uploadHttpRequest(param) {
+      const formData = new FormData(); //FormData对象，添加参数只能通过append('key', value)的形式添加
+      formData.append("file", param.file); //添加文件对象
+      uploadfile(formData).then((res) => {
+        this.$notify({
+          title: "提示",
+          message: "上传文件成功",
+          type: "success",
+        });
+        this.fileName = res;
+      });
+    },
+    uploadfile() {
+      if (this.scheduletaskform.jobTypeName == "程序集任务") {
+        if (this.fileList.length == 0) {
+          this.$message.error("请选择文件!");
+          return false;
+        }
+      }
+      this.$refs.upload.submit();
+    },
   },
 };
 </script>

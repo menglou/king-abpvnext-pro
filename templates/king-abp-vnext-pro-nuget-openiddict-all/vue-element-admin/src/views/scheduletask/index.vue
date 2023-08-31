@@ -49,6 +49,12 @@
             </template>
           </vxe-table-column>
           <vxe-table-column title="任务分组" min-width="150" field="jobGroup" />
+          <vxe-table-column title="任务类型" min-width="150" field="jobType">
+            <template v-slot="{ row }">
+              <label v-if="row.jobType == 1">Http任务</label>
+              <label v-else-if="row.jobType == 2">程序集任务</label>
+            </template>
+          </vxe-table-column>
           <vxe-table-column title="运行模式" min-width="150" field="runLoop">
             <template v-slot="{ row }">
               {{ row.runLoop ? "周期运行" : "一次运行" }}
@@ -102,7 +108,7 @@
             </template>
           </vxe-table-column>
           <vxe-table-column title="备注" min-width="150" field="remark" />
-          <vxe-table-column title="操作" min-width="200">
+          <vxe-table-column title="操作" min-width="200" fixed="right">
             <template v-slot="{ row }">
               <el-button class="btn-cz" @click="showschedulelog(row)"
                 >日志</el-button

@@ -320,7 +320,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
 
             var query = from schedule in await _scheduleEntityRepository.GetListAsync()
                         join schedulehttpoption in await _scheduleHttpOptionEntityRepository.GetListAsync()
-                        on schedule.Id equals schedulehttpoption.ScheduleId
+                        on schedule.Id equals schedulehttpoption.ScheduleId into scheduleList
+                        from schedulehttpoption in scheduleList.DefaultIfEmpty()
                         where currentuserallkeepers.Contains(schedule.Id)
                         select new ScheduleEntityDto
                         {
@@ -333,6 +334,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                             CronExpression = schedule.CronExpression,
                             AssemblyName = schedule.AssemblyName,
                             ClassName = schedule.ClassName,
+                            MethodName = schedule.MethodName,
+                            FileName = schedule.FileName,
                             Status = schedule.Status,
                             StartDate = schedule.StartDate,
                             EndDate = schedule.EndDate,
@@ -343,11 +346,11 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                             MaxRetryCount = schedule.MaxRetryCount,
                             RetryInterval = schedule.RetryInterval,
                             AlreadyRetryCount = schedule.AlreadyRetryCount,
-                            RequestUrl = schedulehttpoption.RequestUrl,
-                            Method = schedulehttpoption.Method,
-                            ContentType = schedulehttpoption.ContentType,
-                            Headers = schedulehttpoption.Headers,
-                            Body = schedulehttpoption.Body
+                            RequestUrl = schedulehttpoption == null ? "" : schedulehttpoption.RequestUrl,
+                            Method = schedulehttpoption == null ? "" : schedulehttpoption.Method,
+                            ContentType = schedulehttpoption == null ? "" : schedulehttpoption.ContentType,
+                            Headers = schedulehttpoption == null ? "" : schedulehttpoption.Headers,
+                            Body = schedulehttpoption == null ? "" : schedulehttpoption.Body
                         };
 
             var count = await _asyncExecuter.CountAsync(query.WhereIf(!input.JobName.IsNullOrWhiteSpace(), x => x.Title.Contains(input.JobName)).AsQueryable());
@@ -367,7 +370,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
 
             var query = (from schedule in await _scheduleEntityRepository.GetListAsync()
                          join schedulehttpoption in await _scheduleHttpOptionEntityRepository.GetListAsync()
-                         on schedule.Id equals schedulehttpoption.ScheduleId
+                         on schedule.Id equals schedulehttpoption.ScheduleId into scheduleList
+                         from schedulehttpoption in scheduleList.DefaultIfEmpty()
                          where schedule.Id == sid
                          select new ScheduleEntityDto
                          {
@@ -380,6 +384,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                              CronExpression = schedule.CronExpression,
                              AssemblyName = schedule.AssemblyName,
                              ClassName = schedule.ClassName,
+                             MethodName = schedule.MethodName,
+                             FileName = schedule.FileName,
                              Status = schedule.Status,
                              StartDate = schedule.StartDate,
                              EndDate = schedule.EndDate,
@@ -390,11 +396,11 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                              MaxRetryCount = schedule.MaxRetryCount,
                              RetryInterval = schedule.RetryInterval,
                              AlreadyRetryCount = schedule.AlreadyRetryCount,
-                             RequestUrl = schedulehttpoption.RequestUrl,
-                             Method = schedulehttpoption.Method,
-                             ContentType = schedulehttpoption.ContentType,
-                             Headers = schedulehttpoption.Headers,
-                             Body = schedulehttpoption.Body,
+                             RequestUrl = schedulehttpoption == null ? "" : schedulehttpoption.RequestUrl,
+                             Method = schedulehttpoption == null ? "" : schedulehttpoption.Method,
+                             ContentType = schedulehttpoption == null ? "" : schedulehttpoption.ContentType,
+                             Headers = schedulehttpoption == null ? "" : schedulehttpoption.Headers,
+                             Body = schedulehttpoption == null ? "" : schedulehttpoption.Body,
                              IsAllowMail = schedule.IsAllowMail,
                              IsAllowSms = schedule.IsAllowSms,
                              IsAllowSignarl = schedule.IsAllowSignarl
