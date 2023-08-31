@@ -418,15 +418,15 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
 
 
         //每次运行成功更新 下次运行时间上次运行时间，总的运行次数
-        private async void StartedEvent(Guid sid, DateTime? nextRunTime)
+        private  void StartedEvent(Guid sid, DateTime? nextRunTime)
         {
             //每次运行成功后更新任务的运行情况
-            var task = await _scheduleEntityRepository.FindAsync(x => x.Id == sid);
+            var task = _scheduleEntityRepository.FindAsync(x => x.Id == sid).Result;
             if (task == null) return;
             task.LastRunTime = DateTime.Now;
             task.NextRunTime = nextRunTime;
             task.TotalRunCount += 1;
-            await _scheduleEntityRepository.UpdateAsync(task);
+            _scheduleEntityRepository.UpdateAsync(task);
         }
 
         #endregion
