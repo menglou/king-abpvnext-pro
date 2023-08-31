@@ -150,7 +150,7 @@ namespace CompanyName.ProjectName.Migrations
                     b.ToTable("DataDictionaryDetail", (string)null);
                 });
 
-            modelBuilder.Entity("King.AbpVnextPro.File.Files.File", b =>
+            modelBuilder.Entity("King.AbpVnextPro.File.Filess.Files", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -595,6 +595,9 @@ namespace CompanyName.ProjectName.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ExtraProperties");
 
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsAllowMail")
                         .HasColumnType("bit");
 
@@ -626,6 +629,9 @@ namespace CompanyName.ProjectName.Migrations
 
                     b.Property<int?>("MaxRetryCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("MethodName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("NextRunTime")
                         .HasColumnType("datetime2");

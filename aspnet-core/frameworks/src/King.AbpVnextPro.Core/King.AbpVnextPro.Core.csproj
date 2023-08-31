@@ -13,8 +13,9 @@
     <PackageReference Include="aliyun-net-sdk-core" />
     <PackageReference Include="MailKit" />
     <PackageReference Include="Microsoft.Extensions.Http" />
-    <PackageReference Include="Newtonsoft.Json"  />
+    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="System.Text.Json" />
+    <PackageReference Include="SharpZipLib" />
   </ItemGroup>
 
   <ItemGroup>

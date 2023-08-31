@@ -12,6 +12,7 @@ using Volo.Abp.Users;
 using King.AbpVnextPro.Notice;
 using Autofac.Core;
 using King.AbpVnextPro.Core.Extensions;
+using King.AbpVnextPro.File;
 
 namespace King.AbpVnextPro.ScheduleTask;
 
@@ -21,8 +22,8 @@ namespace King.AbpVnextPro.ScheduleTask;
     typeof(AbpDddApplicationModule),
     typeof(AbpAutoMapperModule),
     typeof(AbpVnextProCoreModule),
-    typeof(NoticeApplicationModule)
-    
+    typeof(NoticeApplicationModule),
+    typeof(FileApplicationModule)
     )]
 public class ScheduleTaskApplicationModule : AbpModule
 {

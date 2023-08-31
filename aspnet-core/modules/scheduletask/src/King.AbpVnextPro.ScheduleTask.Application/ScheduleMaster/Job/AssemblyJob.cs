@@ -60,7 +60,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
         }
 
         //创建程序集实例 并执行方法
-        private async void CreateRunnableInstance(ScheduleManagerDto instance, Guid sid, string filename, string assemblyName, string className, string methodName)
+        private  void CreateRunnableInstance(ScheduleManagerDto instance, Guid sid, string filename, string assemblyName, string className, string methodName)
         {
             string dllpath = string.Empty;
             string basepath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\plugins";
@@ -70,7 +70,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
             if (!Directory.Exists(assemblyPath))
             {
                 //根据id 获取存在在blob 中文件
-                var fileDto = await _filesAppService.FindByBlobNameAsync(filename);
+                var fileDto =  _filesAppService.FindByBlobNameAsync(filename).Result;
                 //根据上传到blob 的文件解压zip 文件
                 string didcpath = ExtractProjectZip(fileDto.Bytes, basepath, sid, filename, assemblyName);
 
@@ -87,7 +87,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
             try
             {
                 //获取计划任务信息
-                var scheduleentity = await _scheduleEntityRepository.FindAsync(x => x.Id == instance.Id);
+                var scheduleentity = _scheduleEntityRepository.FindAsync(x => x.Id == instance.Id).Result;
                 WeakReference weakReference;
                 loadContext = AssemblyHelper.LoadAssemblyContext(contextpath);
                 RunnableInstance = AssemblyHelper.CreateTaskInstance(
@@ -133,7 +133,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
                             //如果已经重试次数没有大于 最大的重试次数
                             if (scheduleentity.AlreadyRetryCount < scheduleentity.MaxRetryCount)
                             {
-                                await _quartzManager.RetryJob(scheduleentity.Id, scheduleentity.JobGroup, scheduleentity.RetryInterval.Value);
+                                 _quartzManager.RetryJob(scheduleentity.Id, scheduleentity.JobGroup, scheduleentity.RetryInterval.Value);
                                 if (scheduleentity.IsAllowMail)
                                 {
                                     //发送邮件
@@ -173,7 +173,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
                 if (scheduleentity != null)
                 {
                     scheduleentity.AlreadyRetryCount = 0;
-                    await _scheduleEntityRepository.UpdateAsync(scheduleentity);
+                    _scheduleEntityRepository.UpdateAsync(scheduleentity);
                 }
                 stopwatch.Stop();
                 //写入日志
@@ -198,7 +198,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
 
                 //根据任务id 获取邮箱
                 //获取计划任务信息
-                var scheduleentity = await _scheduleEntityRepository.FindAsync(x => x.Id == instance.Id);
+                var scheduleentity = _scheduleEntityRepository.FindAsync(x => x.Id == instance.Id).Result;
 
                 if (scheduleentity.IsAllowMail)
                 {
@@ -224,7 +224,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
                     //如果已经重试次数没有大于 最大的重试次数
                     if (scheduleentity.AlreadyRetryCount < scheduleentity.MaxRetryCount)
                     {
-                        await _quartzManager.RetryJob(instance.Id, instance.JobGroup, scheduleentity.RetryInterval.Value);
+                        _quartzManager.RetryJob(instance.Id, instance.JobGroup, scheduleentity.RetryInterval.Value);
 
                         //写日志
                         stopwatch.Stop();
@@ -255,7 +255,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
                     else  //重置已经重试的次数 如果本次的重试的次数已经大于最大重试次数的话
                     {
                         scheduleentity.AlreadyRetryCount = 0;
-                        await _scheduleEntityRepository.UpdateAsync(scheduleentity);
+                        _scheduleEntityRepository.UpdateAsync(scheduleentity);
                     }
                 }
             }

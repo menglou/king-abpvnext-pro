@@ -130,11 +130,6 @@ namespace King.AbpVnextPro.Notice.Notifications
                 throw new ArgumentNullException(nameof(content));
             }
 
-            if (content.Length > 1024)
-            {
-                throw new ArgumentOutOfRangeException(nameof(content));
-            }
-
             if (0 > 0 && content.Length < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(content));
