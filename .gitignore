@@ -257,4 +257,12 @@ paket-files/
 /aspnet-core/services/openiddict/src/King.AbpVnextPro.HttpApi.Host/Logs
 /templates/king-abp-vnext-pro-nuget-identityserver4-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/Logs
 /templates/king-abp-vnext-pro-nuget-openiddict-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/Logs
+/aspnet-core/services/identityserver/src/King.AbpVnextPro.HttpApi.Host/wwwroot/plugins
+/aspnet-core/services/openiddict/src/King.AbpVnextPro.HttpApi.Host/wwwroot/plugins
+/aspnet-core/services/identityserver/src/King.AbpVnextPro.HttpApi.Host/wwwroot/upload
+/aspnet-core/services/openiddict/src/King.AbpVnextPro.HttpApi.Host/wwwroot/upload
+/templates/king-abp-vnext-pro-nuget-identityserver4-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/plugins
+/templates/king-abp-vnext-pro-nuget-openiddict-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/plugins
+/templates/king-abp-vnext-pro-nuget-identityserver4-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/upload
+/templates/king-abp-vnext-pro-nuget-openiddict-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/upload
 /docs/site
