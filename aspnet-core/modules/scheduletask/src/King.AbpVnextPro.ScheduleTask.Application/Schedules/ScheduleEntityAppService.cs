@@ -520,7 +520,8 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         {
             var query = from schedule in await _scheduleEntityRepository.GetListAsync()
                         join schedulehttpoption in await _scheduleHttpOptionEntityRepository.GetListAsync()
-                        on schedule.Id equals schedulehttpoption.ScheduleId
+                        on schedule.Id equals schedulehttpoption.ScheduleId into tmp
+                        from a in tmp.DefaultIfEmpty()
                         select new ScheduleManagerDto
                         {
                             Id = schedule.Id,
@@ -532,17 +533,19 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                             CronExpression = schedule.CronExpression,
                             AssemblyName = schedule.AssemblyName,
                             ClassName = schedule.ClassName,
+                            MethodName=schedule.MethodName,
+                            FileName= schedule.FileName,
                             Status = schedule.Status,
                             StartDate = schedule.StartDate,
                             EndDate = schedule.EndDate,
                             IsHaveRetry = schedule.IsHaveRetry,
                             MaxRetryCount = schedule.MaxRetryCount,
                             RetryInterval = schedule.RetryInterval,
-                            RequestUrl = schedulehttpoption.RequestUrl,
-                            Method = schedulehttpoption.Method,
-                            ContentType = schedulehttpoption.ContentType,
-                            Headers = schedulehttpoption.Headers,
-                            Body = schedulehttpoption.Body
+                            RequestUrl =a==null?string.Empty:a.RequestUrl,
+                            Method = a == null ? string.Empty : a.Method,
+                            ContentType = a == null ? string.Empty : a.ContentType,
+                            Headers = a == null ? string.Empty : a.Headers,
+                            Body = a == null ? string.Empty : a.Body
                         };
 
             var list = await _asyncExecuter.ToListAsync(query.WhereIf(!input.JobName.IsNullOrWhiteSpace(), x => x.Title.Contains(input.JobName)).WhereIf(input.ScheduleStatus.HasValue, x => x.Status == input.ScheduleStatus).AsQueryable());
