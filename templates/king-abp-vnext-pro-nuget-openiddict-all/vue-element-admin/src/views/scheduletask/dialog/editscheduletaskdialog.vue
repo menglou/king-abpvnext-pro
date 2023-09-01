@@ -137,7 +137,11 @@
             <el-form-item prop="methodName" label="执行方法名称">
               <el-input v-model="scheduletaskform.methodName"></el-input>
             </el-form-item>
-            <el-form-item prop="fileName" label="文件名称">
+            <el-form-item
+              v-if="scheduletaskform.fileName != ''"
+              prop="fileName"
+              label="文件名称"
+            >
               <el-input v-model="scheduletaskform.fileName" disabled></el-input>
             </el-form-item>
             <el-form-item label="程序包" prop="attachmentfile">
@@ -156,12 +160,17 @@
                 :http-request="uploadHttpRequest"
               >
                 <el-button size="small" type="primary">选择文件</el-button>
+                <div slot="tip" class="el-upload__tip">
+                  只能上传zip文件，且zip文件最好直接压缩dll文件。
+                  任务程序集不要使用异步方法。
+                  任务程序集尽可能少的依赖于其他程序集。
+                </div>
               </el-upload>
             </el-form-item>
           </el-tab-pane>
           <el-tab-pane label="异常报警通知" name="fourth">
             <!-- <el-form :model="scheduletaskform" label-width="110px"> -->
-            <el-form-item label="监护人">
+            <el-form-item label="监护人" prop="keeperInfo">
               <el-select
                 multiple
                 style="width: 100%"
@@ -522,7 +531,7 @@ export default {
         this.fileList = fileList.slice(-1);
         this.uploadfile();
       }
-    },    
+    },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 1 个文件`);
     },

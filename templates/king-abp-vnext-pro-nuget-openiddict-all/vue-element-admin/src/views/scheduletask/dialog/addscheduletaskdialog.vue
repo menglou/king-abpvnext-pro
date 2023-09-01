@@ -159,6 +159,11 @@
                 :http-request="uploadHttpRequest"
               >
                 <el-button size="small" type="primary">选择文件</el-button>
+                <div slot="tip" class="el-upload__tip">
+                  只能上传zip文件，且zip文件最好直接压缩dll文件。
+                  任务程序集不要使用异步方法。
+                  任务程序集尽可能少的依赖于其他程序集。
+                </div>
               </el-upload>
             </el-form-item>
           </el-tab-pane>
