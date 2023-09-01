@@ -537,11 +537,6 @@ export default {
     },
     deletefile(filename) {
       deletefile(filename).then((res) => {
-        this.$notify({
-          title: "提示",
-          message: "文件删除成功",
-          type: "success",
-        });
         this.fileName = "";
       });
     },
@@ -563,11 +558,6 @@ export default {
       const formData = new FormData(); //FormData对象，添加参数只能通过append('key', value)的形式添加
       formData.append("file", param.file); //添加文件对象
       uploadfile(formData).then((res) => {
-        this.$notify({
-          title: "提示",
-          message: "上传文件成功",
-          type: "success",
-        });
         this.fileName = res;
       });
     },
