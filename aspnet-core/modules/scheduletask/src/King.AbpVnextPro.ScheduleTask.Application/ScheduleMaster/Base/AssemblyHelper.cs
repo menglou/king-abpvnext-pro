@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Base
         /// <param name="className"></param>
         /// <param name="alcWeakRef"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public static TaskInstance CreateTaskInstance(ScheduleTaskAssemblyContext context, string assemblyPath,  string className, out WeakReference alcWeakRef)
         {
             try

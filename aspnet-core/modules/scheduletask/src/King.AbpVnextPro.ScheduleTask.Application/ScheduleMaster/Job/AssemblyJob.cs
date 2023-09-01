@@ -26,8 +26,8 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
 {
     public class AssemblyJob : IJob
     {
-        private ScheduleTaskAssemblyContext loadContext;
-        public TaskInstance RunnableInstance;
+        //private ScheduleTaskAssemblyContext loadContext;
+        //public TaskInstance RunnableInstance;
         private ILogger<HttpJob> _logger { get; set; }
         private IFilesAppService _filesAppService;
         private ISettingProvider _settingProvider { get; set; }
@@ -89,8 +89,8 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
                 //获取计划任务信息
                 var scheduleentity = _scheduleEntityRepository.FindAsync(x => x.Id == instance.Id).Result;
                 WeakReference weakReference;
-                loadContext = AssemblyHelper.LoadAssemblyContext(contextpath);
-                RunnableInstance = AssemblyHelper.CreateTaskInstance(
+                var  loadContext = AssemblyHelper.LoadAssemblyContext(contextpath);
+                var RunnableInstance = AssemblyHelper.CreateTaskInstance(
                     loadContext,
                     contextpath,
                     className,
