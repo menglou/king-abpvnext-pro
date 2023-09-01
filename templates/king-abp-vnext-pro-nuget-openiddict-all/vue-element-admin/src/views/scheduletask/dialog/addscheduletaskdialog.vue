@@ -373,9 +373,6 @@ export default {
       this.scheduletaskadddialogFormVisible = false;
     },
     addscheduletaskmodalnewclose() {
-      if (this.fileName != "") {
-        this.deletefile(this.fileName);
-      }
       this.callbackmethod = null;
       this.activeName = "first";
       this.$refs.form.resetFields();
