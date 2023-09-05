@@ -77,12 +77,12 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
             {
 
                 var objbody = JsonConvert.DeserializeObject(instance.Body);
-                var jobjobjbody = obj as JObject;
+                var jobjobjbody = objbody as JObject;
                 if (jobjobjbody != null)
                 {
                     foreach (var item in jobjobjbody)
                     {
-                        requestBody += string.Join('&', $"{item.Key}={item.Value.ToString()}");
+                        requestBody += string.Format("&{0}", $"{item.Key}={item.Value.ToString()}");
                     }
                     if (instance.Method.ToLower() == "get" && jobjobjbody.Count > 0)
                     {
@@ -92,7 +92,9 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Job
             }
             //获取设置的http 请求时间
             string settinghttptimeout = await _settingProvider.GetOrNullAsync("Http.SettHttpTimeOut");
-            httpClient.Timeout = new TimeSpan(!string.IsNullOrEmpty(settinghttptimeout) ? Convert.ToInt32(settinghttptimeout) : 300);
+            int httptimeout = !string.IsNullOrEmpty(settinghttptimeout) ? Convert.ToInt32(settinghttptimeout) : 300;
+            TimeSpan timeSpan = new TimeSpan(0, 0, httptimeout);
+            httpClient.Timeout = timeSpan;
             var httpRequest = new HttpRequestMessage
             {
                 Content = new StringContent(requestBody ?? string.Empty, System.Text.Encoding.UTF8, instance.ContentType),
