@@ -385,11 +385,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "King.AbpVnextPro.PayCenter.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "King.AbpVnextPro.PayCenter.HttpApi.Client", "modules\paycenter\src\King.AbpVnextPro.PayCenter.HttpApi.Client\King.AbpVnextPro.PayCenter.HttpApi.Client.csproj", "{2025B24D-DA5B-4CFD-8A8D-A43D9131864D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.AbpVnextPro.Paylink.Alipy", "frameworks\src\King.AbpVnextPro.Paylink.Alipy\King.AbpVnextPro.Paylink.Alipy.csproj", "{C92C631B-83CD-4B5A-A38E-56BD7F0A5CB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "King.AbpVnextPro.Paylink.Alipy", "frameworks\src\King.AbpVnextPro.Paylink.Alipy\King.AbpVnextPro.Paylink.Alipy.csproj", "{C92C631B-83CD-4B5A-A38E-56BD7F0A5CB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.AbpVnextPro.Paylink.Security", "frameworks\src\King.AbpVnextPro.Paylink.Security\King.AbpVnextPro.Paylink.Security.csproj", "{9C466949-3FC3-4D96-AECC-D14C4CBEA146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "King.AbpVnextPro.Paylink.Security", "frameworks\src\King.AbpVnextPro.Paylink.Security\King.AbpVnextPro.Paylink.Security.csproj", "{9C466949-3FC3-4D96-AECC-D14C4CBEA146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.AbpVnextPro.Paylink.WeChat", "frameworks\src\King.AbpVnextPro.Paylink.WeChat\King.AbpVnextPro.Paylink.WeChat.csproj", "{C6B9D2DF-DF19-4F1B-BCFE-8703339FDA2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "King.AbpVnextPro.Paylink.WeChat", "frameworks\src\King.AbpVnextPro.Paylink.WeChat\King.AbpVnextPro.Paylink.WeChat.csproj", "{C6B9D2DF-DF19-4F1B-BCFE-8703339FDA2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.AbpVnextPro.ClickHouse", "frameworks\src\King.AbpVnextPro.ClickHouse\King.AbpVnextPro.ClickHouse.csproj", "{11268A25-B45D-4D2C-A095-5ADB929E031D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -945,6 +947,10 @@ Global
 		{C6B9D2DF-DF19-4F1B-BCFE-8703339FDA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B9D2DF-DF19-4F1B-BCFE-8703339FDA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B9D2DF-DF19-4F1B-BCFE-8703339FDA2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11268A25-B45D-4D2C-A095-5ADB929E031D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11268A25-B45D-4D2C-A095-5ADB929E031D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11268A25-B45D-4D2C-A095-5ADB929E031D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11268A25-B45D-4D2C-A095-5ADB929E031D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1127,6 +1133,7 @@ Global
 		{C92C631B-83CD-4B5A-A38E-56BD7F0A5CB2} = {97C4EA06-475C-4611-8181-5CB4781A3C55}
 		{9C466949-3FC3-4D96-AECC-D14C4CBEA146} = {97C4EA06-475C-4611-8181-5CB4781A3C55}
 		{C6B9D2DF-DF19-4F1B-BCFE-8703339FDA2D} = {97C4EA06-475C-4611-8181-5CB4781A3C55}
+		{11268A25-B45D-4D2C-A095-5ADB929E031D} = {97C4EA06-475C-4611-8181-5CB4781A3C55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D34721E-F993-4630-9DFC-639A1BB72F0D}
