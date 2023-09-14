@@ -60,5 +60,14 @@
 
       <PackageReference Update="QRCoder" Version="1.4.3" />
 
+      <PackageReference Update="aliyun-net-sdk-core" Version="1.5.11" />
+      <PackageReference Update="MailKit" Version="4.1.0" />
+
+
+      <PackageReference Update="FreeSql" Version="3.2.800" />
+      <PackageReference Update="FreeSql.Provider.ClickHouse" Version="3.2.800" />
+
+      <PackageReference Update="FreeRedis" Version="1.1.9" />
+
     </ItemGroup>
 </Project>
