@@ -255,4 +255,61 @@
  </pre>
 </div>
 
+## ClickHouse
 
++ 介绍
+  - ClickHouse 是 Yandex（俄罗斯最大的搜索引擎）开源的一个用于实时数据分析的基于列存储的数据库，其处理数据的速度比传统方法快 100-1000 倍。ClickHouse 的性能超过了目前市场上可比的面向列的 DBMS，每秒钟每台服务器每秒处理数亿至十亿多行和数十千兆字节的数据
+
+  - 几乎覆盖了标准 SQL 的大部分语法，包括 DDL 和 DML，以及配套的各种函数，用户管理及权限管理，数据的备份与恢复
+
+  - ClickHouse [官网中文文档](https://clickhouse.com/docs/zh)
+
++ 安装
+
+  - 添加以下 NuGet 包到你的项目
+   
+  - Kings.AbpVnextPro.ClickHouse
+   
+  - 添加 [DependsOn(typeof(AbpVnextProClickHouseModule))] 到你的项目模块类.
+
+  - 通过appsetting.json 去配置相应的参数
+
+  <div >
+    <pre style="background-color:#282c34;border-radius:6px;color:#fff;color:#fff">
+      
+      "ClickHouse": {
+        "CKConnectStr": "Compress=True;CheckCompressedHash=False;Compressor=lz4;Host=127.0.0.1;Port=8123;User=default;Password=;SocketTimeout=600000;Database=test;",
+      }
+    </pre>
+  </div>  
+
+---
+
+## FreeRedis
+
++ 介绍
+  - FreeRedis 实在CSRedisCore  的基础上进行了重构 。[官方文档地址](https://freesql.net/guide/freeredis.html)
+
+  - AbpVnext 自带了一个是基于 StackExchange.Redis,有反馈说这个在使用过程种会出现时不时超时的情况(都是网上的传说)，本人平时使用的都是基于FreeRedis的，所以也做一个，大家可以根据自身需求做选择
+  
++ 安装
+
+  - 添加以下 NuGet 包到你的项目
+   
+  - Kings.AbpVnextPro.FreeRedis
+   
+  - 添加 [DependsOn(typeof(AbpVnextProFreeRedisModule))] 到你的项目模块类.
+
+  - 通过appsetting.json 去配置相应的参数
+
+  <div >
+    <pre style="background-color:#282c34;border-radius:6px;color:#fff;color:#fff">
+      
+      "FreeRedis": {
+        "Host": "127.0.1.1",
+        "Password":"111"
+      }
+    </pre>
+  </div>  
+
+---
