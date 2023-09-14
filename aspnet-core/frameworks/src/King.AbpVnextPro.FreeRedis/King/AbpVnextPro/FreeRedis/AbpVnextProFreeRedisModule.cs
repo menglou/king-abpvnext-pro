@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
-namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
+namespace King.AbpVnextPro.FreeRedis.King.AbpVnextPro.FreeRedis
 {
     [DependsOn(typeof(AbpAutofacModule))]
-    public class AbpVnextProClickHouseModule:AbpModule
+    public class AbpVnextProFreeRedisModule:AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.Configure<AbpVnextProClickHouseOptions>(context.Services.GetConfiguration().GetSection("ClickHouse"));
+            context.Services.Configure<AbpVnextProFreeRedisOptions>(context.Services.GetConfiguration().GetSection("FreeRedis"));
         }
     }
 }

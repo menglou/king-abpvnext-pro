@@ -21,11 +21,11 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         private IFreeSql fsql => _clickHouseProvider.GetClient();
 
 
-        public virtual async  Task ExecuteNoQuery(string sql, CommandType commandType, params DbParameter[] parameters)
+        public virtual async  Task ExecuteNoQuery(string sql, CommandType commandType, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             try
             {
-                await fsql.Ado.ExecuteNonQueryAsync(commandType, sql, parameters);
+                await fsql.Ado.ExecuteNonQueryAsync(commandType, sql, parameters, cancellationToken);
             }
             catch (Exception e)
             {
@@ -34,12 +34,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
             }
         }
 
-        public virtual async Task ExecuteNoQuery(string sql, params DbParameter[] parameters)
+        public virtual async Task ExecuteNoQuery(string sql, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             try
             {
 
-                await ExecuteNoQuery(sql, CommandType.Text, parameters);
+                await ExecuteNoQuery(sql, CommandType.Text, default, parameters);
             }
             catch (Exception e)
             {
@@ -48,12 +48,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
             }
         }
 
-        public virtual async Task<T> ExecuteScalar<T>(string sql, CommandType commandType, params DbParameter[] parameters)
+        public virtual async Task<T> ExecuteScalar<T>(string sql, CommandType commandType, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             T result;
             try
             {
-                result = await fsql.Ado.QuerySingleAsync<T>(commandType, sql, parameters);
+                result = await fsql.Ado.QuerySingleAsync<T>(commandType, sql, parameters, cancellationToken);
             }
             catch (Exception e)
             {
@@ -64,12 +64,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
             return result;
         }
 
-        public virtual async Task<T> ExecuteScalar<T>(string sql, params DbParameter[] parameters)
+        public virtual async Task<T> ExecuteScalar<T>(string sql, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             T result;
             try
             {
-                result = await ExecuteScalar<T>(sql, CommandType.Text, parameters);
+                result = await ExecuteScalar<T>(sql, CommandType.Text, cancellationToken, parameters);
             }
             catch (Exception e)
             {
@@ -87,12 +87,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         /// <param name="sql">sql语句</param>
         /// <param name="parameters">sql参数</param>
         /// <returns></returns>
-        public virtual async Task<DataTable> ExecuteDataTable(string sql, CommandType commandType, params DbParameter[] parameters)
+        public virtual async Task<DataTable> ExecuteDataTable(string sql, CommandType commandType, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             DataTable result;
             try
             {
-                result = await fsql.Ado.ExecuteDataTableAsync(commandType, sql, parameters);
+                result = await fsql.Ado.ExecuteDataTableAsync(commandType, sql, parameters, cancellationToken);
             }
             catch (Exception e)
             {
@@ -109,12 +109,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         /// <param name="sql">sql语句</param>
         /// <param name="parameters">sql参数</param>
         /// <returns></returns>
-        public virtual async Task<DataTable> ExecuteDataTable(string sql, params DbParameter[] parameters)
+        public virtual async Task<DataTable> ExecuteDataTable(string sql, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             DataTable result;
             try
             {
-                result = await ExecuteDataTable(sql, CommandType.Text, parameters);
+                result = await ExecuteDataTable(sql, CommandType.Text, cancellationToken, parameters);
             }
             catch (Exception e)
             {
@@ -134,12 +134,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         /// <param name="commandType">命令类型</param>
         /// <param name="parameters">sql参数</param>
         /// <returns></returns>
-        public virtual async Task<List<T>> ExecuteList<T>(string sql, CommandType commandType, params DbParameter[] parameters)
+        public virtual async Task<List<T>> ExecuteList<T>(string sql, CommandType commandType, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             List<T> resultList = new List<T>();
             try
             {
-                resultList = await fsql.Ado.QueryAsync<T>(commandType, sql, parameters);
+                resultList = await fsql.Ado.QueryAsync<T>(commandType, sql, parameters, cancellationToken);
             }
             catch (Exception e)
             {
@@ -157,12 +157,12 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         /// <param name="sql">sql语句</param>
         /// <param name="parameters">sql参数</param>
         /// <returns></returns>
-        public virtual async Task<List<T>> ExecuteList<T>(string sql, params DbParameter[] parameters) 
+        public virtual async Task<List<T>> ExecuteList<T>(string sql, CancellationToken cancellationToken = default, params DbParameter[] parameters) 
         {
             List<T> resultList = new List<T>();
             try
             {
-                resultList = await ExecuteList<T>(sql, CommandType.Text, parameters);
+                resultList = await ExecuteList<T>(sql, CommandType.Text, cancellationToken, parameters);
             }
             catch (Exception e)
             {
@@ -182,14 +182,14 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         /// <param name="pagesize">每页条数</param>
         /// <param name="parameters">sql参数</param>
         /// <returns>返回总条数和分页后数据</returns>
-        public virtual async Task<(ulong, DataTable)> ExecuteDataTableByPagination(string sql, int pageindex, int pagesize, params DbParameter[] parameters)
+        public virtual async Task<(ulong, DataTable)> ExecuteDataTableByPagination(string sql, int pageindex, int pagesize, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             DataTable result;
             ulong totalCount = 0;
             try
             {
                 (string countsql, string pagesql) = GetCountAndPageSql(sql, pageindex, pagesize);
-                result = await ExecuteDataTable(pagesql, CommandType.Text, parameters);
+                result = await ExecuteDataTable(pagesql, CommandType.Text, cancellationToken,parameters);
                 totalCount = await ExecuteScalar<ulong>(countsql);
             }
             catch (Exception e)
@@ -210,14 +210,14 @@ namespace King.AbpVnextPro.ClickHouse.King.AbpVnextPro.ClickHouse
         /// <param name="pagesize">每页条数</param>
         /// <param name="parameters">sql参数</param>
         /// <returns>返回总条数和分页后数据</returns>
-        public virtual async Task<(ulong, List<T>)> ExecuteListByPagination<T>(string sql, int pageindex, int pagesize, params DbParameter[] parameters)
+        public virtual async Task<(ulong, List<T>)> ExecuteListByPagination<T>(string sql, int pageindex, int pagesize, CancellationToken cancellationToken = default, params DbParameter[] parameters)
         {
             List<T> result;
             ulong totalCount = 0;
             try
             {
                 (string countsql, string pagesql) = GetCountAndPageSql(sql, pageindex, pagesize);
-                result = await ExecuteList<T>(pagesql, CommandType.Text, parameters);
+                result = await ExecuteList<T>(pagesql, CommandType.Text, cancellationToken, parameters);
                 totalCount = await ExecuteScalar<ulong>(countsql);
             }
             catch (Exception e)
