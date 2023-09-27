@@ -33,6 +33,7 @@ public class OpeniddictPermissionDefinitionProvider : PermissionDefinitionProvid
 
         users?.AddChild(BasicIdentityPermissions.Users.LoclUnLock, L("锁住/解锁"));
         users?.AddChild(BasicIdentityPermissions.Users.ActiveIsActive, L("冻结/激活"));
+        users?.AddChild(BasicIdentityPermissions.Users.RestPwd, L("重置密码"));
 
         //设置管理
         var settingUiPage = context.GetPermissionOrNull(SettingUiPermissions.ShowSettingPage);  // Get ShowSettingPage permission

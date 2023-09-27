@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Volo.Abp;
+using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -29,6 +30,7 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
         private readonly IStringLocalizer<OpeniddictResource> _localizer;
         protected IOrganizationUnitRepository _organizationUnitRepository { get; }
         protected IdentityUserStore _store { get; set; }
+        protected IdentityUserManager _userManager { get; set; }
         public BasicIdentityUserAppService(IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
             IIdentityRoleRepository roleRepository,
@@ -189,6 +191,19 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
             res.SetIsActive(input.IsActive);
             await UserRepository.UpdateAsync(res);
             return true;
+        }
+
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public virtual async Task<bool> RestPassWordAsync(PasswordResetDto input)
+        {
+            var user = await UserManager.GetByIdAsync(input.UserId);
+            var resttoken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var result = await _userManager.ResetPasswordAsync(user, resttoken, input.Password);
+            return result.Succeeded;
         }
 
         public virtual async  Task<List<IdentityUserDto>> GetListAllAsync()

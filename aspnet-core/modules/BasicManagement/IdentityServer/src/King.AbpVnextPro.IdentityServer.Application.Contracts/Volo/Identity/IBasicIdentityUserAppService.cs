@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Identity;
@@ -29,6 +30,8 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
      
         Task<bool> RemoveFromOrganizationUnitAsync(UseToOrganizationUnitDeleteDto input);
         Task<bool> UpdateUseLockAsync(Guid id);
+        Task<bool> UpdateUseActiveAsync(UpdateUseActiveDto input);
+        Task<bool> RestPassWordAsync(PasswordResetDto input);
         Task<List<IdentityUserDto>> GetListAllAsync();
     }
 }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp;
+using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -27,11 +28,12 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
       typeof(IdentityUserAppService),
       typeof(IBasicIdentityUserAppService),
       typeof(BasicIdentityUserAppService))]
-    public class BasicIdentityUserAppService:IdentityUserAppService, IBasicIdentityUserAppService
+    public class BasicIdentityUserAppService : IdentityUserAppService, IBasicIdentityUserAppService
     {
         private readonly IStringLocalizer<IdentityServerResource> _localizer;
         protected IOrganizationUnitRepository _organizationUnitRepository { get; }
         protected IdentityUserStore _store { get; set; }
+        protected IdentityUserManager _userManager { get; set; }
         public BasicIdentityUserAppService(IdentityUserManager userManager,
             IIdentityUserRepository userRepository,
             IIdentityRoleRepository roleRepository,
@@ -43,6 +45,7 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
             _localizer = localizer;
             _organizationUnitRepository = OrganizationUnitRepository;
             _store = store;
+            _userManager= userManager;
         }
 
         public override async Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
@@ -128,7 +131,7 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
             return result;
         }
 
-       
+
         /// <summary>
         /// 移除该组织下所有的用户
         /// </summary>
@@ -177,13 +180,42 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
             }
             return true;
         }
-
+        /// <summary>
+        /// 是否激活 /不激活
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<bool> UpdateUseActiveAsync(UpdateUseActiveDto input)
+        {
+            var res = await UserRepository.FindAsync(input.Id);
+            if (res == null)
+            {
+                throw new UserFriendlyException($"该用户不存在，请检查");
+            }
+            res.SetIsActive(input.IsActive);
+            await UserRepository.UpdateAsync(res);
+            return true;
+        }
+        /// <summary>
+        /// 获取所有的用户
+        /// </summary>
+        /// <returns></returns>
         public virtual async Task<List<IdentityUserDto>> GetListAllAsync()
         {
             var users = await UserRepository.GetListAsync();
 
             return ObjectMapper.Map<List<IdentityUser>, List<IdentityUserDto>>(users);
         }
-
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public virtual async Task<bool> RestPassWordAsync(PasswordResetDto input)
+        {
+            var user = await UserManager.GetByIdAsync(input.UserId);
+            var resttoken= await _userManager.GeneratePasswordResetTokenAsync(user);
+            var result= await _userManager.ResetPasswordAsync(user, resttoken, input.Password);
+            return result.Succeeded;
+        }
     }
 }

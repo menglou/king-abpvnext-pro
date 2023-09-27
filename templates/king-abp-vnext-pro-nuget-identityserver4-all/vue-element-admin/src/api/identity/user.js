@@ -104,12 +104,29 @@ export function updateuserlockinfo(id) {
     method: 'put'
   })
 }
+// 解锁/锁住
+export function updateuseractiveinfo(data) {
+  return request({
+    url: `/api/identity/users/updateuseractive`,
+    method: 'put',
+    data: data
+  })
+}
 
 // 删除用户
 export function deleteuserinfo(userid) {
   return request({
     url: `/api/identity/users/${userid}`,
     method: 'delete'
+  })
+}
+
+// 重置用户密码
+export function resetpassword(data) {
+  return request({
+    url: `/api/identity/users/resetpwd`,
+    method: 'post',
+    data: data
   })
 }
 

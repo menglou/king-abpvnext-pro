@@ -53,6 +53,8 @@ public class IdentityServerPermissions
             public const string LoclUnLock = IdentityPermissions.Users.Default + ".LoclUnLock";
             //冻结/解冻
             public const string ActiveIsActive = IdentityPermissions.Users.Default + ".ActiveIsActive";
+            //冻结/解冻
+            public const string RestPwd = IdentityPermissions.Users.Default + ".RestPwd";
         }
 
         public static class Roles

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp;
+using Volo.Abp.Account;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Identity;
@@ -83,6 +84,20 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
         public Task<List<IdentityUserDto>> GetListAllAsync()
         {
             return UserAppService.GetListAllAsync();
+        }
+        [Authorize(BasicIdentityPermissions.Users.RestPwd)]
+        [HttpPost]
+        [Route("resetpwd")]
+        public Task<bool> RestPassWordAsync(PasswordResetDto input)
+        {
+            return UserAppService.RestPassWordAsync(input);
+        }
+        [Authorize(BasicIdentityPermissions.Users.ActiveIsActive)]
+        [HttpPut]
+        [Route("updateuseractive")]
+        public Task<bool> UpdateUseActiveAsync(UpdateUseActiveDto input)
+        {
+            return UserAppService.UpdateUseActiveAsync(input);
         }
     }
 }

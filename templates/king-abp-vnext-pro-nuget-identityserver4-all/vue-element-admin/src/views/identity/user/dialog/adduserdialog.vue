@@ -43,6 +43,7 @@
               prop="email"
             >
               <el-input v-model="adduserForm.email" />
+              <span>确保邮箱是正确的，忘记密码时可以通过邮箱接收修改秘密的邮件修改</span>
             </el-form-item>
             <el-form-item :label="$t('AbpIdentity[\'PhoneNumber\']')">
               <el-input v-model="adduserForm.phoneNumber" />
@@ -107,78 +108,84 @@
 </template>
 
 <script>
-import { addusertoorganization } from "@/api/identity/user";
-import { getAllRoles } from "@/api/identity/roles";
-import { GetOrganizationunitForTree } from "@/api/identity/organizationunit";
-import { isEmpty, filterNode } from "@/utils";
+import { addusertoorganization } from '@/api/identity/user'
+import { getAllRoles } from '@/api/identity/roles'
+import { GetOrganizationunitForTree } from '@/api/identity/organizationunit'
+import { isEmpty, filterNode } from '@/utils'
 export default {
-  name: "Adduserdialog",
+  name: 'Adduserdialog',
   data() {
     const passwordValidator = (rule, value, callback) => {
       if (this.adduserForm.id && !value) {
-        callback();
-        return;
+        callback()
+        return
       }
 
       if (!value) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['The {0} field is required.']", [
-              this.$i18n.t("AbpIdentity['Password']"),
+              this.$i18n.t("AbpIdentity['Password']")
             ])
           )
-        );
-        return;
+        )
+        return
       }
       if (value.length < this.requiredLength) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordTooShort']", [
-              `${this.requiredLength}`,
+              `${this.requiredLength}`
             ])
           )
-        );
-        return;
+        )
+        return
       }
       if (value.length > 128) {
         callback(
           new Error(
             this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['Password']"), "128"]
+              [this.$i18n.t("AbpIdentity['Password']"), '128']
             )
           )
-        );
-        return;
+        )
+        return
       }
-      let reg = /\d+/;
+      let reg = /\d+/
       if (this.requireDigit && !reg.test(value)) {
         callback(
           new Error(
-            this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordRequiresDigit']")
+            this.$i18n.t(
+              "AbpIdentity['Volo.Abp.Identity:PasswordRequiresDigit']"
+            )
           )
-        );
-        return;
+        )
+        return
       }
-      reg = /[a-z]+/;
+      reg = /[a-z]+/
       if (this.requireLowercase && !reg.test(value)) {
         callback(
           new Error(
-            this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordRequiresLower']")
+            this.$i18n.t(
+              "AbpIdentity['Volo.Abp.Identity:PasswordRequiresLower']"
+            )
           )
-        );
-        return;
+        )
+        return
       }
-      reg = /[A-Z]+/;
+      reg = /[A-Z]+/
       if (this.requireUppercase && !reg.test(value)) {
         callback(
           new Error(
-            this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordRequiresUpper']")
+            this.$i18n.t(
+              "AbpIdentity['Volo.Abp.Identity:PasswordRequiresUpper']"
+            )
           )
-        );
-        return;
+        )
+        return
       }
-      reg = /\W+/;
+      reg = /\W+/
       if (this.requireNonAlphanumeric && !reg.test(value)) {
         callback(
           new Error(
@@ -186,30 +193,30 @@ export default {
               "AbpIdentity['Volo.Abp.Identity:PasswordRequiresNonAlphanumeric']"
             )
           )
-        );
-        return;
+        )
+        return
       }
 
-      callback();
-    };
+      callback()
+    }
     return {
       callbackmethod: null,
       // 添加用户弹窗
       useradddialogFormVisible: false,
       adduserForm: {
-        userName: "",
-        surname: "",
-        name: "",
-        password: "",
-        email: "",
+        userName: '',
+        surname: '',
+        name: '',
+        password: '',
+        email: '',
         isActive: true,
-        phoneNumber: "",
+        phoneNumber: '',
         lockoutEnabled: true,
         twoFactorEnabled: true,
-        roleNames: [],
+        roleNames: []
       },
       adduserFormrules: {
-         userName: [
+        userName: [
           {
             required: true,
             message: this.$i18n.t("AbpIdentity['The {0} field is required.']", [
@@ -285,117 +292,117 @@ export default {
           { validator: passwordValidator, trigger: ['blur', 'change'] }
         ]
       },
-      activeName: "first",
+      activeName: 'first',
       Treedata: [], // 组织机构树
       defaulykeys: [],
       defaultProps: {
-        children: "children",
-        label: "displayName",
+        children: 'children',
+        label: 'displayName'
       },
 
       // tree过滤
-      filterText: "",
+      filterText: '',
       selecttreenodeChecked: [], // 被选中的节点
       updateremovetreenodechecked: [], // 更新时被移除的节点
 
-      rolelist: [],
-    };
+      rolelist: []
+    }
   },
   computed: {
     requiredLength() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequiredLength"
+          'Abp.Identity.Password.RequiredLength'
         ] || 6
-      );
+      )
     },
     requiredUniqueChars() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequiredUniqueChars"
+          'Abp.Identity.Password.RequiredUniqueChars'
         ] || 1
-      );
+      )
     },
     requireLowercase() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireLowercase"
+          'Abp.Identity.Password.RequireLowercase'
         ] || true
-      );
+      )
     },
     requireNonAlphanumeric() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireNonAlphanumeric"
+          'Abp.Identity.Password.RequireNonAlphanumeric'
         ] || true
-      );
+      )
     },
     requireUppercase() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireUppercase"
+          'Abp.Identity.Password.RequireUppercase'
         ] || true
-      );
+      )
     },
     requireDigit() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireDigit"
+          'Abp.Identity.Password.RequireDigit'
         ] || true
-      );
-    },
+      )
+    }
   },
   methods: {
     filterNode,
     isEmpty,
     async createadduserdialog(cb) {
-      this.callbackmethod = cb;
-      this.useradddialogFormVisible = true;
-      await this.getrolelist();
-      await this.getorganizationunit();
+      this.callbackmethod = cb
+      this.useradddialogFormVisible = true
+      await this.getrolelist()
+      await this.getorganizationunit()
     },
     addusermodalclose() {
-      this.$refs.adduserForm.resetFields();
-      this.activeName = "first";
-      this.adduserForm.roleNames = [];
-      this.adduserForm.surname = "";
-      this.adduserForm.name = "";
-      this.callbackmethod = null;
-      this.selecttreenodeChecked = [];
-      this.useradddialogFormVisible = false;
+      this.$refs.adduserForm.resetFields()
+      this.activeName = 'first'
+      this.adduserForm.roleNames = []
+      this.adduserForm.surname = ''
+      this.adduserForm.name = ''
+      this.callbackmethod = null
+      this.selecttreenodeChecked = []
+      this.useradddialogFormVisible = false
     },
 
     saveuser() {
       this.$refs.adduserForm.validate((valid) => {
         if (valid) {
           // 调用添加用户接口
-          const param = this.adduserForm;
+          const param = this.adduserForm
           if (this.isEmpty(this.adduserForm.surname) == true) {
-            this.adduserForm.surname = this.adduserForm.userName;
+            this.adduserForm.surname = this.adduserForm.userName
           }
           if (this.isEmpty(this.adduserForm.name) == true) {
-            this.adduserForm.name = this.adduserForm.userName;
+            this.adduserForm.name = this.adduserForm.userName
           }
           param.orgIds = this.selecttreenodeChecked.map((item) => {
-            return item.id;
-          });
+            return item.id
+          })
           addusertoorganization(param).then((res) => {
             if (res) {
               this.$notify({
-                title: "提示",
-                message: "添加用户成功",
-                type: "success",
-              });
-              this.callbackmethod();
-              this.addusermodalclose();
+                title: '提示',
+                message: '添加用户成功',
+                type: 'success'
+              })
+              this.callbackmethod()
+              this.addusermodalclose()
             }
-          });
+          })
           // 添加组织信息接口
         } else {
-          this.useradddialogFormVisible = true;
-          return false;
+          this.useradddialogFormVisible = true
+          return false
         }
-      });
+      })
     },
     // tree勾选事件
     checkchange(nodedata, checked) {
@@ -403,35 +410,35 @@ export default {
         if (
           this.selecttreenodeChecked.findIndex((x) => x.id == nodedata.id) == -1
         ) {
-          this.selecttreenodeChecked.push(nodedata);
+          this.selecttreenodeChecked.push(nodedata)
         }
       } else {
         const treeobjindex = this.selecttreenodeChecked.findIndex(
           (x) => x.id == nodedata.id
-        );
+        )
         if (treeobjindex != -1) {
-          this.selecttreenodeChecked.splice(treeobjindex, 1);
+          this.selecttreenodeChecked.splice(treeobjindex, 1)
         }
 
         const treeobjindexs = this.updateremovetreenodechecked.findIndex(
           (x) => x.id == nodedata.id
-        );
+        )
         if (treeobjindexs == -1) {
-          this.updateremovetreenodechecked.push(nodedata);
+          this.updateremovetreenodechecked.push(nodedata)
         }
       }
     },
     async getrolelist() {
-      const res = await getAllRoles();
-      this.rolelist = [...res.items];
+      const res = await getAllRoles()
+      this.rolelist = [...res.items]
     },
     // 获取组织树
     async getorganizationunit() {
-      const res = await GetOrganizationunitForTree();
-      this.Treedata = [...res.items];
-    },
-  },
-};
+      const res = await GetOrganizationunitForTree()
+      this.Treedata = [...res.items]
+    }
+  }
+}
 </script>
 
 <style scoped>

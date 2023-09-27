@@ -6,7 +6,7 @@ namespace King.AbpVnextPro.Openiddict.Permissions;
 
 public class OpeniddictPermissions
 {
-    
+
 
     //Add your own permission names. Example:
     //public const string MyPermission1 = GroupName + ".MyPermission1";
@@ -57,6 +57,7 @@ public class OpeniddictPermissions
             public const string LoclUnLock = IdentityPermissions.Users.Default + ".LoclUnLock";
             //冻结/解冻
             public const string ActiveIsActive = IdentityPermissions.Users.Default + ".ActiveIsActive";
+            public const string RestPwd = IdentityPermissions.Users.Default + ".RestPwd";
         }
 
         public static class Roles
