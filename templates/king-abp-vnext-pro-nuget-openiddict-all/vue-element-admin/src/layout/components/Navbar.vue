@@ -146,10 +146,10 @@ export default {
   watch: {
     isShowUserNewsPopover(newval, oldval) {
       if (newval) {
-        getBroadCastnoticelist({ Status: 0, Title: '' }).then((res) => {
+        getBroadCastnoticelist({ Status: 0, IsSend: true, Title: '' }).then((res) => {
           this.notificationlist = [...res]
         })
-        getcommonnoticelist({ Status: 0, Title: '' }).then((res) => {
+        getcommonnoticelist({ Status: 0, IsSend: true, Title: '' }).then((res) => {
           this.messagelist = [...res]
         })
       }

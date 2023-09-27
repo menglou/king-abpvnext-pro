@@ -91,7 +91,7 @@
                   <el-dropdown-item
                     class="dropdown-item"
                     :icon="
-                      row.lockoutEnd == null ? 'el-icon-close' : 'el-icon-check'
+                      row.lockoutEnd == null ? 'el-icon-lock' : 'el-icon-unlock'
                     "
                     v-if="checkPermission('AbpIdentity.Users.LoclUnLock')"
                     @click.native="updatelockend(row)"
@@ -110,6 +110,13 @@
                       row.isActive == true ? "冻结" : "激活"
                     }}</el-dropdown-item
                   >
+                  <el-dropdown-item
+                    v-if="checkPermission('AbpIdentity.Users.RestPwd')"
+                    class="dropdown-item"
+                    icon="el-icon-refresh"
+                    @click.native="restuserpwd(row.id)"
+                    >重置密码
+                  </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -153,9 +160,11 @@ import {
   updateuseractiveinfo,
   getuserinfobyid,
   deleteuserinfo,
+  resetpassword,
 } from "@/api/identity/user";
 import { checkPermission } from "@/utils/abp";
 import moment from "moment";
+import { mapGetters } from "vuex";
 export default {
   name: "User",
   components: {
@@ -163,6 +172,9 @@ export default {
     adduserdialog,
     edituserdialog,
     setpermissiondialog,
+  },
+  computed: {
+    ...mapGetters(["token"]),
   },
   data() {
     return {
@@ -231,6 +243,7 @@ export default {
               message: "删除成功",
               type: "success",
             });
+            this.getuserlist()
           });
         })
         .catch(() => {});
@@ -261,7 +274,19 @@ export default {
         this.getuserlist();
       });
     },
-
+    // 重置密码
+    restuserpwd(userid) {
+      resetpassword({
+        userId: userid,
+        password: "1q2w3E*",
+      }).then((res) => {
+        this.$notify({
+          title: "提示",
+          message: "重置密码成功！",
+          type: "success",
+        });
+      });
+    },
     // 分页
     handlePageChange({ currentPage, pageSize }) {
       this.tablePage.currentPage = currentPage;

@@ -39,6 +39,7 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
             IdentityUserStore store,
             IStringLocalizer<OpeniddictResource> localizer) : base(userManager, userRepository, roleRepository, identityOptions)
         {
+            _userManager = userManager;
             _localizer = localizer;
             _organizationUnitRepository = OrganizationUnitRepository;
             _store = store;

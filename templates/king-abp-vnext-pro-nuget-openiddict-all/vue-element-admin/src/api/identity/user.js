@@ -117,8 +117,17 @@ export function updateuseractiveinfo(data) {
 // 删除用户
 export function deleteuserinfo(userid) {
   return request({
-    url: `/api/identity/users/deleteuser/${userid}`,
+    url: `/api/identity/users/${userid}`,
     method: 'delete'
+  })
+}
+
+// 重置用户密码
+export function resetpassword(data) {
+  return request({
+    url: `/api/identity/users/resetpwd`,
+    method: 'post',
+    data: data
   })
 }
 

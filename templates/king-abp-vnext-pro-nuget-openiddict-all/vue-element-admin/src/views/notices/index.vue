@@ -69,6 +69,7 @@
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item
                     v-if="checkPermission('AbpIdentity.Users.Delete')"
+                    v-show="row.isSend == false"
                     class="dropdown-item"
                     icon="el-icon-bell"
                     @click.native="notice(row.id)"
@@ -175,6 +176,7 @@ export default {
           message: "通告发布成功",
           type: "success",
         });
+        this.getnoticelist();
       });
     },
     addnoticedialogdisplay() {

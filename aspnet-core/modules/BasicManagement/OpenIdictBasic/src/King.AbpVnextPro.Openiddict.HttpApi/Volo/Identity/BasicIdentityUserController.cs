@@ -91,8 +91,9 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
         {
             return UserAppService.GetListAllAsync();
         }
+        [Authorize(BasicIdentityPermissions.Users.RestPwd)]
         [Authorize]
-        [HttpGet]
+        [HttpPost]
         [Route("resetpwd")]
         public Task<bool> RestPassWordAsync(PasswordResetDto input)
         {
