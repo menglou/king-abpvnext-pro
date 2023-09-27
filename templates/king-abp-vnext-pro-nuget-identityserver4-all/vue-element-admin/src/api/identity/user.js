@@ -111,7 +111,7 @@ export function updateuserlockinfo(id) {
 //删除用户
 export function deleteuserinfo(userid) {
     return request({
-        url: `/api/identity/users/deleteuser/${userid}`,
+        url: `/api/identity/users/${userid}`,
         method: 'delete'
     })
 }

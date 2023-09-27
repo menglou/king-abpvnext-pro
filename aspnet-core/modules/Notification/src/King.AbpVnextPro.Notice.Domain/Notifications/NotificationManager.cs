@@ -14,7 +14,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         private readonly INotificationRepository _notificationRepository;
 
         private readonly ICurrentUser _currentUser;
-       
+
         public NotificationManager(INotificationRepository notificationRepository, ICurrentUser currentUser)
         {
             _notificationRepository = notificationRepository;
@@ -41,10 +41,11 @@ namespace King.AbpVnextPro.Notice.Notifications
         public async Task<List<Notification>> GetNoPagingListAsync(
             Guid? userId,
             MessageType messageType,
-             int status
+             int status,
+             bool isSend
             )
         {
-            return await _notificationRepository.GetNoPagingListAsync(userId, messageType, status);
+            return await _notificationRepository.GetNoPagingListAsync(userId, messageType, status, isSend);
         }
 
         /// <summary>
@@ -73,8 +74,8 @@ namespace King.AbpVnextPro.Notice.Notifications
             {
                 senderId = _currentUser.Id.Value;
             }
-            
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Warning, senderId, 0, from);
+
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Warning, senderId, 0, from, true);
             foreach (var item in receiveIds)
             {
                 entity.AddNotificationSubscription(GuidGenerator.Create(), item);
@@ -105,7 +106,7 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Information, senderId, 0, from);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Information, senderId, 0, from, true);
             foreach (var item in receiveIds)
             {
                 entity.AddNotificationSubscription(GuidGenerator.Create(), item);
@@ -133,7 +134,7 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Error, senderId, 0, from);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Error, senderId, 0, from, true);
             foreach (var item in receiveIds)
             {
                 entity.AddNotificationSubscription(GuidGenerator.Create(), item);
@@ -160,7 +161,7 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId, status, from);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId, status, from, iscreate);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             if (iscreate == false)
             {
@@ -191,19 +192,26 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId, status, from);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId, status, from, iscreate);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
-            if (iscreate == false)
+
+            if (status == 0)
             {
-                await _notificationRepository.InsertAsync(entity);
+                if (iscreate == false)
+                {
+                    await _notificationRepository.InsertAsync(entity);
+                }
+                else
+                {
+                    // 发送集成事件
+                    entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
+                    await _notificationRepository.InsertAsync(entity);
+                }
             }
             else
             {
-                // 发送集成事件
-                entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
                 await _notificationRepository.InsertAsync(entity);
             }
-
         }
 
         /// <summary>
@@ -220,7 +228,7 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Error, senderId, status, from);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Error, senderId, status, from, iscreate);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             if (iscreate == false)
             {
@@ -238,8 +246,13 @@ namespace King.AbpVnextPro.Notice.Notifications
         {
             var entity = await _notificationRepository.FindAsync(id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
-            // 发送集成事件
-            entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
+            if (entity.IsSend == false)
+            {
+                entity.SetIsSend(true);
+                await _notificationRepository.UpdateAsync(entity);
+                // 发送集成事件
+                entity.AddCreatedNotificationLocalEvent(new CreatedNotificationLocalEvent(notificationEto));
+            }
         }
 
         /// <summary>
@@ -250,7 +263,14 @@ namespace King.AbpVnextPro.Notice.Notifications
             var res = await _notificationRepository.FindAsync(id);
             if (res != null)
             {
-                res.SetProperties(title, content, res.MessageType, res.MessageLevel, res.SenderId, status, res.From);
+                if (res.IsSend == true)
+                {
+                    res.SetProperties(title, content, res.MessageType, res.MessageLevel, res.SenderId, status, res.From, true);
+                }
+                else
+                {
+                    res.SetProperties(title, content, res.MessageType, res.MessageLevel, res.SenderId, status, res.From, status == 0 ? true : false);
+                }
 
                 await _notificationRepository.UpdateAsync(res);
             }

@@ -56,12 +56,14 @@ namespace King.AbpVnextPro.Notice.Notifications
            Guid? userId,
            MessageType messageType,
            int status,
+           bool isSend,
            CancellationToken cancellationToken = default)
         {
             return await (await GetDbSetAsync())
                 .IncludeDetails()
                 .Where(e => e.MessageType == messageType)
                 .Where(e => e.Status == status)
+                .Where(e => e.IsSend == isSend)
                 .WhereIf(userId.HasValue, e => e.NotificationSubscriptions.Any(s => s.ReceiveId == userId))
                 .OrderByDescending(e => e.CreationTime)
                 .ToListAsync(GetCancellationToken(cancellationToken));

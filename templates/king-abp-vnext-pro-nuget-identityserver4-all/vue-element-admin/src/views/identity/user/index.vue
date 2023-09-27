@@ -38,7 +38,6 @@
           :max-height="tableheight"
         >
           <vxe-table-column type="seq" width="60" />
-          <vxe-table-column v-if="false" field="id" width="60" />
           <vxe-table-column title="用户名" min-width="100" field="userName" />
           <vxe-table-column title="名字" min-width="100" field="surname" />
           <vxe-table-column title="姓氏" min-width="100" field="name" />
@@ -181,7 +180,7 @@ export default {
         MaxResultCount: pageSize,
       };
       getuserlist(param).then((res) => {
-        this.datalist = res.items;
+        this.datalist = [...res.items];
         this.tablePage.totalResult = res.totalCount;
       });
     },
@@ -219,6 +218,7 @@ export default {
               message: "删除成功",
               type: "success",
             });
+            this.getuserlist()
           });
         })
         .catch(() => {});

@@ -2,6 +2,7 @@
 using King.AbpVnextPro.Notice.Notifications.LocalEvents;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using System.Text;
 using Volo.Abp.Domain.Entities.Auditing;
 
@@ -42,6 +43,11 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// 状态  0代表 正常 1代表关闭
         /// </summary>
         public int Status { get; private set; }
+
+        /// <summary>
+        /// true 代表已发送，false 代表未发送
+        /// </summary>
+        public bool IsSend { get; private set; }
         /// <summary>
         /// 从哪过来得
         /// </summary>
@@ -65,7 +71,8 @@ namespace King.AbpVnextPro.Notice.Notifications
             MessageLevel messageLevel,
             Guid? senderId,
             int status,
-            Guid? from
+            Guid? from,
+            bool IsSend
         ) : base(id)
         {
             NotificationSubscriptions = new List<NotificationSubscription>();
@@ -77,7 +84,8 @@ namespace King.AbpVnextPro.Notice.Notifications
                 messageLevel,
                 senderId,
                 status,
-                from
+                from,
+                IsSend
             );
         }
 
@@ -88,7 +96,8 @@ namespace King.AbpVnextPro.Notice.Notifications
             MessageLevel messageLevel,
             Guid? senderId,
             int status,
-            Guid? from
+            Guid? from,
+            bool isSend
         )
         {
             SetTitle(title);
@@ -98,14 +107,15 @@ namespace King.AbpVnextPro.Notice.Notifications
             SetSenderId(senderId);
             SetStatus(status);
             SetFrom(from);
+            SetIsSend(isSend);
         }
 
-        private void SetSenderId(Guid? senderId)
+        internal void SetSenderId(Guid? senderId)
         {
             SenderId = senderId;
         }
 
-        private void SetTitle(string title)
+        internal void SetTitle(string title)
         {
             if (string.IsNullOrWhiteSpace(title))
             {
@@ -123,7 +133,7 @@ namespace King.AbpVnextPro.Notice.Notifications
             Title = title;
         }
 
-        private void SetContent(string content)
+        internal void SetContent(string content)
         {
             if (string.IsNullOrWhiteSpace(content))
             {
@@ -137,22 +147,27 @@ namespace King.AbpVnextPro.Notice.Notifications
             Content = content;
         }
 
-        private void SetMessageType(MessageType messageType)
+        internal void SetMessageType(MessageType messageType)
         {
             MessageType = messageType;
         }
 
-        private void SetMessageLevel(MessageLevel messageLevel)
+        internal void SetMessageLevel(MessageLevel messageLevel)
         {
             MessageLevel = messageLevel;
         }
 
-        private void SetStatus(int status)
+        internal void SetStatus(int status)
         {
             Status = status;
         }
 
-        private void SetFrom(Guid? from)
+        internal void SetIsSend(bool isSend)
+        {
+            IsSend = isSend;
+        }
+
+        internal void SetFrom(Guid? from)
         {
             From = from;
         }

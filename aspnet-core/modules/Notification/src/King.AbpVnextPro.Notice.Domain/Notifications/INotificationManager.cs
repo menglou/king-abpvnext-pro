@@ -31,7 +31,8 @@ namespace King.AbpVnextPro.Notice.Notifications
         Task<List<Notification>> GetNoPagingListAsync(
            Guid? userId,
            MessageType messageType,
-            int status
+            int status,
+            bool isSend
           );
 
         /// <summary>

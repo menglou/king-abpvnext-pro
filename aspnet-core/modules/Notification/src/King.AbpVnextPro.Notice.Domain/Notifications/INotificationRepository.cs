@@ -38,6 +38,7 @@ namespace King.AbpVnextPro.Notice.Notifications
            Guid? userId,
            MessageType messageType,
            int status,
+           bool isSend,
            CancellationToken cancellationToken = default);
     }
 }

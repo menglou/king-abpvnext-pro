@@ -140,7 +140,7 @@ namespace King.AbpVnextPro.Notice.Notifications.EventBus
         /// <returns></returns>
         public virtual async Task<List<PagingNotificationListOutput>> GetBroadCastNotificationByUserIdAsync(PagingNotificationListInput listInput)
         {
-            var list = await _notificationManager.GetNoPagingListAsync(null, MessageType.BroadCast, listInput.Status);
+            var list = await _notificationManager.GetNoPagingListAsync(null, MessageType.BroadCast, listInput.Status, listInput.IsSend);
             return ObjectMapper.Map<List<Notification>, List<PagingNotificationListOutput>>(list);
         }
 
@@ -154,7 +154,7 @@ namespace King.AbpVnextPro.Notice.Notifications.EventBus
                 return null;
             }
 
-            var list = await _notificationManager.GetNoPagingListAsync(_currentUser.Id.Value, MessageType.Common, listInput.Status);
+            var list = await _notificationManager.GetNoPagingListAsync(_currentUser.Id.Value, MessageType.Common, listInput.Status, listInput.IsSend);
             return ObjectMapper.Map<List<Notification>, List<PagingNotificationListOutput>>(list);
         }
     }

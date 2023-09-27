@@ -54,8 +54,9 @@ namespace King.AbpVnextPro.Notice.Notifications
 
         public int Status { get; set; }
 
-        public Guid From { get; set; }
+        public Guid? From { get; set; }
 
+        public bool IsSend { get; set; }
     }
 
     public static class EnumExtensions
