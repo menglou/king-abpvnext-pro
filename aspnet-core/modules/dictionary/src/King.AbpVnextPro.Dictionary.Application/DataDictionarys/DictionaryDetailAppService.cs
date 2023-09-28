@@ -13,10 +13,12 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp;
 using King.AbpVnextPro.Dictionary.Permissions;
 using King.AbpVnextPro.Dictionary.Localization;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.ObjectMapping;
 
 namespace King.AbpVnextPro.Dictionary.DataDictionarys
 {
-    [Authorize(DictionaryPermissions.DataDictionary.Default)]
+   
     public class DictionaryDetailAppService :
        CrudAppService<DataDictionaryDetail, DictionaryDetailDto, Guid, GetDictionaryDetailInputDto,
            CreateDataDictionaryDetailDto, UpdateDataDictionaryDetailDto>, IDictionaryDetailAppService
@@ -62,7 +64,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         public override async Task<DictionaryDetailDto> UpdateAsync(Guid id, UpdateDataDictionaryDetailDto input)
         {
             var detail = await Repository.GetAsync(id);
-            detail.Label=input.Label;
+            detail.Label = input.Label;
             detail.Value = input.Value;
             detail.Sort = input.Sort;
             var result = await Repository.UpdateAsync(detail, true);
@@ -70,12 +72,19 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         }
 
         [Authorize(DictionaryPermissions.DataDictionaryDetail.Delete)]
-        public async Task DeleteAsync(BatchDeleteDictionaryDto input)
+        public virtual async Task DeleteAsync(BatchDeleteDictionaryDto input)
         {
             foreach (var id in input.Ids)
             {
                 await Repository.DeleteAsync(id);
             }
+        }
+
+        public virtual async Task<PagedResultDto<DictionaryDetailDto>> GetDetailListByDictionaryId(GetDictionaryDetailByDtIdDto input)
+        {
+            var list = (await Repository.GetQueryableAsync()).Where(x => x.DataDictionaryId == input.DictionaryId).PageBy(input.SkipCount,input.MaxResultCount).ToList();
+            var count = (await Repository.GetQueryableAsync()).Where(x => x.DataDictionaryId == input.DictionaryId).Count();
+            return  new PagedResultDto<DictionaryDetailDto>(count, ObjectMapper.Map<List<DataDictionaryDetail>, List<DictionaryDetailDto>>(list));
         }
     }
 }

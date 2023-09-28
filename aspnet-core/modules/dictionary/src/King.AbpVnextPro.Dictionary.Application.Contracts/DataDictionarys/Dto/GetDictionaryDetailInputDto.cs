@@ -6,7 +6,6 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys.Dto
 {
     public class GetDictionaryDetailInputDto: PagedAndSortedResultRequestDto
     {
-        [Required]
-        public Guid DataDictionaryId { get; set; }
+        public string Label { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using King.AbpVnextPro.Dictionary.DataDictionarys.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace King.AbpVnextPro.Dictionary.DataDictionarys
 {
+    [Authorize]
     [RemoteService(Name = "DictionaryDetail")]
     [ControllerName("DictionaryDetail")]
     [Area("DictionaryDetail")]
@@ -56,6 +58,12 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         public virtual Task<DictionaryDetailDto> UpdateAsync(Guid id, UpdateDataDictionaryDetailDto input)
         {
             return _dictionaryDetailAppService.UpdateAsync(id, input);
+        }
+        [HttpGet]
+        [Route("getDetailListBydtId")]
+        public virtual Task<PagedResultDto<DictionaryDetailDto>> GetDetailListByDictionaryId(GetDictionaryDetailByDtIdDto input)
+        {
+            return _dictionaryDetailAppService.GetDetailListByDictionaryId(input);
         }
     }
 }
