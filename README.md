@@ -4,7 +4,7 @@
    
 2. [Gitee 国内用户可访问该地址在线预览](https://zljlm.gitee.io/king-abpvnext-pro)
    
-3. [预览地址](https://menglou.github.io/)
+3. [预览地址](http://36.156.141.246:6890)(默认账号：King , 密码:King1q2w3E*)
 
 # 快速开始
 
