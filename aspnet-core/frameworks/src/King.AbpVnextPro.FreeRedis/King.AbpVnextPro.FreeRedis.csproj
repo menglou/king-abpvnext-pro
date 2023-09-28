@@ -4,11 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>Kings.AbpVnextPro.FreeRedis</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FreeRedis" />
-    <PackageReference Include="Volo.Abp.Autofac"  />
+    <PackageReference Include="Volo.Abp.Autofac" />
   </ItemGroup>
 
 </Project>
