@@ -79,7 +79,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
                 await Repository.DeleteAsync(id);
             }
         }
-
+      
         public virtual async Task<PagedResultDto<DictionaryDetailDto>> GetDetailListByDictionaryId(GetDictionaryDetailByDtIdDto input)
         {
             var list = (await Repository.GetQueryableAsync()).Where(x => x.DataDictionaryId == input.DictionaryId).PageBy(input.SkipCount,input.MaxResultCount).ToList();
