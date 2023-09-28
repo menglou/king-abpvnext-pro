@@ -167,7 +167,7 @@
 
 <script>
 import {
-  getdictionarydetailpagelist,
+  getdictionarydetailpagelistbyId,
   adddictionarydetail,
   editdictionarydetail,
   deletedictionarydetail,
@@ -230,11 +230,11 @@ export default {
     async getdictionartdetaillist() {
       const { currentPage, pageSize } = this.tablePage;
       let param = {
-        DataDictionaryId: this.form.dataDictionaryId,
+        DictionaryId: this.form.dataDictionaryId,
         SkipCount: (currentPage - 1) * pageSize,
         MaxResultCount: pageSize,
       };
-      let res = await getdictionarydetailpagelist(param);
+      let res = await getdictionarydetailpagelistbyId(param);
       this.datalist = res.items;
       this.tablePage.totalResult = res.totalCount;
     },

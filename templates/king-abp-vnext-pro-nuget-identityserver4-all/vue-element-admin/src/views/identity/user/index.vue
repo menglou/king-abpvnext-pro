@@ -137,6 +137,7 @@
     <adduserdialog ref="refadduserdialog" />
     <edituserdialog ref="refedituserdialog" />
     <setpermissiondialog ref="refsetpermissiondialog" />
+    <resetpwddialog ref="refresetpwddialog" />
   </div>
 </template>
 
@@ -145,7 +146,8 @@ import updowspanel from '@/components/MainView/updowspanel'
 import {
   adduserdialog,
   edituserdialog,
-  setpermissiondialog
+  setpermissiondialog,
+  resetpwddialog,
 } from './dialog/index'
 import {
   getuserlist,
@@ -165,7 +167,8 @@ export default {
     updowspanel,
     adduserdialog,
     edituserdialog,
-    setpermissiondialog
+    setpermissiondialog,
+    resetpwddialog,
   },
   computed: {
     ...mapGetters(['token'])
@@ -270,16 +273,10 @@ export default {
     },
     // 重置密码
     restuserpwd(userid) {
-      resetpassword({
-        userId: userid,
-        password: '1q2w3E*'
-      }).then((res) => {
-        this.$notify({
-          title: '提示',
-          message: '重置密码成功！',
-          type: 'success'
-        })
-      })
+      this.$refs.refresetpwddialog.createresetpwddialog(
+        this.getuserlist,
+        userid
+      );
     },
     // 分页
     handlePageChange({ currentPage, pageSize }) {

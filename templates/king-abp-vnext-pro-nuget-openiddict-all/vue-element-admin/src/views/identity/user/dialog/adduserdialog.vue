@@ -43,6 +43,7 @@
               prop="email"
             >
               <el-input v-model="adduserForm.email" />
+              <span>确保邮箱是正确的，忘记密码时可以通过邮箱接收修改密码的邮件修改</span>
             </el-form-item>
             <el-form-item :label="$t('AbpIdentity[\'PhoneNumber\']')">
               <el-input v-model="adduserForm.phoneNumber" />

@@ -1,5 +1,5 @@
 module.exports = {
-  title: '澄水物联',
+  title: 'KingAbpVnextPro',
   /**
  * 主题颜色
  */

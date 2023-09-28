@@ -46,8 +46,8 @@ export default {
     return {
       title: "澄 水 物 联",
       logo: process.env.VUE_APP_BASE_API + "/img/logo-1.png",
-      logoimg: process.env.VUE_APP_BASE_API + "/img/logo.png",
-      logoimg2: process.env.VUE_APP_BASE_API + "/img/logoother.png",
+      logoimg: process.env.VUE_APP_BASE_API + "/img/logotrans.png",
+      logoimg2: process.env.VUE_APP_BASE_API + "/img/logodark.png",
     };
   },
   computed: {

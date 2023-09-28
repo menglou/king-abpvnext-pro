@@ -3,11 +3,11 @@
     <div class="loginfrom">
       <div class="loginfrom-left hidden-xs-only hidden-sm-only">
         <img src="../../assets/image/LoginDefault.png">
-        <p class="contents">澄水物联基础开发框架</p>
+        <p class="contents">KingAbpVnextPro基础开发框架</p>
         <p style="font-size: 14px">
-          澄水物联的开发模式为 AbpVnext+Vue-Elemnet-Admin,
+          KingAbpVnextPro的开发模式为 AbpVnext+Vue-Elemnet-Admin,
           基础开发框架采用分为两个版本采用不同的鉴权方式，匹配相应当前主流得前端开发模式，目前基础框架功能包含
-          用户,角色,组织架构,权限,日志,系统配置,SingR等基础功能,开发者可以在此基础上完成实际业务的扩展
+          用户,角色,组织架构,权限,日志,配置中心,SingR,支付,工作流等基础功能,开发者可以在此基础上完成实际业务的扩展
         </p>
       </div>
 

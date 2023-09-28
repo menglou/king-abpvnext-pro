@@ -79,3 +79,12 @@ export function getdictionarydetailifo(id) {
         method: 'get'
     })
 }
+
+//根据字典id获取字典详情
+export function getdictionarydetailpagelistbyId(data) {
+    return request({
+        url: `/api/data-dictionary-detail/dictionary-detail/getDetailListBydtId`,
+        method: 'get',
+        params: data
+    })
+}

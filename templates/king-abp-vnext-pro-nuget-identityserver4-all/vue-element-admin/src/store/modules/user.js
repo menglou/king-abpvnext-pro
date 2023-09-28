@@ -46,7 +46,7 @@ const mutations = {
     state.phoneNumber = phoneNumber
   },
   SET_AVATAR: (state, avatar) => {
-    if (!avatar) avatar =  process.env.VUE_APP_BASE_API+'/img/logo-2.png'
+    if (!avatar) avatar =  process.env.VUE_APP_BASE_API+'/img/icon.jpg'
     state.avatar = avatar
   },
   SET_ROLES: (state, roles) => {
