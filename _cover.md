@@ -7,7 +7,7 @@
     <h1>
      <a>
        <span style="">King-AbpVnext-Pro</span>
-       <small>4.0.6</small>
+       <small>4.0.6.5</small>
      </a>
     </h1>
   </div>

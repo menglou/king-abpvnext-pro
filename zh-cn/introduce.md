@@ -1,6 +1,9 @@
 # 介绍
 <font size="4">[KingAbpVnextPro](https://github.com/menglou/menglou.github.io.git)</font>是一个标准的前后台解决方案，它基于<font size="4">[AbpVnext](https://www.abp.io/) 和<font size="4"> [Vue-elemet-Admin](https://github.com/PanJiaChen/vue-element-admin.git) 实现，Vue-elemet-Admin 是一个成熟的前端框架本框架采用的是vue2 版本的，在此基础上又扩展了一些功能，后台AbpVnext框架是一个完全开源的框架，内置丰富的模块，兼容微服务，多租户/Sass,模块化架构，领域驱动设计，本框架在此基础上，提炼了典型的业务模型，做成了一个一个模块，无论用户采用本框架还是AbpVnext进行开发,模块都是可以即插即用的，相信不管你的需求是什么，本项目都能帮助到你
 
+## 预览地址
+  [KingAbpVnextPro](http://36.156.141.246:6890)(默认账号：King , 密码:King1q2w3E*)
+
 ## 安装
 ##### 前序条件
 <div style="background-color:#282c34;border-radius:6px;color:#fff;padding:8px 5px">
