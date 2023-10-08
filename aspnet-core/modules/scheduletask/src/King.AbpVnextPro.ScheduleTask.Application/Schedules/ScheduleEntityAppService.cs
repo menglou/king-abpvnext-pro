@@ -172,8 +172,12 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
                 //更新状态
                 tasksQz.Status = ScheduleStatus.Running;
                 await _scheduleEntityRepository.UpdateAsync(tasksQz);
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
         }
         /// <summary>
         /// 停止任务

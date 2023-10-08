@@ -26,6 +26,7 @@ using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.Settings;
@@ -104,6 +105,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
             catch (Exception ex)
             {
                 _logger.LogError("任务调度平台停止失败！", ex);
+                throw new UserFriendlyException($"任务调度平台停止失败 ,Shutdown,error：{ex.Message}");
             }
         }
 
@@ -124,9 +126,9 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
                 await _scheduler.Result.Start();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new UserFriendlyException($"启动计划任务失败 ,StartTaskScheduleAsync,error：{ex.Message}");
             }
         }
 
@@ -221,7 +223,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"启动计划任务失败，分组：{tasksQz.JobGroup},作业：【{tasksQz.Title}】,error：{ex.Message}");
-                return null;
+                throw new UserFriendlyException($"启动计划任务失败，分组：{tasksQz.JobGroup},作业：【{tasksQz.Title}】,error：{ex.Message}");
             }
         }
 
@@ -246,9 +248,9 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new UserFriendlyException($"停止计划任务失败 ,StopTaskScheduleAsync,error：{ex.Message}");
             }
         }
 
@@ -273,7 +275,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
             catch (Exception ex)
             {
                 _logger.LogError($"暂停计划任务:【{tasksQz.Title}】失败，{ex.Message}");
-                return false;
+                throw new UserFriendlyException($"暂停指定的计划任务失败 ,PauseTaskScheduleAsync,error：{ex.Message}");
             }
         }
 
@@ -294,9 +296,9 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
                 await _scheduler.Result.ResumeJob(jobKey);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new UserFriendlyException($"恢复指定计划任务失败 ,ResumeTaskScheduleAsync,error：{ex.Message}");
             }
         }
 
@@ -330,7 +332,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
             catch (Exception ex)
             {
                 _logger.LogError($"执行计划任务:【{tasksQz.Title}】失败，{ex.Message}");
-                return false;
+                throw new UserFriendlyException($"执行计划任务 RunTaskScheduleAsync:【{tasksQz.Title}】失败，{ex.Message}");
             }
         }
 
@@ -370,7 +372,7 @@ namespace King.AbpVnextPro.ScheduleTask.ScheduleMaster.Manager
         {
             if (tasksQz.RunLoop)
             {
-                if (!CronExpression.IsValidExpression(tasksQz.CronExpression))
+                if (!CronExpression.IsValidExpression(tasksQz.CronExpression.Trim()))
                 {
                     throw new Exception("cron表达式验证失败");
                 }
