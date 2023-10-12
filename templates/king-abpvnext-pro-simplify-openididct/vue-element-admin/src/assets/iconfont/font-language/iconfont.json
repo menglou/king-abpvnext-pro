@@ -1,0 +1,23 @@
+{
+  "id": "2773261",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "577386",
+      "name": "语言",
+      "font_class": "yuyan",
+      "unicode": "e765",
+      "unicode_decimal": 59237
+    },
+    {
+      "icon_id": "11810481",
+      "name": "语言",
+      "font_class": "yuyan1",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    }
+  ]
+}

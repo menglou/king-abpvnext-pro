@@ -28,7 +28,6 @@ using Volo.Abp.VirtualFileSystem;
 namespace CompanyName.ProjectName;
 
 [DependsOn(
-    typeof(AbpAuditLoggingDomainSharedModule),
     typeof(OpeniddictDomainSharedModule),
     typeof(NoticeDomainSharedModule),
     typeof(AbpFeatureManagementDomainSharedModule),

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "King.AbpVnextPro.File.Domain": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:7889;http://localhost:7890"
+    }
+  }
+}

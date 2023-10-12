@@ -265,4 +265,11 @@ paket-files/
 /templates/king-abp-vnext-pro-nuget-openiddict-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/plugins
 /templates/king-abp-vnext-pro-nuget-identityserver4-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/upload
 /templates/king-abp-vnext-pro-nuget-openiddict-all/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/upload
+
+/templates/king-abpvnext-pro-simplify-id4/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/plugins
+/templates/king-abpvnext-pro-simplify-openididct/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/plugins
+
+/templates/king-abpvnext-pro-simplify-id4/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/upload
+/templates/king-abpvnext-pro-simplify-openididct/aspnet-core/src/CompanyName.ProjectName.HttpApi.Host/wwwroot/upload
+
 /docs/site

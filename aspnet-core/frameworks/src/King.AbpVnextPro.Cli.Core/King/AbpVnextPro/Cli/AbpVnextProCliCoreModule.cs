@@ -42,7 +42,14 @@ public class AbpVnextProCliCoreModule: AbpModule
                     OldCompanyName = "CompanyName",
                     OldProjectName = "ProjectName"
                 },
-                new AbpProTemplateOptions("king-abp-vnext-pro-nuget-simplify", "pro.simplify", "Nuget简单版本(没有工作流)")
+                new AbpProTemplateOptions("king-abpvnext-pro-simplify-id4", "pro.id4.simplify", "Nuget基础版本(id4)")
+                {
+                    //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-all,docs,.github,LICENSE,Readme.md",
+                    ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",
+                    OldCompanyName = "CompanyName",
+                    OldProjectName = "ProjectName"
+                },
+                new AbpProTemplateOptions("king-abpvnext-pro-simplify-openididct", "pro.openiddict.simplify", "Nuget基础版本(openiddict)")
                 {
                     //ExcludeFiles = "aspnet-core,vben28,abp-vnext-pro-nuget-module,abp-vnext-pro-nuget-all,docs,.github,LICENSE,Readme.md",
                     ReplaceSuffix = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env,Directory.Build.Lion.targets",

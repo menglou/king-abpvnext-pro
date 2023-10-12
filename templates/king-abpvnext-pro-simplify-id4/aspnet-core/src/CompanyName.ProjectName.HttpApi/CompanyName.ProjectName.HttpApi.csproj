@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyAbp.Abp.SettingUi.HttpApi" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\IdentityServer\src\King.AbpVnextPro.IdentityServer.HttpApi\King.AbpVnextPro.IdentityServer.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\Notification\src\King.AbpVnextPro.Notice.HttpApi\King.AbpVnextPro.Notice.HttpApi.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.Application.Contracts\CompanyName.ProjectName.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+{
+  "id": "2821756",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5269215",
+      "name": "导入",
+      "font_class": "daoru",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "7551384",
+      "name": "转出",
+      "font_class": "zhuanchu",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "11839497",
+      "name": "导出",
+      "font_class": "daochu",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    }
+  ]
+}

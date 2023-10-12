@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>CompanyName.ProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\BasicManagement\IdentityServer\src\King.AbpVnextPro.IdentityServer.Domain\King.AbpVnextPro.IdentityServer.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\aspnet-core\modules\Notification\src\King.AbpVnextPro.Notice.Domain\King.AbpVnextPro.Notice.Domain.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.Domain.Shared\CompanyName.ProjectName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.IdentityServer" />
+  </ItemGroup>
+
+</Project>

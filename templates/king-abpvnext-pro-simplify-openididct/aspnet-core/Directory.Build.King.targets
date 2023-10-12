@@ -1,0 +1,25 @@
+﻿<Project>
+  <!--    King.AbpPro包-->
+  <ItemGroup>
+    <PackageReference Update="Kings.AbpVnextPro.Core" Version="MyVersion"/>
+
+
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Openiddict.HttpApi.Client" Version="MyVersion"/>
+
+
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Application" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Application.Contracts" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Domain" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.Domain.Shared" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.EntityFrameworkCore"  Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.HttpApi" Version="MyVersion"/>
+    <PackageReference Update="Kings.AbpVnextPro.Notice.HttpApi.Client" Version="MyVersion"/>
+
+  </ItemGroup>
+</Project>
