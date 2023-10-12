@@ -29,13 +29,20 @@
 
 + identityserver4 
   - nuget包形式的identityserver4 鉴权方式的版本
-  - abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心,计划任务
-><font size="5">king.abp new -t pro.id4.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
+  
+    - abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心,计划任务
+  ><font size="5">king.abp new -t pro.id4.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
+
+    - abp vnext  的基础模块，pro的通知模块
+  ><font size="5">king.abp new -t pro.id4.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
 
 + openiddict
-  - nuget包形式的identityserver4 鉴权方式的版本
-  - abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心，计划任务
-><font size="5">king.abp new -t pro.openiddict.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
+  - nuget包形式的openiddict 鉴权方式的版本
+  
+    - abp vnext  自带的所有模块，pro 的通知模块,数据字典，文件管理，职能机构，支付中心，计划任务
+  ><font size="5">king.abp new -t pro.openiddict.all -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
+    - abp vnext  的基础模块，pro的通知模块
+  ><font size="5">king.abp new -t pro.openiddict.simplify -c 公司名称 -p 项目名称 -v 版本(默认LastRelease) -o 默认当前控制台执行目录</font>
 
 #### 后端
    - 修改 HttpApi.Host-> appsettings.json 配置
