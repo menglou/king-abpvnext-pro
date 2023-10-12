@@ -30,7 +30,6 @@ import './utils/filter' // global filter
 
 import * as filters from './filters' // global filters
 
-
 import signalR from '@/utils/signalR'
 /**
  * If you don't want to use mock-server
@@ -67,11 +66,11 @@ Vue.use(htmlToPdf)
 
 Vue.prototype.$echarts = echarts
 
-Vue.prototype.$XPrint = VXETable.print;
+Vue.prototype.$XPrint = VXETable.print
 
 Vue.config.productionTip = false
 
-signalR.init(process.env.VUE_APP_BASE_API+process.env.VUE_APP_SOCKET_API);
+signalR.init(process.env.VUE_APP_BASE_API + process.env.VUE_APP_SOCKET_API)
 Vue.prototype.signalr = signalR
 
 new Vue({

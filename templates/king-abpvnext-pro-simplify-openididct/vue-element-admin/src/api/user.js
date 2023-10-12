@@ -5,7 +5,7 @@ export function login(data) {
   return request({
     baseURL: process.env.VUE_APP_BASE_API,
     url: '/connect/token',
-    //url: '/api/verification/Login',
+    // url: '/api/verification/Login',
     method: 'post',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(data)

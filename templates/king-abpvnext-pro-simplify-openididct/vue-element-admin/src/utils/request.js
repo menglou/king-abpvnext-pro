@@ -59,8 +59,7 @@ service.interceptors.request.use(
       if (whiteturl.indexOf(config.url) == -1) {
         showFullScreenLoading()
       }
-    }
-    else {
+    } else {
       if (whiteturl.indexOf(config.whitleurl) == -1) {
         showFullScreenLoading()
       }

@@ -1,5 +1,5 @@
 <template>
-   <div class="app-container">
+  <div class="app-container">
     <div v-if="user">
       <el-row :gutter="20">
 
@@ -31,8 +31,8 @@ import UserCard from './components/UserCard'
 import ChangePassword from './components/ChangePassword'
 import PersonalSettings from './components/PersonalSettings'
 export default {
-   name:"Profile",
-    components: { UserCard, ChangePassword, PersonalSettings },
+  name: 'Profile',
+  components: { UserCard, ChangePassword, PersonalSettings },
   data() {
     return {
       user: {},

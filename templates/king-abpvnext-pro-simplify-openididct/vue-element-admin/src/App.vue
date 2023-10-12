@@ -5,22 +5,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  name: "App",
+  name: 'App',
   computed: {
-    ...mapGetters(["token"]),
+    ...mapGetters(['token'])
   },
   watch: {
     token: {
-      handler: function (val) {
+      handler: function(val) {
         if (val) {
-          this.signalr.start();
+          this.signalr.start()
         }
       },
       deep: true,
-      immediate: true,
-    },
-  },
-};
+      immediate: true
+    }
+  }
+}
 </script>

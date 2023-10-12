@@ -128,10 +128,10 @@ export default {
         vericode: [
           {
             required: true,
-            message: this.$t("login.vericodeplachoer"),
-            trigger: "blur",
-          },
-        ],
+            message: this.$t('login.vericodeplachoer'),
+            trigger: 'blur'
+          }
+        ]
       },
       redirect: undefined,
       otherQuery: {},

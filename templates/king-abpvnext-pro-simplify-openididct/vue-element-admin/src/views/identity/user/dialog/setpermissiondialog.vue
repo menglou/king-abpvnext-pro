@@ -14,8 +14,7 @@
         <el-checkbox
           :value="grantperm.length == allpermission.length"
           @change="handleCheckAllChange"
-          >授予所有权限</el-checkbox
-        >
+        >授予所有权限</el-checkbox>
         <el-divider />
         <el-tabs style="height: auto" tab-position="left">
           <el-tab-pane
@@ -24,13 +23,13 @@
             class="tab-pane"
             :label="
               item.displayName +
-              '(' +
-              grantperm
-                .filter((x) => x.key == item.displayName)
-                .map((res) => {
-                  return res.name;
-                }).length +
-              ')'
+                '(' +
+                grantperm
+                  .filter((x) => x.key == item.displayName)
+                  .map((res) => {
+                    return res.name;
+                  }).length +
+                ')'
             "
           >
             <div style="padding-left: 10px">
@@ -42,13 +41,12 @@
                 :value="
                   (item.permissions.filter((x) => x.isGranted == true).length ==
                     item.permissions.length) ==
-                  true
+                    true
                     ? true
                     : false
                 "
                 @change="tabhandleCheckAllChange(item.permissions, $event)"
-                >全选</el-checkbox
-              >
+              >全选</el-checkbox>
               <el-divider />
               <div class="permissionscroller">
                 <el-scrollbar style="height: 100%">
@@ -88,164 +86,164 @@
 <script>
 import {
   getPermissions,
-  updatePermissions,
-} from "@/api/permission-management/permission";
-import { fetchAppConfig } from "@/utils/abp";
+  updatePermissions
+} from '@/api/permission-management/permission'
+import { fetchAppConfig } from '@/utils/abp'
 export default {
-  name: "Setpermissiondialog",
+  name: 'Setpermissiondialog',
   data() {
     return {
       callbackmethod: null,
       // 权限
       permissiondialogFormVisible: false,
-      permissiontitle: "",
+      permissiontitle: '',
       permissiongroup: [],
-      userid: "",
+      userid: '',
       defaultProps: {
-        children: "child",
-        label: "displayName",
-      },
-    };
+        children: 'child',
+        label: 'displayName'
+      }
+    }
   },
   computed: {
     grantperm() {
-      const garntgroup = [];
+      const garntgroup = []
       for (const i of this.permissiongroup) {
         for (const m of i.permissions) {
           if (m.isGranted == true) {
             const param = {
               key: i.displayName,
-              name: m.name,
-            };
-            garntgroup.push(param);
+              name: m.name
+            }
+            garntgroup.push(param)
           }
         }
       }
-      return garntgroup;
+      return garntgroup
     },
     allpermission() {
-      const allpermissiongroup = [];
+      const allpermissiongroup = []
       for (const i of this.permissiongroup) {
         for (const m of i.permissions) {
           const param = {
             key: i.displayName,
-            name: m.name,
-          };
-          allpermissiongroup.push(param);
+            name: m.name
+          }
+          allpermissiongroup.push(param)
         }
       }
-      return allpermissiongroup;
-    },
+      return allpermissiongroup
+    }
   },
   methods: {
     async createsetpermissiondialog(cb, userid) {
-      this.callbackmethod = cb;
-      this.userid = userid;
-      await this.getpermissions(userid);
-      this.permissiondialogFormVisible = true;
+      this.callbackmethod = cb
+      this.userid = userid
+      await this.getpermissions(userid)
+      this.permissiondialogFormVisible = true
     },
 
     // 获取权限
     async getpermissions(userid) {
       const pamram = {
-        providerName: "U",
-        providerKey: userid,
-      };
-      const res = await getPermissions(pamram);
-      this.permissiongroup = [...res.groups];
+        providerName: 'U',
+        providerKey: userid
+      }
+      const res = await getPermissions(pamram)
+      this.permissiongroup = [...res.groups]
     },
     permissionmodalclose() {
-      this.userid = "";
-      this.callbackmethod = null;
-      this.permissiongroup = [];
-      this.permissiondialogFormVisible = false;
+      this.userid = ''
+      this.callbackmethod = null
+      this.permissiongroup = []
+      this.permissiondialogFormVisible = false
     },
     editpermission() {
-      const tempData = [];
-      const s = this.permissiongroup;
+      const tempData = []
+      const s = this.permissiongroup
       for (const i of this.permissiongroup) {
         for (const m of i.permissions) {
           tempData.push({
             isGranted: m.isGranted,
-            name: m.name,
-          });
+            name: m.name
+          })
         }
       }
       const query = {
-        providerName: "U",
-        providerKey: this.userid,
-      };
+        providerName: 'U',
+        providerKey: this.userid
+      }
       updatePermissions(query, { permissions: tempData }).then((res) => {
         this.$notify({
-          title: "提示",
-          message: "权限修改成功",
-          type: "success",
-        });
+          title: '提示',
+          message: '权限修改成功',
+          type: 'success'
+        })
         // 重置
-        this.permissionmodalclose();
-        fetchAppConfig(query.providerKey, query.providerName);
-      });
+        this.permissionmodalclose()
+        fetchAppConfig(query.providerKey, query.providerName)
+      })
     },
-    //tab下全选
+    // tab下全选
     tabhandleCheckAllChange(permissions, val) {
-      debugger;
+      debugger
       if (val) {
         permissions.forEach((x) => {
-          x.isGranted = true;
-        });
+          x.isGranted = true
+        })
       } else {
         permissions.forEach((x) => {
           if (this.isGrantedByOtherProviderName(x.grantedProviders) == false) {
-            x.isGranted = false;
+            x.isGranted = false
           }
-        });
+        })
       }
     },
     // tree勾选事件
     treecheck(permissions, data, treenode) {
-      const selectnode = [...treenode.checkedKeys, ...treenode.halfCheckedKeys];
+      const selectnode = [...treenode.checkedKeys, ...treenode.halfCheckedKeys]
 
       permissions.forEach((x) => {
-        x.isGranted = false;
-      });
+        x.isGranted = false
+      })
       for (const i of selectnode) {
-        permissions.find((x) => x.name == i).isGranted = true;
+        permissions.find((x) => x.name == i).isGranted = true
       }
     },
     // 构造权限树
     transformPermissionTree(permissions, name = null) {
-      const arr = [];
+      const arr = []
       if (!permissions || !permissions.some((v) => v.parentName === name)) {
-        return arr;
+        return arr
       }
-      const tmpperm = permissions.filter((x) => x.parentName == name);
+      const tmpperm = permissions.filter((x) => x.parentName == name)
       for (const i of tmpperm) {
         arr.push({
           name: i.name,
           displayName:
             i.displayName +
             i.grantedProviders.map((provider) => {
-              return "(" + `${provider.providerName}` + ")";
+              return '(' + `${provider.providerName}` + ')'
             }),
           disabled: this.isGrantedByOtherProviderName(i.grantedProviders),
           parentName: i.parentName,
-          child: this.transformPermissionTree(permissions, i.name),
-        });
+          child: this.transformPermissionTree(permissions, i.name)
+        })
       }
-      return arr;
+      return arr
     },
     isGrantedByOtherProviderName(grantedProviders) {
       if (grantedProviders.length) {
-        return grantedProviders.findIndex((p) => p.providerName !== "U") > -1;
+        return grantedProviders.findIndex((p) => p.providerName !== 'U') > -1
       }
-      return false;
+      return false
     },
     // 授予所有权限
     handleCheckAllChange(val) {
       if (val) {
         for (const i of this.permissiongroup) {
           for (const m of i.permissions) {
-            m.isGranted = true;
+            m.isGranted = true
           }
         }
       } else {
@@ -254,14 +252,14 @@ export default {
             if (
               this.isGrantedByOtherProviderName(m.grantedProviders) == false
             ) {
-              m.isGranted = false;
+              m.isGranted = false
             }
           }
         }
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>

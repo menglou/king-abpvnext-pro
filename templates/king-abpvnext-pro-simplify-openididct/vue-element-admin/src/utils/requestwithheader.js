@@ -11,7 +11,7 @@ const service = axios.create({
   timeout: 300000 // request timeout
 })
 const whiteturl = ['/connect/token', '/api/abp/application-configuration', '/api/account/logout',
-  '/api/account/my-profile','/api/app/consumptionOrder/currentorderlist']
+  '/api/account/my-profile', '/api/app/consumptionOrder/currentorderlist']
 let loading
 // 请求时的处理
 function showloading() {

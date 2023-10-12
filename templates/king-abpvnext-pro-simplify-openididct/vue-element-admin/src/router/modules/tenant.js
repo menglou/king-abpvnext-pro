@@ -19,7 +19,7 @@ const tenantRouter = {
       path: 'tenants',
       component: () => import('@/views/tenant-management/tenants'),
       name: 'Tenants',
-      meta: { title: 'AbpTenantManagement["Tenants"]', policy: 'AbpTenantManagement.Tenants',icon: 'tenent' }
+      meta: { title: 'AbpTenantManagement["Tenants"]', policy: 'AbpTenantManagement.Tenants', icon: 'tenent' }
     }
   ]
 }

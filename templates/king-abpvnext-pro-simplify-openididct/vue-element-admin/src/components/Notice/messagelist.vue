@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="container-header">
-      <div class="content" v-for="(item, index) in messageList" :key="index">
+      <div v-for="(item, index) in messageList" :key="index" class="content">
         <div class="row1">
           <el-popover trigger="hover" placement="bottom" width="220">
             <p>{{ item.title }}</p>
@@ -15,9 +15,9 @@
             {{ item.read ? "已读" : "未读" }}
           </el-tag>
           <el-tag
+            v-if="!item.read"
             size="mini"
             style="margin-left: 10px"
-            v-if="!item.read"
             class="tag"
             color="green"
             @click="onSetRead(item)"
@@ -45,9 +45,9 @@
       </div>
     </div>
     <div
+      v-if="messageList.length > 0"
       class="foot-box"
       @click="onGoToGiteeClick"
-      v-if="messageList.length > 0"
     >
       前往消息中心
     </div>
@@ -55,30 +55,30 @@
 </template>
 
 <script>
-import moment from "moment";
-import { setisread, getcommonnoticelist } from "@/api/notcie";
+import moment from 'moment'
+import { setisread, getcommonnoticelist } from '@/api/notcie'
 export default {
-  name: "MessageList",
+  name: 'MessageList',
   props: {
     messageList: {
       Type: Array,
       default: () => {
-        return [];
-      },
-    },
+        return []
+      }
+    }
   },
   methods: {
     moment,
     onSetRead(item) {
       setisread({ id: item.id }).then(() => {
-        getcommonnoticelist({ Status: 0, Title: "" }).then((res) => {
-          this.messageList = [...res];
-        });
-      });
+        getcommonnoticelist({ Status: 0, Title: '' }).then((res) => {
+          this.messageList = [...res]
+        })
+      })
     },
-    onGoToGiteeClick() {},
-  },
-};
+    onGoToGiteeClick() {}
+  }
+}
 </script>
 
 <style scoped lang="scss">

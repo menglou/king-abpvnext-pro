@@ -39,55 +39,55 @@
 </template>
 
 <script>
-import { addroleinfo } from "@/api/identity/roles";
+import { addroleinfo } from '@/api/identity/roles'
 export default {
-  name: "Addroledialog",
+  name: 'Addroledialog',
   data() {
     return {
       callbackmethod: null,
       // 控制添加角色弹窗显示
       roleadddialogFormVisible: false,
       addroleForm: {
-        name: "",
+        name: '',
         isDefault: false,
-        isPublic: false,
+        isPublic: false
       },
       addroleFormrules: {
-        name: [{ required: true, message: "请输入角色名称", trigger: "blur" }],
-      },
-    };
+        name: [{ required: true, message: '请输入角色名称', trigger: 'blur' }]
+      }
+    }
   },
   methods: {
     async createaddroledialog(cb) {
-      this.callbackmethod = cb;
-      this.roleadddialogFormVisible = true;
+      this.callbackmethod = cb
+      this.roleadddialogFormVisible = true
     },
     addrolemodalclose() {
-      this.roleadddialogFormVisible = false;
-      this.$refs.addroleForm.resetFields();
-      this.addroleForm.isDefault = false;
-      this.addroleForm.isDefault = false;
+      this.roleadddialogFormVisible = false
+      this.$refs.addroleForm.resetFields()
+      this.addroleForm.isDefault = false
+      this.addroleForm.isDefault = false
     },
     saveuser() {
       this.$refs.addroleForm.validate((valid) => {
         if (valid) {
           addroleinfo(this.addroleForm).then((res) => {
             this.$notify({
-              title: "提示",
-              message: "添加角色成功",
-              type: "success",
-            });
-            this.callbackmethod();
-            this.addrolemodalclose();
-          });
+              title: '提示',
+              message: '添加角色成功',
+              type: 'success'
+            })
+            this.callbackmethod()
+            this.addrolemodalclose()
+          })
         } else {
-          this.roleadddialogFormVisible = true;
-          return false;
+          this.roleadddialogFormVisible = true
+          return false
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

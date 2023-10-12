@@ -62,10 +62,10 @@ export default {
     RolerManager: '角色管理',
     OrganitaionUnitsrManager: '组织机构',
     AuditLogsrManager: '审计日志',
-    Securitylogs: "安全日志"
+    Securitylogs: '安全日志'
   },
   AbpTenantManagement: {
-    Tenants: '租户管理',
+    Tenants: '租户管理'
   },
   LogCenter: {
     title: '日志中心',
@@ -75,24 +75,24 @@ export default {
     }
   },
   Settings: {
-    title: '配置中心',
+    title: '配置中心'
   },
   Notices: {
-    title: '通知公告',
+    title: '通知公告'
   },
   Dictionary: {
-    title: '字典管理',
+    title: '字典管理'
   },
   ScheduleTask: {
-    title: '计划任务',
+    title: '计划任务'
   },
-  FuntionOrg:{
+  FuntionOrg: {
     title: '职能机构',
-    DepartMent:{
-      title:"部门管理"
+    DepartMent: {
+      title: '部门管理'
     },
-    Poster:{
-      title:"岗位管理"
+    Poster: {
+      title: '岗位管理'
     }
   }
 }

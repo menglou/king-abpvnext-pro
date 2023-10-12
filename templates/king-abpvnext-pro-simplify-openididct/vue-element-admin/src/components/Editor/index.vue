@@ -1,116 +1,116 @@
 <template>
-    <div class="editor" ref="editor" :style="styles"></div>
+  <div ref="editor" class="editor" :style="styles" />
 </template>
 
 <script>
-import Quill from "quill";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
-import "quill/dist/quill.bubble.css";
+import Quill from 'quill'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 
 export default {
-  name: "Editor",
+  name: 'Editor',
   props: {
     /* 编辑器的内容 */
     value: {
       type: String,
-      default: "",
+      default: ''
     },
     /* 高度 */
     height: {
       type: Number,
-      default: null,
+      default: null
     },
     /* 最小高度 */
     minHeight: {
       type: Number,
-      default: null,
-    },
+      default: null
+    }
   },
   data() {
     return {
       Quill: null,
-      currentValue: "",
+      currentValue: '',
       options: {
-        theme: "snow",
+        theme: 'snow',
         bounds: document.body,
-        debug: "warn",
+        debug: 'warn',
         modules: {
           // 工具栏配置
           toolbar: [
-            ["bold", "italic", "underline", "strike"],       // 加粗 斜体 下划线 删除线
-            ["blockquote", "code-block"],                    // 引用  代码块
-            [{ list: "ordered" }, { list: "bullet" }],       // 有序、无序列表
-            [{ indent: "-1" }, { indent: "+1" }],            // 缩进
-            [{ size: ["small", false, "large", "huge"] }],   // 字体大小
-            [{ header: [1, 2, 3, 4, 5, 6, false] }],         // 标题
-            [{ color: [] }, { background: [] }],             // 字体颜色、字体背景颜色
-            [{ align: [] }],                                 // 对齐方式
-            ["clean"],                                       // 清除文本格式
-            ["link", "image", "video"]                       // 链接、图片、视频
-          ],
+            ['bold', 'italic', 'underline', 'strike'], // 加粗 斜体 下划线 删除线
+            ['blockquote', 'code-block'], // 引用  代码块
+            [{ list: 'ordered' }, { list: 'bullet' }], // 有序、无序列表
+            [{ indent: '-1' }, { indent: '+1' }], // 缩进
+            [{ size: ['small', false, 'large', 'huge'] }], // 字体大小
+            [{ header: [1, 2, 3, 4, 5, 6, false] }], // 标题
+            [{ color: [] }, { background: [] }], // 字体颜色、字体背景颜色
+            [{ align: [] }], // 对齐方式
+            ['clean'], // 清除文本格式
+            ['link', 'image', 'video'] // 链接、图片、视频
+          ]
         },
-        placeholder: "请输入内容",
-        readOnly: false,
-      },
-    };
+        placeholder: '请输入内容',
+        readOnly: false
+      }
+    }
   },
   computed: {
     styles() {
-      let style = {};
+      const style = {}
       if (this.minHeight) {
-        style.minHeight = `${this.minHeight}px`;
+        style.minHeight = `${this.minHeight}px`
       }
       if (this.height) {
-        style.height = `${this.height}px`;
+        style.height = `${this.height}px`
       }
-      return style;
-    },
+      return style
+    }
   },
   watch: {
     value: {
       handler(val) {
         if (val !== this.currentValue) {
-          this.currentValue = val === null ? "" : val;
+          this.currentValue = val === null ? '' : val
           if (this.Quill) {
-            this.Quill.pasteHTML(this.currentValue);
+            this.Quill.pasteHTML(this.currentValue)
           }
         }
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   mounted() {
-    this.init();
+    this.init()
   },
   beforeDestroy() {
-    this.Quill = null;
+    this.Quill = null
   },
   methods: {
     init() {
-      const editor = this.$refs.editor;
-      this.Quill = new Quill(editor, this.options);
-      this.Quill.pasteHTML(this.currentValue);
-      this.Quill.on("text-change", (delta, oldDelta, source) => {
-        const html = this.$refs.editor.children[0].innerHTML;
-        const text = this.Quill.getText();
-        const quill = this.Quill;
-        this.currentValue = html;
-        this.$emit("input", html);
-        this.$emit("on-change", { html, text, quill });
-      });
-      this.Quill.on("text-change", (delta, oldDelta, source) => {
-        this.$emit("on-text-change", delta, oldDelta, source);
-      });
-      this.Quill.on("selection-change", (range, oldRange, source) => {
-        this.$emit("on-selection-change", range, oldRange, source);
-      });
-      this.Quill.on("editor-change", (eventName, ...args) => {
-        this.$emit("on-editor-change", eventName, ...args);
-      });
-    },
-  },
-};
+      const editor = this.$refs.editor
+      this.Quill = new Quill(editor, this.options)
+      this.Quill.pasteHTML(this.currentValue)
+      this.Quill.on('text-change', (delta, oldDelta, source) => {
+        const html = this.$refs.editor.children[0].innerHTML
+        const text = this.Quill.getText()
+        const quill = this.Quill
+        this.currentValue = html
+        this.$emit('input', html)
+        this.$emit('on-change', { html, text, quill })
+      })
+      this.Quill.on('text-change', (delta, oldDelta, source) => {
+        this.$emit('on-text-change', delta, oldDelta, source)
+      })
+      this.Quill.on('selection-change', (range, oldRange, source) => {
+        this.$emit('on-selection-change', range, oldRange, source)
+      })
+      this.Quill.on('editor-change', (eventName, ...args) => {
+        this.$emit('on-editor-change', eventName, ...args)
+      })
+    }
+  }
+}
 </script>
 
 <style>

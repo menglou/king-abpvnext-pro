@@ -6,11 +6,11 @@
           <vxe-form-item :title="$t('AbpAuditLogging[\'Url\']')" span="6">
             <template #default="{ data }">
               <vxe-input
-                style="width: 320px"
                 v-model="data.url"
+                style="width: 320px"
                 :placeholder="$t('AbpAuditLogging[\'PlaceholderInput\']')"
                 clearable
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item
@@ -23,21 +23,21 @@
                 clearable
                 style="width: 320px"
               >
-                <el-option label="获取(GET)" value="GET"></el-option>
-                <el-option label="修改(PUT)" value="PUT"></el-option>
-                <el-option label="提交(POST)" value="POST"></el-option>
-                <el-option label="删除(DELETE)" value="DELETE"></el-option>
+                <el-option label="获取(GET)" value="GET" />
+                <el-option label="修改(PUT)" value="PUT" />
+                <el-option label="提交(POST)" value="POST" />
+                <el-option label="删除(DELETE)" value="DELETE" />
               </el-select>
             </template>
           </vxe-form-item>
           <vxe-form-item :title="$t('AbpAuditLogging[\'UserName\']')" span="6">
             <template #default="{ data }">
               <vxe-input
-                style="width: 320px"
                 v-model="data.userName"
+                style="width: 320px"
                 :placeholder="$t('AbpAuditLogging[\'PlaceholderInput\']')"
                 clearable
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item
@@ -46,11 +46,11 @@
           >
             <template #default="{ data }">
               <vxe-input
-                style="width: 320px"
                 v-model="data.tenantName"
+                style="width: 320px"
                 :placeholder="$t('AbpAuditLogging[\'PlaceholderInput\']')"
                 clearable
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item
@@ -60,11 +60,11 @@
           >
             <template #default="{ data }">
               <vxe-input
-                style="width: 320px"
                 v-model="data.clientIpAddress"
+                style="width: 320px"
                 :placeholder="$t('AbpAuditLogging[\'PlaceholderInput\']')"
                 clearable
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item
@@ -93,11 +93,11 @@
           >
             <template #default="{ data }">
               <vxe-input
-                style="width: 320px"
                 v-model="data.executionDuration"
+                style="width: 320px"
                 :placeholder="$t('AbpAuditLogging[\'PlaceholderInput\']')"
                 clearable
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item
@@ -107,11 +107,11 @@
           >
             <template #default="{ data }">
               <vxe-input
-                style="width: 320px"
                 v-model="data.applicationName"
+                style="width: 320px"
                 :placeholder="$t('AbpAuditLogging[\'PlaceholderInput\']')"
                 clearable
-              ></vxe-input>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item title="日期" span="6" folding>
@@ -138,10 +138,10 @@
         </vxe-form>
       </template>
       <template slot="down">
-        <vxe-toolbar ref="xToolbar2" custom> </vxe-toolbar>
+        <vxe-toolbar ref="xToolbar2" custom />
         <vxe-table
-          :data="datalist"
           id="audilog"
+          :data="datalist"
           auto-resize
           align="center"
           resizable
@@ -150,7 +150,7 @@
           border="inner"
           :max-height="tableheight"
         >
-          <vxe-table-column type="seq" width="60"></vxe-table-column>
+          <vxe-table-column type="seq" width="60" />
           <vxe-table-column
             width="130"
             title="状态码"
@@ -267,9 +267,9 @@
               <vxe-button
                 type="text"
                 status="primary"
-                @click="handleDetail(row)"
                 :content="$t('AbpAuditLogging.Detail')"
-              ></vxe-button>
+                @click="handleDetail(row)"
+              />
             </template>
           </vxe-table-column>
         </vxe-table>
@@ -288,8 +288,7 @@
             'Total',
           ]"
           @page-change="handlePageChange"
-        >
-        </vxe-pager>
+        />
       </template>
     </updowspanel>
     <audit-log-details ref="auditLogDetailsDialog" />
@@ -297,61 +296,61 @@
 </template>
 
 <script>
-import { getAuditLogs } from "@/api/auditlogging/auditlog";
-import moment from "moment";
-import { pickerRangeWithHotKey } from "@/utils/picker";
-import AuditLogDetails from "./details";
-import updowspanel from "@/components/MainView/updowspanel";
+import { getAuditLogs } from '@/api/auditlogging/auditlog'
+import moment from 'moment'
+import { pickerRangeWithHotKey } from '@/utils/picker'
+import AuditLogDetails from './details'
+import updowspanel from '@/components/MainView/updowspanel'
 export default {
-  name: "AuditLogs",
+  name: 'AuditLogs',
   components: { AuditLogDetails, updowspanel },
   filters: {
     requestDurationFilter(duration) {
-      let type = "success";
+      let type = 'success'
       if (duration > 2 * 1000) {
-        type = "warning";
+        type = 'warning'
       } else if (duration > 5 * 1000) {
-        type = "error";
+        type = 'error'
       }
-      return type;
+      return type
     },
     requestStatusCode(code) {
-      let type = "success";
+      let type = 'success'
       switch (code) {
         case 401:
         case 403:
         case 404:
-          type = "warning";
-          break;
+          type = 'warning'
+          break
         case 500:
-          type = "danger";
-          break;
+          type = 'danger'
+          break
       }
-      return type;
+      return type
     },
     requestMethodFilter(method) {
-      let type = "success";
+      let type = 'success'
       if (method != null) {
         switch (method.toUpperCase()) {
-          case "GET":
-            type = "";
-            break;
-          case "PUT":
-            type = "warning";
-            break;
-          case "POST":
-            type = "success";
-            break;
-          case "DELETE":
-            type = "danger";
-            break;
+          case 'GET':
+            type = ''
+            break
+          case 'PUT':
+            type = 'warning'
+            break
+          case 'POST':
+            type = 'success'
+            break
+          case 'DELETE':
+            type = 'danger'
+            break
           default:
-            type = "Info";
+            type = 'Info'
         }
       }
 
-      return type;
-    },
+      return type
+    }
   },
   data() {
     return {
@@ -360,23 +359,26 @@ export default {
       tablePage: {
         currentPage: 1,
         pageSize: 10,
-        totalResult: 0,
+        totalResult: 0
       },
 
       queryForm: {
-        startTime: "",
-        endTime: "",
-        queryDateTime: "",
-        httpMethod: "",
-        url: "",
-        userName: "",
-        tenantName: "",
-        applicationName: "",
+        startTime: '',
+        endTime: '',
+        queryDateTime: '',
+        httpMethod: '',
+        url: '',
+        userName: '',
+        tenantName: '',
+        applicationName: '',
         hasException: false,
-        httpStatusCode: "",
+        httpStatusCode: ''
       },
-      pickerOptions: pickerRangeWithHotKey,
-    };
+      pickerOptions: pickerRangeWithHotKey
+    }
+  },
+  created() {
+    this.getList()
   },
   methods: {
     moment,
@@ -389,63 +391,60 @@ export default {
         this.queryForm.queryDateTime != null &&
         this.queryForm.queryDateTime.length != 0
           ? this.queryForm.queryDateTime[0]
-          : null;
+          : null
       this.queryForm.endTime =
         this.queryForm.queryDateTime != null &&
         this.queryForm.queryDateTime.length != 0
           ? this.queryForm.queryDateTime[1]
-          : null;
-      console.log(this.queryForm);
+          : null
+      console.log(this.queryForm)
 
-      const { currentPage, pageSize } = this.tablePage;
-      let param = {
+      const { currentPage, pageSize } = this.tablePage
+      const param = {
         SkipCount: (currentPage - 1) * pageSize,
-        MaxResultCount: pageSize,
-      };
-      let allparam = Object.assign({}, this.queryForm, param);
+        MaxResultCount: pageSize
+      }
+      const allparam = Object.assign({}, this.queryForm, param)
       getAuditLogs(allparam).then((response) => {
-        this.datalist = response.items;
-        this.tablePage.totalResult = response.totalCount;
-      });
+        this.datalist = response.items
+        this.tablePage.totalResult = response.totalCount
+      })
     },
     resetQueryForm() {
-      this.tablePage.currentPage = 1;
-      this.tablePage.pageSize = 10;
-      this.tablePage.totalResult = 10;
+      this.tablePage.currentPage = 1
+      this.tablePage.pageSize = 10
+      this.tablePage.totalResult = 10
       this.queryForm = Object.assign(
         {
-          queryDateTime: "",
-          startTime: "",
-          endTime: "",
-          httpMethod: "",
-          url: "",
-          userName: "",
-          tenantName: "",
-          applicationName: "",
+          queryDateTime: '',
+          startTime: '',
+          endTime: '',
+          httpMethod: '',
+          url: '',
+          userName: '',
+          tenantName: '',
+          applicationName: '',
           hasException: false,
-          httpStatusCode: "",
+          httpStatusCode: ''
         },
         {}
-      );
+      )
     },
     handlePageChange({ currentPage, pageSize }) {
-      this.tablePage.currentPage = currentPage;
-      this.tablePage.pageSize = pageSize;
-      this.getList();
+      this.tablePage.currentPage = currentPage
+      this.tablePage.pageSize = pageSize
+      this.getList()
     },
     handleDetail(row) {
-      this.$refs["auditLogDetailsDialog"].createLogInfo(row);
+      this.$refs['auditLogDetailsDialog'].createLogInfo(row)
     },
     setTableHeight(height) {
       this.$nextTick(() => {
-        this.tableheight = height;
-      });
-    },
-  },
-  created() {
-    this.getList();
-  },
-};
+        this.tableheight = height
+      })
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

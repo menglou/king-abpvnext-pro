@@ -161,32 +161,32 @@
   </div>
 </template>
 <script>
-import { getAuditLog } from "@/api/auditlogging/auditlog";
-import clip from "@/utils/clipboard";
+import { getAuditLog } from '@/api/auditlogging/auditlog'
+import clip from '@/utils/clipboard'
 export default {
-  name: "AuditLogDetails",
+  name: 'AuditLogDetails',
   data() {
     return {
       dialogVisible: false,
-      logData: {},
-    };
+      logData: {}
+    }
   },
   methods: {
     getDetails() {
       getAuditLog(this.logData.id).then((response) => {
-        this.logData = response;
-      });
+        this.logData = response
+      })
     },
     createLogInfo(row) {
-      this.dialogVisible = true;
-      this.logData = row;
-      this.getDetails();
+      this.dialogVisible = true
+      this.logData = row
+      this.getDetails()
     },
     handleCopyParameters(text, event) {
-      clip(text, event);
-    },
-  },
-};
+      clip(text, event)
+    }
+  }
+}
 </script>
 
 <style  scoped>

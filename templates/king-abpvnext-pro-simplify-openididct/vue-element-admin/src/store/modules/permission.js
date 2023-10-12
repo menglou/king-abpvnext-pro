@@ -55,17 +55,17 @@ const mutations = {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
   },
-  //用老保存号所有的路由
+  // 用老保存号所有的路由
   SET_DEFAULT_ROUTES: (state, routes) => {
     state.defaultRoutes = constantRoutes.concat(routes)
   },
-  //设置顶部路由
+  // 设置顶部路由
   SET_TOPBAR_ROUTES: (state, routes) => {
     state.topbarRouters = routes
   },
   SET_SIDEBAR_ROUTERS: (state, routes) => {
     state.sidebarRouters = routes
-  },
+  }
 }
 
 const actions = {

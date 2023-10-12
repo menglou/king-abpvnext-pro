@@ -27,87 +27,87 @@
 </template>
 
 <script>
-import { changePassword } from "@/api/user";
+import { changePassword } from '@/api/user'
 export default {
   data() {
     var avalidatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error(this.$i18n.t("AbpAccount['ThisFieldIsNotValid.']")));
+      if (value === '') {
+        callback(new Error(this.$i18n.t("AbpAccount['ThisFieldIsNotValid.']")))
       } else if (value !== this.aForm.newPassword) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['{0} and {1} do not match.']", [
               this.$i18n.t("AbpAccount['DisplayName:NewPassword']"),
-              this.$i18n.t("AbpAccount['DisplayName:NewPasswordConfirm']"),
+              this.$i18n.t("AbpAccount['DisplayName:NewPasswordConfirm']")
             ])
           )
-        );
+        )
       } else {
-        callback();
+        callback()
       }
-    };
+    }
     return {
       aForm: {
-        password: "",
-        newPassword: "",
-        againPassword: "",
+        password: '',
+        newPassword: '',
+        againPassword: ''
       },
       aRules: {
         password: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ["blur", "change"],
-          },
+            trigger: ['blur', 'change']
+          }
         ],
         newPassword: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ["blur", "change"],
-          },
+            trigger: ['blur', 'change']
+          }
         ],
         againPassword: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
             validator: avalidatePass,
-            trigger: ["blur", "change"],
-          },
-        ],
+            trigger: ['blur', 'change']
+          }
+        ]
       },
-      loading: false,
-    };
+      loading: false
+    }
   },
   methods: {
     submit() {
       this.$refs.aForm.validate((valid) => {
         if (valid) {
-          this.loading = true;
+          this.loading = true
           const dataJson = {
             currentPassword: this.aForm.password,
-            newPassword: this.aForm.againPassword,
-          };
+            newPassword: this.aForm.againPassword
+          }
           changePassword(dataJson)
             .then((res) => {
-              this.loading = false;
+              this.loading = false
               this.$notify({
-                title:"提示",
-                message: "密码修改成功！",
-                type: "success",
-                duration: 2000,
-              });
+                title: '提示',
+                message: '密码修改成功！',
+                type: 'success',
+                duration: 2000
+              })
             })
             .catch(() => {
-              this.loading = false;
-            });
+              this.loading = false
+            })
         } else {
-          return false;
+          return false
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style>

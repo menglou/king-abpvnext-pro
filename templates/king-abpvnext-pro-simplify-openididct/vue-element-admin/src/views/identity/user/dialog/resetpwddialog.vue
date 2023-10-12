@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { resetpassword } from "@/api/identity/user";
+import { resetpassword } from '@/api/identity/user'
 export default {
   data() {
     const passwordValidator = (rule, value, callback) => {
@@ -45,34 +45,34 @@ export default {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['The {0} field is required.']", [
-              this.$i18n.t("AbpIdentity['Password']"),
+              this.$i18n.t("AbpIdentity['Password']")
             ])
           )
-        );
-        return;
+        )
+        return
       }
       if (value.length < this.requiredLength) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordTooShort']", [
-              `${this.requiredLength}`,
+              `${this.requiredLength}`
             ])
           )
-        );
-        return;
+        )
+        return
       }
       if (value.length > 128) {
         callback(
           new Error(
             this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['Password']"), "128"]
+              [this.$i18n.t("AbpIdentity['Password']"), '128']
             )
           )
-        );
-        return;
+        )
+        return
       }
-      let reg = /\d+/;
+      let reg = /\d+/
       if (this.requireDigit && !reg.test(value)) {
         callback(
           new Error(
@@ -80,10 +80,10 @@ export default {
               "AbpIdentity['Volo.Abp.Identity:PasswordRequiresDigit']"
             )
           )
-        );
-        return;
+        )
+        return
       }
-      reg = /[a-z]+/;
+      reg = /[a-z]+/
       if (this.requireLowercase && !reg.test(value)) {
         callback(
           new Error(
@@ -91,10 +91,10 @@ export default {
               "AbpIdentity['Volo.Abp.Identity:PasswordRequiresLower']"
             )
           )
-        );
-        return;
+        )
+        return
       }
-      reg = /[A-Z]+/;
+      reg = /[A-Z]+/
       if (this.requireUppercase && !reg.test(value)) {
         callback(
           new Error(
@@ -102,10 +102,10 @@ export default {
               "AbpIdentity['Volo.Abp.Identity:PasswordRequiresUpper']"
             )
           )
-        );
-        return;
+        )
+        return
       }
-      reg = /\W+/;
+      reg = /\W+/
       if (this.requireNonAlphanumeric && !reg.test(value)) {
         callback(
           new Error(
@@ -113,137 +113,137 @@ export default {
               "AbpIdentity['Volo.Abp.Identity:PasswordRequiresNonAlphanumeric']"
             )
           )
-        );
-        return;
+        )
+        return
       }
 
-      callback();
-    };
+      callback()
+    }
     var avalidatePass = (rule, value, callback) => {
-      if (value === "") {
+      if (value === '') {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['The {0} field is required.']", [
-              this.$i18n.t("AbpIdentity['DisplayName:NewPasswordConfirm']"),
+              this.$i18n.t("AbpIdentity['DisplayName:NewPasswordConfirm']")
             ])
           )
-        );
+        )
       } else if (value !== this.resetpwdForm.newpassword) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['ThisFieldIsNotValid.']", [
               this.$i18n.t("AbpIdentity['DisplayName:NewPassword']"),
-              this.$i18n.t("AbpIdentity['DisplayName:NewPasswordConfirm']"),
+              this.$i18n.t("AbpIdentity['DisplayName:NewPasswordConfirm']")
             ])
           )
-        );
+        )
       } else {
-        callback();
+        callback()
       }
-    };
+    }
     return {
       callbackmethod: null,
       resetpwddialogFormVisible: false,
-      userId: "",
+      userId: '',
       resetpwdForm: {
-        newpassword: "",
-        confirmpassword: "",
+        newpassword: '',
+        confirmpassword: ''
       },
       resetpwdFormrules: {
         newpassword: [
           {
             required: true,
             validator: passwordValidator,
-            trigger: ["blur", "change"],
-          },
+            trigger: ['blur', 'change']
+          }
         ],
         confirmpassword: [
           {
             required: true,
             validator: avalidatePass,
-            trigger: ["blur", "change"],
-          },
-        ],
-      },
-    };
+            trigger: ['blur', 'change']
+          }
+        ]
+      }
+    }
   },
   computed: {
     requiredLength() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequiredLength"
+          'Abp.Identity.Password.RequiredLength'
         ] || 6
-      );
+      )
     },
     requiredUniqueChars() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequiredUniqueChars"
+          'Abp.Identity.Password.RequiredUniqueChars'
         ] || 1
-      );
+      )
     },
     requireLowercase() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireLowercase"
+          'Abp.Identity.Password.RequireLowercase'
         ] || true
-      );
+      )
     },
     requireNonAlphanumeric() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireNonAlphanumeric"
+          'Abp.Identity.Password.RequireNonAlphanumeric'
         ] || true
-      );
+      )
     },
     requireUppercase() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireUppercase"
+          'Abp.Identity.Password.RequireUppercase'
         ] || true
-      );
+      )
     },
     requireDigit() {
       return (
         this.$store.state.app.abpConfig.setting.values[
-          "Abp.Identity.Password.RequireDigit"
+          'Abp.Identity.Password.RequireDigit'
         ] || true
-      );
-    },
+      )
+    }
   },
   methods: {
     async createresetpwddialog(cb, userid) {
-      this.callbackmethod = cb;
-      this.resetpwddialogFormVisible = true;
-      this.userId = userid;
+      this.callbackmethod = cb
+      this.resetpwddialogFormVisible = true
+      this.userId = userid
     },
     savepwd() {
       this.$refs.resetpwdForm.validate((valid) => {
         if (valid) {
           resetpassword({
             userId: this.userId,
-            password: this.resetpwdForm.newpassword,
+            password: this.resetpwdForm.newpassword
           }).then((res) => {
             this.$notify({
-              title: "提示",
-              message: "重置密码成功！",
-              type: "success",
-            });
-            this.callbackmethod();
-            this.resetpwdmodalclose();
-          });
+              title: '提示',
+              message: '重置密码成功！',
+              type: 'success'
+            })
+            this.callbackmethod()
+            this.resetpwdmodalclose()
+          })
         }
-      });
+      })
     },
     resetpwdmodalclose() {
-      this.callbackmethod = null;
-      this.$refs.resetpwdForm.resetFields();
-      this.resetpwdForm.newpassword = "";
-      this.resetpwdForm.confirmpassword = "";
-      this.resetpwddialogFormVisible = false;
-    },
-  },
-};
+      this.callbackmethod = null
+      this.$refs.resetpwdForm.resetFields()
+      this.resetpwdForm.newpassword = ''
+      this.resetpwdForm.confirmpassword = ''
+      this.resetpwddialogFormVisible = false
+    }
+  }
+}
 </script>
 
 <style scoped>

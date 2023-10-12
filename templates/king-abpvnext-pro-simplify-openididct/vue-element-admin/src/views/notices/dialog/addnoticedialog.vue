@@ -23,14 +23,13 @@
                     v-for="dict in statusOptions"
                     :key="dict.value"
                     :label="dict.label"
-                    >{{ dict.label }}</el-radio
-                  >
+                  >{{ dict.label }}</el-radio>
                 </el-radio-group>
               </el-form-item>
             </el-col>
             <el-col :span="24">
               <el-form-item label="是否创建并发布">
-                <el-switch v-model="form.isCreate"></el-switch>
+                <el-switch v-model="form.isCreate" />
               </el-form-item>
             </el-col>
             <el-col :span="24">
@@ -53,69 +52,69 @@
 </template>
 
 <script>
-import Editor from "@/components/Editor";
-import { sendandcreatenotice } from "@/api/notcie";
+import Editor from '@/components/Editor'
+import { sendandcreatenotice } from '@/api/notcie'
 export default {
   components: {
-    Editor,
+    Editor
   },
   data() {
     return {
       callbackmethod: null,
       notcieadddialogFormVisible: false,
       form: {
-        title: "",
-        status: "正常",
-        content: "",
-        isCreate: false,
+        title: '',
+        status: '正常',
+        content: '',
+        isCreate: false
       },
       statusOptions: [
-        { label: "正常", value: 0 },
-        { label: "关闭", value: 1 },
+        { label: '正常', value: 0 },
+        { label: '关闭', value: 1 }
       ],
       rules: {
         title: [
-          { required: true, message: "公告标题不能为空", trigger: "blur" },
-        ],
-      },
-    };
+          { required: true, message: '公告标题不能为空', trigger: 'blur' }
+        ]
+      }
+    }
   },
   methods: {
     async createaddnoticedialog(cb) {
-      this.callbackmethod = cb;
-      this.notcieadddialogFormVisible = true;
+      this.callbackmethod = cb
+      this.notcieadddialogFormVisible = true
     },
     addnoticemodalclose() {
-      this.callbackmethod = null;
-      this.$refs.form.resetFields();
-      this.form.status = "正常";
-      this.form.isCreate = false;
-      this.form.content = "";
-      this.notcieadddialogFormVisible = false;
+      this.callbackmethod = null
+      this.$refs.form.resetFields()
+      this.form.status = '正常'
+      this.form.isCreate = false
+      this.form.content = ''
+      this.notcieadddialogFormVisible = false
     },
 
     savenotice() {
-      let param = this.form;
-      param.status = this.form.status == "正常" ? 0 : 1;
+      const param = this.form
+      param.status = this.form.status == '正常' ? 0 : 1
       this.$refs.form.validate((valid) => {
         if (valid) {
           sendandcreatenotice(param).then((res) => {
             this.$notify({
-              title: "提示",
-              message: "添加通告成功",
-              type: "success",
-            });
-            this.callbackmethod();
-            this.addnoticemodalclose();
-          });
+              title: '提示',
+              message: '添加通告成功',
+              type: 'success'
+            })
+            this.callbackmethod()
+            this.addnoticemodalclose()
+          })
         } else {
-          console.log("error submit!!");
-          return false;
+          console.log('error submit!!')
+          return false
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

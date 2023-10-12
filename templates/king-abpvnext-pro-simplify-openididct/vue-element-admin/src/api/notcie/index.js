@@ -11,10 +11,9 @@ export function sendandcreatenotice(data) {
 export function onlysendnotice(id) {
   return request({
     url: `/api/notifications/notification/SendOnlyBroadCastMessage/${id}`,
-    method: 'get',
+    method: 'get'
   })
 }
-
 
 export function getnoticepagelist(data) {
   return request({
@@ -43,7 +42,7 @@ export function getcommonnoticelist(data) {
 export function deleteBroadCastnotice(id) {
   return request({
     url: `/api/notifications/notification/DeleteBroadCast/${id}`,
-    method: 'delete',
+    method: 'delete'
   })
 }
 

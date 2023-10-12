@@ -6,7 +6,7 @@
 
     <div class="user-profile">
       <div class="box-center">
-        <el-avatar :size="80" :src="user.avatar" fit="fill"></el-avatar>
+        <el-avatar :size="80" :src="user.avatar" fit="fill" />
       </div>
       <div />
       <div class="box-center">
@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import PanThumb from "@/components/PanThumb";
-import { getFilePathByName } from "@/utils/abp";
+import PanThumb from '@/components/PanThumb'
+import { getFilePathByName } from '@/utils/abp'
 export default {
   components: { PanThumb },
   props: {
@@ -58,21 +58,21 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: "",
-          userName: "",
-          email: "",
-          avatar: "",
-          role: "",
-          phoneNumber: "",
-          introduction: "",
-        };
-      },
-    },
+          name: '',
+          userName: '',
+          email: '',
+          avatar: '',
+          role: '',
+          phoneNumber: '',
+          introduction: ''
+        }
+      }
+    }
   },
   data() {
     return {
-      loading: false,
-    };
+      loading: false
+    }
   },
   mounted() {},
   methods: {
@@ -81,11 +81,11 @@ export default {
       // TODO: Image format verification
     },
     uploadAvatar(data) {
-      const fd = new FormData();
-      fd.append("file", data.file);
+      const fd = new FormData()
+      fd.append('file', data.file)
 
       this.getBase64(data.file).then((res) => {
-        this.user.avatar = res;
+        this.user.avatar = res
         const userInfo = {
           userName: this.user.userName,
           email: this.user.email,
@@ -93,41 +93,41 @@ export default {
           phoneNumber: this.user.phoneNumber,
           extraProperties: {
             Avatar: res,
-            Introduction: this.user.introduction,
-          },
-        };
-        this.loading = true;
-        this.$store.dispatch("user/setUserInfo", userInfo).then((res) => {
-          this.loading = false;
+            Introduction: this.user.introduction
+          }
+        }
+        this.loading = true
+        this.$store.dispatch('user/setUserInfo', userInfo).then((res) => {
+          this.loading = false
           this.$notify({
-            title: "提示",
-            message:"头像上传成功！",
-            type: "success",
-            duration: 2000,
-          });
-        });
-      });
+            title: '提示',
+            message: '头像上传成功！',
+            type: 'success',
+            duration: 2000
+          })
+        })
+      })
     },
 
-    //图片文件转base64方法
+    // 图片文件转base64方法
     getBase64(file) {
-      return new Promise(function (resolve, reject) {
-        const reader = new FileReader();
-        let imgResult = "";
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-          imgResult = reader.result;
-        };
-        reader.onerror = function (error) {
-          reject(error);
-        };
-        reader.onloadend = function () {
-          resolve(imgResult);
-        };
-      });
-    },
-  },
-};
+      return new Promise(function(resolve, reject) {
+        const reader = new FileReader()
+        let imgResult = ''
+        reader.readAsDataURL(file)
+        reader.onload = function() {
+          imgResult = reader.result
+        }
+        reader.onerror = function(error) {
+          reject(error)
+        }
+        reader.onloadend = function() {
+          resolve(imgResult)
+        }
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

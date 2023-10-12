@@ -3,47 +3,47 @@
     <el-tab-pane label="消息" name="first" class="el-tab-content">
       <message-list
         v-if="messagelist.length > 0"
-        :messageList="messagelist"
-      ></message-list>
-      <el-empty v-else description="暂无数据"></el-empty>
+        :message-list="messagelist"
+      />
+      <el-empty v-else description="暂无数据" />
     </el-tab-pane>
     <el-tab-pane label="通知" name="second" class="el-tab-content">
       <notice-list
         v-if="notificationlist.length > 0"
-        :noticeList="notificationlist"
-      ></notice-list>
-      <el-empty v-else description="暂无数据"></el-empty>
+        :notice-list="notificationlist"
+      />
+      <el-empty v-else description="暂无数据" />
     </el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
-import NoticeList from "./noticelist.vue";
-import MessageList from "./messagelist.vue";
+import NoticeList from './noticelist.vue'
+import MessageList from './messagelist.vue'
 export default {
   components: {
     NoticeList,
-    MessageList,
+    MessageList
   },
   props: {
     messagelist: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     notificationlist: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   data() {
     return {
-      activeName: "first",
-    };
+      activeName: 'first'
+    }
   },
   methods: {
-    onGoToGiteeClick() {},
-  },
-};
+    onGoToGiteeClick() {}
+  }
+}
 </script>
 
 <style  lang="scss" scoped>

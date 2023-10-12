@@ -2,14 +2,14 @@
   <div class="layout-navbars-breadcrumb-user-news">
     <div class="content-box">
       <template v-if="noticeList.length > 0">
-        <div class="content-box-item" v-for="(v, k) in noticeList" :key="k">
+        <div v-for="(v, k) in noticeList" :key="k" class="content-box-item">
           <div style="font-weight: bold">{{ v.title }}</div>
-          <div class="content-box-msg" v-html="v.content"></div>
+          <div class="content-box-msg" v-html="v.content" />
         </div>
       </template>
-      <div class="content-box-empty" v-else>
+      <div v-else class="content-box-empty">
         <div class="content-box-empty-margin">
-          <i class="el-icon-s-promotion"></i>
+          <i class="el-icon-s-promotion" />
           <div class="mt15">全部已读</div>
         </div>
       </div>
@@ -18,21 +18,21 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment'
 export default {
-  name: "NoticeList",
+  name: 'NoticeList',
   props: {
     noticeList: {
       Type: Array,
       default: () => {
-        return [];
-      },
-    },
+        return []
+      }
+    }
   },
   methods: {
-    moment,
-  },
-};
+    moment
+  }
+}
 </script>
 
 <style scoped lang="scss">

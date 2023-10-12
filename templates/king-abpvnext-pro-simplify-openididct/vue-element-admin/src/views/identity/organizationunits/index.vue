@@ -14,9 +14,9 @@
               >
                 <i class="el-icon-plus">添加根组织</i>
               </el-button>
-              <span style="font-size: 10px; padding: 4px 10px; color: #eee"
-                >|</span
-              >
+              <span
+                style="font-size: 10px; padding: 4px 10px; color: #eee"
+              >|</span>
               <el-tooltip
                 class="item"
                 effect="dark"
@@ -49,9 +49,9 @@
                   "
                 />
                 <span class="node-icon-label">{{ node.label }}</span>
-                <span style="font-size: 10px; margin-left: 3px; color: #a0a0a0"
-                  >{{ node.data.userInOrgCount }}组织成员,角色</span
-                >
+                <span
+                  style="font-size: 10px; margin-left: 3px; color: #a0a0a0"
+                >{{ node.data.userInOrgCount }}组织成员,角色</span>
               </span>
             </el-tree>
           </el-scrollbar>
@@ -78,8 +78,7 @@
                   icon="el-icon-plus"
                   type="primary"
                   @click="adduserinorg"
-                  >添加成员</el-button
-                >
+                >添加成员</el-button>
               </div>
             </template>
             <el-scrollbar class="userinorgcardscroller">
@@ -169,9 +168,10 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="canceladdrootorgForm">取 消</el-button>
-        <el-button type="primary" @click="confirmaddrootorgForm"
-          >确 定</el-button
-        >
+        <el-button
+          type="primary"
+          @click="confirmaddrootorgForm"
+        >确 定</el-button>
       </div>
     </el-dialog>
     <el-dialog title="修改组织机构" :visible.sync="dialogeditorgFormVisible">
@@ -262,8 +262,7 @@
             icon="el-icon-plus"
             type="primary"
             @click="saveusertoorg"
-            >保存</el-button
-          >
+          >保存</el-button>
         </div>
       </template>
       <vxe-table
@@ -327,53 +326,53 @@ import {
   getallOrganization,
   moveOrganization,
   getorginfobyid,
-  getuseinorganizationunis,
-} from "@/api/identity/organizationunit";
+  getuseinorganizationunis
+} from '@/api/identity/organizationunit'
 import {
   getuserlist,
   batchadduserToOrg,
-  removeuserinOrg,
-} from "@/api/identity/user";
+  removeuserinOrg
+} from '@/api/identity/user'
 
-import { mapGetters } from "vuex";
-import moment from "moment";
-import { checkPermission } from "@/utils/abp";
+import { mapGetters } from 'vuex'
+import moment from 'moment'
+import { checkPermission } from '@/utils/abp'
 export default {
-  name: "OrganizationUnit",
+  name: 'OrganizationUnit',
   data() {
     return {
       allorgdata: [],
       Treedata: [],
       defaultProps: {
-        children: "children",
-        label: "displayName",
+        children: 'children',
+        label: 'displayName'
       },
       // 新增
       dialogaddrootorgFormVisible: false, // 添加根组织弹窗
       addrootorfForm: {
-        displayName: "",
+        displayName: '',
         parentId: null,
-        parentName: "",
+        parentName: ''
       },
       addrootorgFormrules: {
         displayName: [
-          { required: true, message: "请输入组织机构名称", trigger: "blur" },
-        ],
+          { required: true, message: '请输入组织机构名称', trigger: 'blur' }
+        ]
       },
       // 修改
       dialogeditorgFormVisible: false,
       editrootorgForm: {
-        displayName: "",
-        id: "",
-        parentName: "",
+        displayName: '',
+        id: '',
+        parentName: '',
         parentId: null,
-        updateparentId: "",
-        concurrencyStamp: "",
+        updateparentId: '',
+        concurrencyStamp: ''
       },
       editrootorgFormrules: {
         displayName: [
-          { required: true, message: "请输入组织机构名称", trigger: "blur" },
-        ],
+          { required: true, message: '请输入组织机构名称', trigger: 'blur' }
+        ]
       },
       showMenu: false,
       classname: {},
@@ -381,7 +380,7 @@ export default {
       tablePage: {
         currentPage: 1,
         pageSize: 10,
-        totalResult: 0,
+        totalResult: 0
       },
       orguserDataLit: [],
       // 添加组织成员弹窗控制显示与隐藏
@@ -389,54 +388,54 @@ export default {
       tableforUserListPage: {
         currentPage: 1,
         pageSize: 10,
-        totalResult: 0,
+        totalResult: 0
       },
       userDataLit: [],
-      selectedUserList: [], // 选中的用户
-    };
+      selectedUserList: [] // 选中的用户
+    }
   },
   computed: {
-    ...mapGetters(["abpConfig"]),
+    ...mapGetters(['abpConfig']),
     userinorgtitle() {
       if (Object.keys(this.currentchecknode).length == 0) {
-        return "组织成员";
+        return '组织成员'
       } else {
-        return "组织成员" + "(" + this.currentchecknode.displayName + ")";
+        return '组织成员' + '(' + this.currentchecknode.displayName + ')'
       }
     },
     allorgdatapinjie() {
-      const data = [];
+      const data = []
       for (const i of this.allorgdata) {
         if (i.parentId != null) {
-          const res = this.allorgdata.find((x) => x.id == i.parentId);
+          const res = this.allorgdata.find((x) => x.id == i.parentId)
           if (res.constructor === Object) {
-            i.parentName = res.displayName;
+            i.parentName = res.displayName
           }
         } else {
-          i.parentName = "";
+          i.parentName = ''
         }
-        data.push(i);
+        data.push(i)
       }
-      console.log(data);
-      return data;
-    },
+      console.log(data)
+      return data
+    }
   },
   mounted() {
-    document.body.addEventListener("click", () => {
-      this.left();
-    });
+    document.body.addEventListener('click', () => {
+      this.left()
+    })
     // 监听滚动条滚动事件
-    document.body.addEventListener("scroll", () => {
-      this.left();
-    });
+    document.body.addEventListener('scroll', () => {
+      this.left()
+    })
     // 监听 el-scroller滚动条滚动事件
-    const scrollbarEl = this.$refs.scrollbar.wrap;
+    const scrollbarEl = this.$refs.scrollbar.wrap
     scrollbarEl.onscroll = () => {
-      this.left();
-    };
+      this.left()
+    }
   },
   created() {
-    this.getorganizationunit();
+    this.getorganizationunit()
   },
   methods: {
     moment,
@@ -444,296 +443,296 @@ export default {
     // 获取组织树
     getorganizationunit() {
       GetOrganizationunitForTree().then((res) => {
-        this.Treedata = res.items;
+        this.Treedata = res.items
         this.$nextTick(() => {
-          this.$refs.tree.setCurrentKey(this.currentchecknode.id);
-        });
-      });
+          this.$refs.tree.setCurrentKey(this.currentchecknode.id)
+        })
+      })
     },
     // 获取所有的组织
     async getallOrganizationDatalist() {
-      const res = await getallOrganization();
-      this.allorgdata = res;
+      const res = await getallOrganization()
+      this.allorgdata = res
     },
     // 获取该组织下所有用户
     getuserinorglist() {
-      const { currentPage, pageSize } = this.tablePage;
+      const { currentPage, pageSize } = this.tablePage
       const param = {
         ouId: this.currentchecknode.id,
         includeChildren: false,
-        Sorting: "",
+        Sorting: '',
         SkipCount: (currentPage - 1) * pageSize,
-        MaxResultCount: pageSize,
-      };
+        MaxResultCount: pageSize
+      }
       getuseinorganizationunis(param).then((res) => {
-        this.orguserDataLit = res.items;
-        this.tablePage.totalResult = res.totalCount;
-      });
+        this.orguserDataLit = res.items
+        this.tablePage.totalResult = res.totalCount
+      })
     },
     // tree节点事件
     nodeclick(data, node, tree) {
-      this.currentchecknode = node.data;
-      this.getuserinorglist();
-      this.left();
+      this.currentchecknode = node.data
+      this.getuserinorglist()
+      this.left()
     },
     // tree鼠标右键事件
     contextmenuhandler(param, data, node, tree) {
-      this.currentchecknode = node.data;
+      this.currentchecknode = node.data
       this.$nextTick(() => {
-        this.$refs.tree.setCurrentKey(node.data.id);
-      });
-      this.showMenu = true;
+        this.$refs.tree.setCurrentKey(node.data.id)
+      })
+      this.showMenu = true
       this.classname = {
-        position: "fixed",
-        "z-index": "2000",
-        left: param.clientX + 5 + "px",
-        top: param.clientY + 7 + "px",
-      };
-      this.getuserinorglist();
+        position: 'fixed',
+        'z-index': '2000',
+        left: param.clientX + 5 + 'px',
+        top: param.clientY + 7 + 'px'
+      }
+      this.getuserinorglist()
     },
 
     left() {
-      this.showMenu = false;
-      this.classname = {};
+      this.showMenu = false
+      this.classname = {}
     },
     // 添加根组织
     addrootorg() {
       // this.addRootOrganization
-      this.dialogaddrootorgFormVisible = true;
+      this.dialogaddrootorgFormVisible = true
     },
     canceladdrootorgForm() {
-      this.dialogaddrootorgFormVisible = false;
-      this.$refs.addrootorgForm.resetFields();
-      this.addrootorfForm.parentId = null;
-      this.addrootorfForm.displayName = "";
-      this.addrootorfForm.parentName = "";
+      this.dialogaddrootorgFormVisible = false
+      this.$refs.addrootorgForm.resetFields()
+      this.addrootorfForm.parentId = null
+      this.addrootorfForm.displayName = ''
+      this.addrootorfForm.parentName = ''
     },
     // 添加组织
     confirmaddrootorgForm() {
       this.$refs.addrootorgForm.validate((valid) => {
         if (valid) {
           const param = {
-            displayName: this.addrootorfForm.displayName,
-          };
+            displayName: this.addrootorfForm.displayName
+          }
           if (this.addrootorfForm.parentId != null) {
-            param.parentId = this.addrootorfForm.parentId;
+            param.parentId = this.addrootorfForm.parentId
           } else {
             // param.parentId = null;
           }
           addRootOrganization(param).then((res) => {
             this.$notify({
-              title: "提示",
-              message: "添加新组织结构成功",
-              type: "success",
-            });
+              title: '提示',
+              message: '添加新组织结构成功',
+              type: 'success'
+            })
             this.canceladdrootorgForm()
-            this.getorganizationunit();
-          });
+            this.getorganizationunit()
+          })
         } else {
-          return false;
+          return false
         }
-      });
+      })
     },
     // 添加子组织
     addchildorg() {
-      this.addrootorfForm.parentId = this.currentchecknode.id;
-      this.addrootorfForm.parentName = this.currentchecknode.displayName;
-      this.dialogaddrootorgFormVisible = true;
+      this.addrootorfForm.parentId = this.currentchecknode.id
+      this.addrootorfForm.parentName = this.currentchecknode.displayName
+      this.dialogaddrootorgFormVisible = true
     },
     // 修改组织信息
     async updatetreenode() {
-      await this.getallOrganizationDatalist();
-      const res = await getorginfobyid(this.currentchecknode.id);
-      this.dialogeditorgFormVisible = true;
+      await this.getallOrganizationDatalist()
+      const res = await getorginfobyid(this.currentchecknode.id)
+      this.dialogeditorgFormVisible = true
 
-      this.editrootorgForm.concurrencyStamp = res.concurrencyStamp;
-      this.editrootorgForm.id = res.id;
-      this.editrootorgForm.parentId = res.parentId;
+      this.editrootorgForm.concurrencyStamp = res.concurrencyStamp
+      this.editrootorgForm.id = res.id
+      this.editrootorgForm.parentId = res.parentId
 
-      this.editrootorgForm.displayName = res.displayName;
+      this.editrootorgForm.displayName = res.displayName
       this.editrootorgForm.updateparentId =
         this.currentchecknode.parentId == null
           ? this.currentchecknode.id
-          : this.currentchecknode.parentId;
+          : this.currentchecknode.parentId
     },
     // 删除组织
     deleteorg() {
-      this.$confirm("此操作将永久删除, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+      this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
       })
         .then(() => {
           deleteOrganization(this.currentchecknode.id).then((res) => {
             this.$notify({
-              title: "提示",
-              message: "删除成功",
-              type: "success",
-            });
-            this.currentchecknode = {};
-            this.getorganizationunit();
-          });
+              title: '提示',
+              message: '删除成功',
+              type: 'success'
+            })
+            this.currentchecknode = {}
+            this.getorganizationunit()
+          })
         })
-        .catch(() => {});
+        .catch(() => {})
     },
     // 修改组织信息弹窗取消
     canceleditorgForm() {
-      this.dialogeditorgFormVisible = false;
-      this.$refs.editrootorgForm.resetFields();
-      this.editrootorgForm.displayName = "";
-      this.editrootorgForm.id = "";
-      this.editrootorgForm.parentName = "";
-      this.editrootorgForm.parentId = null;
-      this.editrootorgForm.updateparentId = "";
-      this.editrootorgForm.concurrencyStamp = "";
+      this.dialogeditorgFormVisible = false
+      this.$refs.editrootorgForm.resetFields()
+      this.editrootorgForm.displayName = ''
+      this.editrootorgForm.id = ''
+      this.editrootorgForm.parentName = ''
+      this.editrootorgForm.parentId = null
+      this.editrootorgForm.updateparentId = ''
+      this.editrootorgForm.concurrencyStamp = ''
     },
     // 修改组织信息弹窗确定
     confirmeditorgForm() {
-      const res = this.editrootorgForm;
+      const res = this.editrootorgForm
       const param = {
         id: this.editrootorgForm.id,
         parentId:
-          this.editrootorgForm.updateparentId == ""
+          this.editrootorgForm.updateparentId == ''
             ? null
-            : this.editrootorgForm.updateparentId,
-      };
+            : this.editrootorgForm.updateparentId
+      }
       const param2 = {
         displayName: this.editrootorgForm.displayName,
-        concurrencyStamp: this.editrootorgForm.concurrencyStamp,
-      };
+        concurrencyStamp: this.editrootorgForm.concurrencyStamp
+      }
       if (param.id == param.parentId) {
         this.$notify({
-          title: "提示",
-          message: "当前组织不可移动到自己",
-          type: "warning",
-        });
+          title: '提示',
+          message: '当前组织不可移动到自己',
+          type: 'warning'
+        })
       } else {
         this.$refs.editrootorgForm.validate((valid) => {
           if (valid) {
             updateOrganization(this.editrootorgForm.id, param2).then((res) => {
               moveOrganization(param).then((res) => {
                 this.$notify({
-                  title: "提示",
-                  message: "修改成功",
-                  type: "success",
-                });
+                  title: '提示',
+                  message: '修改成功',
+                  type: 'success'
+                })
                 this.canceleditorgForm()
-                this.getorganizationunit();
-              });
-            });
+                this.getorganizationunit()
+              })
+            })
           } else {
-            return false;
+            return false
           }
-        });
+        })
       }
     },
     // 添加用户到组织弹窗显示
     adduserinorg() {
-      this.dialogaddorgUserFormVisible = true;
-      this.getuserDatalist();
+      this.dialogaddorgUserFormVisible = true
+      this.getuserDatalist()
     },
     getuserDatalist() {
-      const { currentPage, pageSize } = this.tableforUserListPage;
+      const { currentPage, pageSize } = this.tableforUserListPage
       const param = {
-        filter: "",
-        Sorting: "",
+        filter: '',
+        Sorting: '',
         SkipCount: (currentPage - 1) * pageSize,
-        MaxResultCount: pageSize,
-      };
+        MaxResultCount: pageSize
+      }
       getuserlist(param).then((res) => {
-        this.userDataLit = res.items;
-        this.tableforUserListPage.totalResult = res.totalCount;
-      });
+        this.userDataLit = res.items
+        this.tableforUserListPage.totalResult = res.totalCount
+      })
     },
     // table列勾选事件
     checkboxchange({ records, checked, row }) {
       if (checked == true) {
         // 选中
-        this.selectedUserList.push(row);
+        this.selectedUserList.push(row)
       } else {
         // 取消选中
         this.selectedUserList.splice(
           this.selectedUserList.findIndex((x) => x.id == row.id),
           1
-        );
+        )
       }
     },
     // table 列全选事件
     checkall({ records, checked }) {
-      this.selectedUserList = [];
-      this.selectedUserList.push(...records);
+      this.selectedUserList = []
+      this.selectedUserList.push(...records)
     },
     // 选择成员添加到组织弹窗关闭
     addorgUserdialogclose() {
-      this.tableforUserListPage.currentPage = 1;
-      this.tableforUserListPage.pageSize = 10;
-      this.tableforUserListPage.totalResult = 0;
+      this.tableforUserListPage.currentPage = 1
+      this.tableforUserListPage.pageSize = 10
+      this.tableforUserListPage.totalResult = 0
     },
     // 保存用户到组织按钮事件
     saveusertoorg() {
       const param = {
         userId: this.selectedUserList.map((item) => {
-          return item.id;
+          return item.id
         }),
-        orgId: this.currentchecknode.id,
-      };
+        orgId: this.currentchecknode.id
+      }
       batchadduserToOrg(param).then((res) => {
         if (res == true) {
           this.$notify({
-            title: "提示",
-            message: "添加用户到组织成功",
-            type: "success",
-          });
-          this.tableforUserListPage.currentPage = 1;
-          this.tableforUserListPage.pageSize = 10;
-          this.tableforUserListPage.totalResult = 0;
-          this.dialogaddorgUserFormVisible = false;
-          this.getuserinorglist();
-          this.getorganizationunit();
+            title: '提示',
+            message: '添加用户到组织成功',
+            type: 'success'
+          })
+          this.tableforUserListPage.currentPage = 1
+          this.tableforUserListPage.pageSize = 10
+          this.tableforUserListPage.totalResult = 0
+          this.dialogaddorgUserFormVisible = false
+          this.getuserinorglist()
+          this.getorganizationunit()
         }
-      });
+      })
     },
     // 删除该组织下的用户
     deleteuserinorg(userid) {
       const param = {
         UserId: userid,
-        OrgId: this.currentchecknode.id,
-      };
-      this.$confirm("此操作将永久删除, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+        OrgId: this.currentchecknode.id
+      }
+      this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
       })
         .then(() => {
           removeuserinOrg(param).then((res) => {
             if (res == true) {
               this.$notify({
-                title: "提示",
-                message: "删除该组织下的用户成功",
-                type: "success",
-              });
-              this.getuserinorglist();
-              this.getorganizationunit();
+                title: '提示',
+                message: '删除该组织下的用户成功',
+                type: 'success'
+              })
+              this.getuserinorglist()
+              this.getorganizationunit()
             }
-          });
+          })
         })
-        .catch(() => {});
+        .catch(() => {})
     },
     handlePageChange({ currentPage, pageSize }) {
-      this.tablePage.currentPage = currentPage;
-      this.tablePage.pageSize = pageSize;
-      this.getuserinorglist();
+      this.tablePage.currentPage = currentPage
+      this.tablePage.pageSize = pageSize
+      this.getuserinorglist()
     },
     handlePageforUserChange({ currentPage, pageSize }) {
-      this.tableforUserListPage.currentPage = currentPage;
-      this.tableforUserListPage.pageSize = pageSize;
-      this.getuserDatalist();
+      this.tableforUserListPage.currentPage = currentPage
+      this.tableforUserListPage.pageSize = pageSize
+      this.getuserDatalist()
     },
     checCheckboxkMethod({ row }) {
-      return this.orguserDataLit.findIndex((x) => x.id == row.id) == -1;
-    },
-  },
-};
+      return this.orguserDataLit.findIndex((x) => x.id == row.id) == -1
+    }
+  }
+}
 </script>
 
 <style scoped>

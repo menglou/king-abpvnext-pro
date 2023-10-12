@@ -23,8 +23,7 @@
                     v-for="dict in statusOptions"
                     :key="dict.value"
                     :label="dict.label"
-                    >{{ dict.label }}</el-radio
-                  >
+                  >{{ dict.label }}</el-radio>
                 </el-radio-group>
               </el-form-item>
             </el-col>
@@ -47,75 +46,75 @@
   </vxe-modal>
 </template>
 <script>
-import Editor from "@/components/Editor";
-import { updateBroadCastnotice } from "@/api/notcie";
+import Editor from '@/components/Editor'
+import { updateBroadCastnotice } from '@/api/notcie'
 export default {
   components: {
-    Editor,
+    Editor
   },
   data() {
     return {
       callbackmethod: null,
       notcieeditdialogFormVisible: false,
       form: {
-        id: "",
-        title: "",
-        status: "",
-        content: "",
-        isCreate: false,
+        id: '',
+        title: '',
+        status: '',
+        content: '',
+        isCreate: false
       },
       statusOptions: [
-        { label: "正常", value: 0 },
-        { label: "关闭", value: 1 },
+        { label: '正常', value: 0 },
+        { label: '关闭', value: 1 }
       ],
       rules: {
         title: [
-          { required: true, message: "公告标题不能为空", trigger: "blur" },
-        ],
-      },
-    };
+          { required: true, message: '公告标题不能为空', trigger: 'blur' }
+        ]
+      }
+    }
   },
   methods: {
     createeditnoticedialog(cb, row) {
-      this.callbackmethod = cb;
-      this.notcieeditdialogFormVisible = true;
-      this.form.id = row.id;
-      this.form.title = row.title;
-      this.form.status = row.status == 0 ? "正常" : "关闭";
-      this.form.content = row.content;
+      this.callbackmethod = cb
+      this.notcieeditdialogFormVisible = true
+      this.form.id = row.id
+      this.form.title = row.title
+      this.form.status = row.status == 0 ? '正常' : '关闭'
+      this.form.content = row.content
     },
     editnoticemodalclose() {
-      this.callbackmethod = null;
-      this.$refs.form.resetFields();
-      this.form.id = "";
-      this.form.status = "正常";
-      this.form.isCreate = false;
-      this.form.content = "";
-      this.notcieeditdialogFormVisible = false;
+      this.callbackmethod = null
+      this.$refs.form.resetFields()
+      this.form.id = ''
+      this.form.status = '正常'
+      this.form.isCreate = false
+      this.form.content = ''
+      this.notcieeditdialogFormVisible = false
     },
 
     editnotice() {
-      let param = this.form;
-      param.status = this.form.status == "正常" ? 0 : 1;
+      const param = this.form
+      param.status = this.form.status == '正常' ? 0 : 1
       this.$refs.form.validate((valid) => {
         if (valid) {
           updateBroadCastnotice(param.id, param).then((res) => {
             this.$notify({
-              title: "提示",
-              message: "修改通告成功",
-              type: "success",
-            });
-            this.callbackmethod();
-            this.editnoticemodalclose();
-          });
+              title: '提示',
+              message: '修改通告成功',
+              type: 'success'
+            })
+            this.callbackmethod()
+            this.editnoticemodalclose()
+          })
         } else {
-          console.log("error submit!!");
-          return false;
+          console.log('error submit!!')
+          return false
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>

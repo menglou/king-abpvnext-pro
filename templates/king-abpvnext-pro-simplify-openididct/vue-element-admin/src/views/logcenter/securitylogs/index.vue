@@ -72,8 +72,7 @@
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
                 value-format="yyyy-MM-dd"
-              >
-              </el-date-picker>
+              />
             </template>
           </vxe-form-item>
           <vxe-form-item align="right" span="24" collapse-node>
@@ -83,7 +82,7 @@
       </template>
 
       <template slot="down">
-        <vxe-toolbar ref="xToolbar2" custom> </vxe-toolbar>
+        <vxe-toolbar ref="xToolbar2" custom />
         <vxe-table
           id="securitylog"
           :data="datalist"
@@ -146,39 +145,42 @@
 </template>
 
 <script>
-import { getSecurityLogs } from "@/api/identity/securitylog";
-import updowspanel from "@/components/MainView/updowspanel";
-import moment from "moment";
-import { mapGetters } from "vuex";
+import { getSecurityLogs } from '@/api/identity/securitylog'
+import updowspanel from '@/components/MainView/updowspanel'
+import moment from 'moment'
+import { mapGetters } from 'vuex'
 export default {
-  name: "",
+  name: '',
   computed: {
-    ...mapGetters(["abpConfig"]),
+    ...mapGetters(['abpConfig'])
   },
   components: {
-    updowspanel,
+    updowspanel
   },
   data() {
     return {
       tableheight: 200,
       datalist: [],
       searchform: {
-        startTime: "",
-        endTime: "",
+        startTime: '',
+        endTime: '',
         daterange: [],
-        applicationName: "",
-        identity: "",
-        actionName: "",
-        userName: "",
-        clientId: "",
-        correlationId: "",
+        applicationName: '',
+        identity: '',
+        actionName: '',
+        userName: '',
+        clientId: '',
+        correlationId: ''
       },
       tablePage: {
         currentPage: 1,
         pageSize: 10,
-        totalResult: 0,
-      },
-    };
+        totalResult: 0
+      }
+    }
+  },
+  created() {
+    this.getlist()
   },
   methods: {
     moment,
@@ -186,43 +188,40 @@ export default {
       this.searchform.startTime =
         this.searchform.daterange != null &&
         this.searchform.daterange.length != 0
-          ? this.searchform.daterange[0] + "T00:00:00"
-          : null;
+          ? this.searchform.daterange[0] + 'T00:00:00'
+          : null
       this.searchform.endTime =
         this.searchform.daterange != null &&
         this.searchform.daterange.length != 0
-          ? this.searchform.daterange[1] + "T23:59:59"
-          : null;
-      const { currentPage, pageSize } = this.tablePage;
-      let param = {
+          ? this.searchform.daterange[1] + 'T23:59:59'
+          : null
+      const { currentPage, pageSize } = this.tablePage
+      const param = {
         SkipCount: (currentPage - 1) * pageSize,
-        MaxResultCount: pageSize,
-      };
-      let allparam = Object.assign({}, this.searchform, param);
+        MaxResultCount: pageSize
+      }
+      const allparam = Object.assign({}, this.searchform, param)
       getSecurityLogs(allparam).then((res) => {
-        this.datalist = res.items;
-        this.tablePage.totalResult = res.totalCount;
-      });
+        this.datalist = res.items
+        this.tablePage.totalResult = res.totalCount
+      })
     },
 
     handlePageChange({ currentPage, pageSize }) {
-      this.tablePage.currentPage = currentPage;
-      this.tablePage.pageSize = pageSize;
-      this.getlist();
+      this.tablePage.currentPage = currentPage
+      this.tablePage.pageSize = pageSize
+      this.getlist()
     },
 
     setTableHeight(height) {
       this.$nextTick(() => {
-        this.tableheight = height;
-      });
-    },
-  },
-  created() {
-    this.getlist();
-  },
-};
+        this.tableheight = height
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/elform.scss";
-</style> 
+</style>

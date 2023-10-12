@@ -16,7 +16,7 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img v-if="logo" :src="logo" class="sidebar-logo-img" />
+        <img v-if="logo" :src="logo" class="sidebar-logo-img">
         <!-- <h1 v-else class="sidebar-title">{{ title }} </h1> -->
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
@@ -24,7 +24,7 @@
           v-if="logo"
           :src="sideTheme === 'theme-dark' ? logoimg : logoimg2"
           class="sidebar-logo"
-        />
+        >
         <!-- <h1 class="sidebar-title">{{ title }} </h1> -->
       </router-link>
     </transition>
@@ -32,32 +32,32 @@
 </template>
 
 <script>
-import variables from "@/styles/variables.scss";
+import variables from '@/styles/variables.scss'
 export default {
-  name: "SidebarLogo",
+  name: 'SidebarLogo',
   props: {
     collapse: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
-      title: "澄 水 物 联",
-      logo: process.env.VUE_APP_BASE_API + "/img/logo-1.png",
-      logoimg: process.env.VUE_APP_BASE_API + "/img/logotrans.png",
-      logoimg2: process.env.VUE_APP_BASE_API + "/img/logodark.png",
-    };
+      title: '澄 水 物 联',
+      logo: process.env.VUE_APP_BASE_API + '/img/logo-1.png',
+      logoimg: process.env.VUE_APP_BASE_API + '/img/logotrans.png',
+      logoimg2: process.env.VUE_APP_BASE_API + '/img/logodark.png'
+    }
   },
   computed: {
     variables() {
-      return variables;
+      return variables
     },
     sideTheme() {
-      return this.$store.state.settings.sideTheme;
-    },
-  },
-};
+      return this.$store.state.settings.sideTheme
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

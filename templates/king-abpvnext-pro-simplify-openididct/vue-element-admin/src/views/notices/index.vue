@@ -24,8 +24,7 @@
               type="primary"
               icon="el-icon-plus"
               @click="addnoticedialogdisplay"
-              >新增</el-button
-            >
+            >新增</el-button>
           </template>
         </vxe-toolbar>
         <vxe-table
@@ -47,8 +46,8 @@
           />
           <vxe-table-column title="状态" min-width="100" field="status">
             <template v-slot="{ row }">
-              <el-tag type="success" v-if="row.status == 0">正常</el-tag>
-              <el-tag type="success" v-else>关闭</el-tag>
+              <el-tag v-if="row.status == 0" type="success">正常</el-tag>
+              <el-tag v-else type="success">关闭</el-tag>
             </template>
           </vxe-table-column>
           <vxe-table-column
@@ -73,15 +72,14 @@
                     class="dropdown-item"
                     icon="el-icon-bell"
                     @click.native="notice(row.id)"
-                    >通知
+                  >通知
                   </el-dropdown-item>
                   <el-dropdown-item
                     v-if="checkPermission('AbpIdentity.Users.Update')"
                     class="dropdown-item"
                     icon="el-icon-edit"
                     @click.native="modifynotice(row)"
-                    >修改</el-dropdown-item
-                  >
+                  >修改</el-dropdown-item>
                   <el-dropdown-item
                     v-if="
                       checkPermission('AbpIdentity.Users.ManagePermissions')
@@ -89,8 +87,7 @@
                     class="dropdown-item"
                     icon="el-icon-delete"
                     @click.native="deletenotice(row.id)"
-                    >删除</el-dropdown-item
-                  >
+                  >删除</el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
             </template>
@@ -114,113 +111,113 @@
         />
       </template>
     </updowspanel>
-    <addnoticedialog ref="refaddnoticedialog"></addnoticedialog>
-    <editnoticedialog ref="refeditnoticedialog"></editnoticedialog>
+    <addnoticedialog ref="refaddnoticedialog" />
+    <editnoticedialog ref="refeditnoticedialog" />
   </div>
 </template>
 
 <script>
-import updowspanel from "@/components/MainView/updowspanel";
-import addnoticedialog from "./dialog/addnoticedialog";
-import editnoticedialog from "./dialog/editnoticedialog.vue";
-import moment from "moment";
-import { mapGetters } from "vuex";
-import { checkPermission } from "@/utils/abp";
+import updowspanel from '@/components/MainView/updowspanel'
+import addnoticedialog from './dialog/addnoticedialog'
+import editnoticedialog from './dialog/editnoticedialog.vue'
+import moment from 'moment'
+import { mapGetters } from 'vuex'
+import { checkPermission } from '@/utils/abp'
 import {
   getnoticepagelist,
   onlysendnotice,
-  deleteBroadCastnotice,
-} from "@/api/notcie";
+  deleteBroadCastnotice
+} from '@/api/notcie'
 export default {
+  name: 'Notice',
   components: {
     updowspanel,
     addnoticedialog,
-    editnoticedialog,
+    editnoticedialog
   },
-  name: "Notice",
   data() {
     return {
       tableheight: 200,
       datalist: [],
       searchform: {
-        title: "",
+        title: ''
       },
       tablePage: {
         currentPage: 1,
         pageSize: 10,
-        totalResult: 0,
-      },
-    };
+        totalResult: 0
+      }
+    }
+  },
+  created() {
+    this.getnoticelist()
   },
   methods: {
     checkPermission,
     moment,
     getnoticelist() {
-      const { currentPage, pageSize } = this.tablePage;
-      let param = {
+      const { currentPage, pageSize } = this.tablePage
+      const param = {
         Status: 0,
         Title: this.searchform.title,
         SkipCount: (currentPage - 1) * pageSize,
-        MaxResultCount: pageSize,
-      };
+        MaxResultCount: pageSize
+      }
       getnoticepagelist(param).then((res) => {
-        this.datalist = res.items;
-        this.tablePage.totalResult = res.totalCount;
-      });
+        this.datalist = res.items
+        this.tablePage.totalResult = res.totalCount
+      })
     },
-    //发布通知
+    // 发布通知
     notice(id) {
       onlysendnotice(id).then(() => {
         this.$notify({
-          title: "提示",
-          message: "通告发布成功",
-          type: "success",
-        });
-        this.getnoticelist();
-      });
+          title: '提示',
+          message: '通告发布成功',
+          type: 'success'
+        })
+        this.getnoticelist()
+      })
     },
     addnoticedialogdisplay() {
-      this.$refs.refaddnoticedialog.createaddnoticedialog(this.getnoticelist);
+      this.$refs.refaddnoticedialog.createaddnoticedialog(this.getnoticelist)
     },
     modifynotice(row) {
       this.$refs.refeditnoticedialog.createeditnoticedialog(
         this.getnoticelist,
         row
-      );
+      )
     },
     deletenotice(id) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
       })
         .then(() => {
           deleteBroadCastnotice(id).then(() => {
             this.$message({
-              type: "success",
-              message: "删除成功!",
-            });
-            this.getnoticelist();
-          });
+              type: 'success',
+              message: '删除成功!'
+            })
+            this.getnoticelist()
+          })
         })
-        .catch(() => {});
+        .catch(() => {})
     },
 
     handlePageChange({ currentPage, pageSize }) {
-      this.tablePage.currentPage = currentPage;
-      this.tablePage.currentPage = currentPage;
-      this.getnoticelist();
+      this.tablePage.currentPage = currentPage
+      this.tablePage.currentPage = currentPage
+      this.getnoticelist()
     },
     setTableHeight(height) {
       this.$nextTick(() => {
-        this.tableheight = height;
-      });
-    },
-  },
-  created() {
-    this.getnoticelist();
-  },
-};
+        this.tableheight = height
+      })
+    }
+  }
+}
 </script>
 
 <style>

@@ -1,11 +1,10 @@
 import request from '@/utils/request'
 
-
 export function getAuditLogs(query) {
   return request({
     url: `/api/audit-logging/audit-logs`,
     method: 'get',
-    params:query
+    params: query
   })
 }
 

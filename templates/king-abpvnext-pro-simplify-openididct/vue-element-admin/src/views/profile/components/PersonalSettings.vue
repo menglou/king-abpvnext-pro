@@ -39,16 +39,16 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: "",
-          userName: "",
-          email: "",
-          avatar: "",
-          role: "",
-          phoneNumber: "",
-          introduction: "",
-        };
-      },
-    },
+          name: '',
+          userName: '',
+          email: '',
+          avatar: '',
+          role: '',
+          phoneNumber: '',
+          introduction: ''
+        }
+      }
+    }
   },
   data() {
     return {
@@ -57,30 +57,30 @@ export default {
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ["blur", "change"],
-          },
+            trigger: ['blur', 'change']
+          }
         ],
         email: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ["blur", "change"],
-          },
+            trigger: ['blur', 'change']
+          }
         ],
         UserName: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ["blur", "change"],
-          },
+            trigger: ['blur', 'change']
+          }
         ],
         phoneNumber: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ["blur", "change"],
-          },
-        ],
+            trigger: ['blur', 'change']
+          }
+        ]
       },
       loading: false,
       userInfo: {
@@ -90,10 +90,10 @@ export default {
         phoneNumber: this.user.phoneNumber,
         extraProperties: {
           Avatar: this.user.avatar,
-          Introduction: this.user.introduction,
-        },
-      },
-    };
+          Introduction: this.user.introduction
+        }
+      }
+    }
   },
   mounted() {
     // console.log(this.user)
@@ -102,26 +102,26 @@ export default {
     submit() {
       this.$refs.aForm.validate((valid) => {
         if (valid) {
-          this.loading = true;
+          this.loading = true
           this.$store
-            .dispatch("user/setUserInfo", this.userInfo)
+            .dispatch('user/setUserInfo', this.userInfo)
             .then((res) => {
-              this.loading = false;
+              this.loading = false
               this.$notify({
-                title: "提示",
-                message: "更新成功！",
-                type: "success",
-                duration: 2000,
-              });
+                title: '提示',
+                message: '更新成功！',
+                type: 'success',
+                duration: 2000
+              })
             })
-            .catch(() => {});
+            .catch(() => {})
         } else {
-          return false;
+          return false
         }
-      });
-    },
-  },
-};
+      })
+    }
+  }
+}
 </script>
 
 <style>
