@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QRCoder;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace King.AbpVnextPro.PayCenter.PayCenter
 {
+    [Authorize]
     [ControllerName("QRCode")]
     [Area("QRCode")]
     [Route("/api/qrCode")]
@@ -19,7 +21,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <param name="data">数据</param>
         /// <param name="size">尺寸</param>
         [HttpGet]
-        public IActionResult GetQRCode(string data)
+        public virtual IActionResult GetQRCode(string data)
         {
             using (var qrGenerator = new QRCodeGenerator())
             using (var qrCodeData = qrGenerator.CreateQrCode(data, QRCodeGenerator.ECCLevel.L))

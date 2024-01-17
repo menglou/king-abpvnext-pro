@@ -48,5 +48,11 @@ namespace King.AbpVnextPro.IdentityServer.Logs
         {
             return _securityLogAppService.DeleteManyAsync(ids);
         }
+
+        [HttpPost]
+        public virtual Task<MessageModelDto> AutoDeleteSecurityLogAsync(AutoDeleteSecurityLogDto input)
+        {
+            return _securityLogAppService.AutoDeleteSecurityLogAsync(input);
+        }
     }
 }

@@ -101,7 +101,7 @@ namespace King.AbpVnextPro.Institution.Departments
             return root;
         }
 
-        public Task<string> GetNextChildCodeAsync(Guid? parentId)
+        public virtual Task<string> GetNextChildCodeAsync(Guid? parentId)
         {
             return UnitManager.GetNextChildCodeAsync(parentId);
         }
@@ -171,7 +171,7 @@ namespace King.AbpVnextPro.Institution.Departments
             await UnitManager.DeleteAsync(id);
         }
 
-        public async Task MoveAsync(Guid id, Guid? parentId)
+        public virtual async Task MoveAsync(Guid id, Guid? parentId)
         {
             var ou = await DepartmentUnitRepository.GetAsync(id);
             if (ou == null)

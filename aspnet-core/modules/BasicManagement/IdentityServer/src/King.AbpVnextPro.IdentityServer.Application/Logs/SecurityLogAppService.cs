@@ -1,4 +1,5 @@
 ﻿using King.AbpVnextPro.IdentityServer;
+using King.AbpVnextPro.IdentityServer.Logs;
 using King.AbpVnextPro.IdentityServer.Logs.SecurityLogs;
 using Microsoft.AspNetCore.Authorization;
 using System;
@@ -14,7 +15,7 @@ using static King.AbpVnextPro.IdentityServer.Permissions.IdentityServerPermissio
 namespace BaiscBaKing.AbpVnextPro.IdentityServerckEnd.Logs
 {
     [RemoteService(false)]
-    [Authorize(SecurityLogPermissions.SecurityLog.Default)]
+   
     public class SecurityLogAppService : IdentityServerAppService, ISecurityLogAppService
     {
         protected IIdentitySecurityLogRepository SecurityLogRepository { get; }
@@ -22,11 +23,12 @@ namespace BaiscBaKing.AbpVnextPro.IdentityServerckEnd.Logs
         {
             SecurityLogRepository = securityLogRepository;
         }
+        [Authorize(SecurityLogPermissions.SecurityLog.Default)]
         public virtual async Task<SecurityLogDto> GetAsync(Guid id)
         {
             return ObjectMapper.Map<IdentitySecurityLog, SecurityLogDto>(await SecurityLogRepository.GetAsync(id));
         }
-
+        [Authorize(SecurityLogPermissions.SecurityLog.Default)]
         public virtual async Task<PagedResultDto<SecurityLogDto>> GetListAsync(GetSecurityLogDto input)
         {
             var count = await SecurityLogRepository.GetCountAsync(
@@ -72,6 +74,37 @@ namespace BaiscBaKing.AbpVnextPro.IdentityServerckEnd.Logs
         public virtual async Task DeleteAsync(Guid id)
         {
             await SecurityLogRepository.DeleteAsync(id);
+        }
+
+        /// <summary>
+        /// 删除日志 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public virtual async Task<MessageModelDto> AutoDeleteSecurityLogAsync(AutoDeleteSecurityLogDto input)
+        {
+            MessageModelDto messageModelDto = new MessageModelDto();
+            try
+            {
+                DateTime time = DateTime.Now.AddDays(-input.RetainDay);
+
+                var securityLogs = (await SecurityLogRepository.GetListAsync()).Where(x => x.CreationTime <= time);
+
+                List<Guid> auditlogsid = securityLogs.Select(x => x.Id).ToList();
+
+                await SecurityLogRepository.DeleteManyAsync(auditlogsid);
+
+                messageModelDto.IsSuccesss = true;
+                messageModelDto.Message = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} 删除登录日志成功！";
+            }
+            catch (Exception ex)
+            {
+                messageModelDto.IsSuccesss = false;
+                messageModelDto.Message = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}  删除登录日志失败，失败原因：{ex.Message},StackTrace:{ex.StackTrace}";
+            }
+
+            return messageModelDto;
+
         }
     }
 }

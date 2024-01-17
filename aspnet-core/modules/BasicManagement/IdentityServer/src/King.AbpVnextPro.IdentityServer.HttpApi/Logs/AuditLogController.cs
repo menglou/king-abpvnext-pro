@@ -50,5 +50,11 @@ namespace King.AbpVnextPro.IdentityServer.Logs
         {
             return AuditLogAppService.GetListAsync(input);
         }
+
+        [HttpPost]
+        public virtual Task<MessageModelDto> AutoDeleteAuditLogAsync(AutoDeleteAuditLogParamDto input)
+        {
+            return AuditLogAppService.AutoDeleteAuditLogAsync(input);
+        }
     }
 }

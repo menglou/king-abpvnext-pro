@@ -11,4 +11,5 @@ public static class FileSettings
 
     public const string AllowedMaxFileSize = GroupName + ".AllowedMaxFileSize";
     public const string AllowedUploadFormats = GroupName + ".AllowedUploadFormats";
+    public const string BaseUploadUrl = GroupName + ".BaseUploadUrl";
 }

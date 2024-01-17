@@ -43,5 +43,11 @@ namespace King.AbpVnextPro.Openiddict.Logs
         {
             return AuditLogAppService.GetListAsync(input);
         }
+
+        [HttpPost]
+        public virtual Task<MessageModelDto> AutoDeleteAuditLogAsync(AutoDeleteAuditLogParamDto input)
+        {
+            return AuditLogAppService.AutoDeleteAuditLogAsync(input);
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 当面付-扫码支付
         /// </summary>
-        public async Task<PreCreateDto> PreCreateAsync(AlipayTradePreCreateViewModel viewModel)
+        public virtual async Task<PreCreateDto> PreCreateAsync(AlipayTradePreCreateViewModel viewModel)
         {
             PreCreateDto preCreateDto = new PreCreateDto();
             var model = new AlipayTradePrecreateModel
@@ -54,7 +54,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 当面付-二维码/条码/声波支付
         /// </summary>
-        public async Task<PayDto> PayAsync(AlipayTradePayViewModel viewModel)
+        public virtual async Task<PayDto> PayAsync(AlipayTradePayViewModel viewModel)
         {
             PayDto payDto = new PayDto();
             var model = new AlipayTradePayModel
@@ -77,7 +77,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// APP支付
         /// </summary>
-        public async Task<AppPayDto> AppPayAsync(AlipayTradeAppPayViewModel viewModel)
+        public virtual async Task<AppPayDto> AppPayAsync(AlipayTradeAppPayViewModel viewModel)
         {
             AppPayDto payDto=new AppPayDto();
             var model = new AlipayTradeAppPayModel
@@ -106,7 +106,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// 电脑网站支付
         /// </summary>
         /// <param name="viewModel"></param>
-        public async Task<PagePayDto> PagePayAsync(AlipayTradePagePayViewModel viewModel)
+        public virtual async Task<PagePayDto> PagePayAsync(AlipayTradePagePayViewModel viewModel)
         {
             PagePayDto payDto = new PagePayDto();
             var model = new AlipayTradePagePayModel
@@ -129,7 +129,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 手机网站支付
         /// </summary>
-        public async Task<WapPayDto> WapPayAsync(AlipayTradeWapPayViewModel viewMode)
+        public virtual async Task<WapPayDto> WapPayAsync(AlipayTradeWapPayViewModel viewMode)
         {
             WapPayDto wapPayDto = new WapPayDto();
             var model = new AlipayTradeWapPayModel
@@ -154,7 +154,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 交易查询
         /// </summary>
-        public async Task<QueryDto> QueryAsyc(AlipayTradeQueryViewModel viewMode)
+        public virtual async Task<QueryDto> QueryAsyc(AlipayTradeQueryViewModel viewMode)
         {
             QueryDto queryDto = new QueryDto();
             var model = new AlipayTradeQueryModel
@@ -175,7 +175,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 交易退款
         /// </summary>
-        public async Task<RefundDto> RefundAsync(AlipayTradeRefundViewModel viewMode)
+        public virtual async Task<RefundDto> RefundAsync(AlipayTradeRefundViewModel viewMode)
         {
             RefundDto refundDto = new RefundDto();
             var model = new AlipayTradeRefundModel
@@ -200,7 +200,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 退款查询
         /// </summary>
-        public async Task<RefundQueryDto> RefundQueryAsync(AlipayTradeRefundQueryViewModel viewMode)
+        public virtual async Task<RefundQueryDto> RefundQueryAsync(AlipayTradeRefundQueryViewModel viewMode)
         {
             RefundQueryDto refundQueryDto = new RefundQueryDto();
             var model = new AlipayTradeFastpayRefundQueryModel
@@ -222,7 +222,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 交易关闭
         /// </summary>
-        public async Task<CloseDto> CloseAsync(AlipayTradeCloseViewModel viewMode)
+        public virtual async Task<CloseDto> CloseAsync(AlipayTradeCloseViewModel viewMode)
         {
             CloseDto closeDto = new CloseDto();
             var model = new AlipayTradeCloseModel
@@ -245,7 +245,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 统一转账
         /// </summary>
-        public async Task<TransferDto> TransferAsync(AlipayTransferViewModel viewMode)
+        public virtual async Task<TransferDto> TransferAsync(AlipayTransferViewModel viewMode)
         {
             TransferDto transferDto = new TransferDto();
             var model = new AlipayFundTransUniTransferModel
@@ -269,7 +269,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 查询统一转账订单
         /// </summary>
-        public async Task<TransQueryDto> TransQueryAsync(AlipayTransQueryViewModel viewMode)
+        public virtual async Task<TransQueryDto> TransQueryAsync(AlipayTransQueryViewModel viewMode)
         {
             TransQueryDto transQueryDto = new TransQueryDto();
             var model = new AlipayFundTransCommonQueryModel
@@ -290,7 +290,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <summary>
         /// 余额查询
         /// </summary>
-        public async Task<AccountQueryDto> AccountQueryAsync(AlipayAccountQueryViewModel viewModel)
+        public virtual async Task<AccountQueryDto> AccountQueryAsync(AlipayAccountQueryViewModel viewModel)
         {
             AccountQueryDto accountQueryDto = new AccountQueryDto();
             var model = new AlipayFundAccountQueryModel

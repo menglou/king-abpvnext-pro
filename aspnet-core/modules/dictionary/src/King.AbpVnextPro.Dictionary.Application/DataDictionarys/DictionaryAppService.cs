@@ -28,7 +28,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             LocalizationResource = typeof(DictionaryResource);
         }
 
-        [Authorize(DictionaryPermissions.DataDictionary.Create)]
+       
         public override async Task<DictionaryDto> CreateAsync(CreateDataDictionaryDto input)
         {
             if ((await Repository.FindAsync(d => d.Name == input.Name)) != null)
@@ -48,7 +48,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             return ObjectMapper.Map<DataDictionary, DictionaryDto>(result);
         }
 
-        [Authorize(DictionaryPermissions.DataDictionary.Update)]
+       
         public override async Task<DictionaryDto> UpdateAsync(Guid id, UpdateDataDictionaryDto input)
         {
             var dic = await Repository.GetAsync(id);
@@ -59,7 +59,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             return ObjectMapper.Map<DataDictionary, DictionaryDto>(result);
         }
 
-        [Authorize(DictionaryPermissions.DataDictionary.Delete)]
+      
         public virtual async Task DeleteAsync(BatchDeleteDictionaryDto input)
         {
             foreach (var id in input.Ids)
@@ -68,7 +68,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             }
         }
 
-        [Authorize(DictionaryPermissions.DataDictionary.Delete)]
+       
         public override async Task DeleteAsync(Guid id)
         {
             var detail = await Repository.GetAsync(id);

@@ -77,47 +77,47 @@ namespace King.AbpVnextPro.Institution.Departments
         }
         [HttpGet]
         [Route("details")]
-        public Task<PagedResultDto<DepartmentUnitDto>> GetListDetailsAsync(GetDepartmentUnitInput input)
+        public virtual Task<PagedResultDto<DepartmentUnitDto>> GetListDetailsAsync(GetDepartmentUnitInput input)
         {
             return UnitAppService.GetListDetailsAsync(input);
         }
 
         [HttpGet]
         [Route("all/details")]
-        public Task<ListResultDto<DepartmentUnitDto>> GetAllListDetailsAsync(GetAllDepartmentUnitInput input)
+        public virtual Task<ListResultDto<DepartmentUnitDto>> GetAllListDetailsAsync(GetAllDepartmentUnitInput input)
         {
             return UnitAppService.GetAllListDetailsAsync(input);
         }
         [HttpGet]
         [Route("children/{parentId}")]
-        public Task<List<DepartmentUnitDto>> GetChildrenAsync(Guid parentId)
+        public virtual Task<List<DepartmentUnitDto>> GetChildrenAsync(Guid parentId)
         {
             return UnitAppService.GetChildrenAsync(parentId);
         }
         [HttpGet]
         [Route("root")]
-        public Task<ListResultDto<DepartmentUnitDto>> GetRootListAsync()
+        public virtual Task<ListResultDto<DepartmentUnitDto>> GetRootListAsync()
         {
             return UnitAppService.GetRootListAsync();
         }
         [HttpGet]
         [Route("next-code")]
 
-        public Task<string> GetNextChildCodeAsync(Guid? parentId)
+        public virtual Task<string> GetNextChildCodeAsync(Guid? parentId)
         {
             return UnitAppService.GetNextChildCodeAsync(parentId);
         }
         [Authorize(DepartmentUnit.Default)]
         [HttpGet]
         [Route("alldepartmentlist")]
-        public Task<List<DepartmentUnitDto>> GetAllDepListAsync(GetAllDepartmentUnitInput input)
+        public virtual Task<List<DepartmentUnitDto>> GetAllDepListAsync(GetAllDepartmentUnitInput input)
         {
             return UnitAppService.GetAllDepListAsync(input);
         }
 
         [HttpGet]
         [Route("users")]
-        public Task<PagedResultDto<IdentityUserDto>> GetUsersAsync(Guid? ouId, GetIdentityUsersInputExtensionDto userInput)
+        public virtual Task<PagedResultDto<IdentityUserDto>> GetUsersAsync(Guid? ouId, GetIdentityUsersInputExtensionDto userInput)
         {
             return UnitAppService.GetUsersAsync(ouId, userInput);
         }

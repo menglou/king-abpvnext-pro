@@ -9,5 +9,6 @@ namespace King.AbpVnextPro.Openiddict.Logs.AuditLogging
     public interface IAuditLogAppService : IReadOnlyAppService<AuditLogDto, Guid, GetAuditLogDto>, IDeleteAppService<Guid>
     {
         Task DeleteManyAsync(params Guid[] ids);
+        Task<MessageModelDto> AutoDeleteAuditLogAsync(AutoDeleteAuditLogParamDto input);
     }
 }

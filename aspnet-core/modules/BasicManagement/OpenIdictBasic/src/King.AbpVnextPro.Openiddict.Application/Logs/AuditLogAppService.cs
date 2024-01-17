@@ -15,7 +15,6 @@ using static King.AbpVnextPro.Openiddict.Permissions.OpeniddictPermissions;
 namespace King.AbpVnextPro.Openiddict.Logs
 {
     [RemoteService(false)]
-    [Authorize(AuditLogPermissions.AuditLogs.Default)]
     public class AuditLogAppService: OpeniddictAppService, IAuditLogAppService
     {
         protected IAuditLogRepository AuditLogRepository { get; }
@@ -23,12 +22,12 @@ namespace King.AbpVnextPro.Openiddict.Logs
         {
             AuditLogRepository = auditLogRepository;
         }
-
+        [Authorize(AuditLogPermissions.AuditLogs.Default)]
         public virtual async Task<AuditLogDto> GetAsync(Guid id)
         {
             return ObjectMapper.Map<AuditLog, AuditLogDto>(await AuditLogRepository.GetAsync(id));
         }
-
+        [Authorize(AuditLogPermissions.AuditLogs.Default)]
         public virtual async Task<PagedResultDto<AuditLogDto>> GetListAsync(GetAuditLogDto input)
         {
             var count = await AuditLogRepository.GetCountAsync(
@@ -83,6 +82,41 @@ namespace King.AbpVnextPro.Openiddict.Logs
                 auditLog.Actions.Clear();
                 await AuditLogRepository.DeleteAsync(id);
             }
+        }
+
+        /// <summary>
+        /// 删除日志 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public virtual async Task<MessageModelDto> AutoDeleteAuditLogAsync(AutoDeleteAuditLogParamDto input)
+        {
+            MessageModelDto messageModelDto = new MessageModelDto();
+            try
+            {
+                DateTime time = DateTime.Now.AddDays(-input.RetainDay);
+
+                var auditlogs = await AuditLogRepository.GetListAsync(x => x.ExecutionTime <= time, includeDetails: true);
+
+                List<Guid> auditlogsid = auditlogs.Select(x => x.Id).ToList();
+
+                foreach (var id in auditlogsid)
+                {
+                    var auditLog = await AuditLogRepository.GetAsync(id);
+                    auditLog.EntityChanges.Clear();
+                    auditLog.Actions.Clear();
+                    await AuditLogRepository.DeleteAsync(id);
+                }
+
+                messageModelDto.IsSuccesss = true;
+                messageModelDto.Message = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}删除审计日成功！";
+            }
+            catch (Exception ex)
+            {
+                messageModelDto.IsSuccesss = false;
+                messageModelDto.Message = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} 删除审计日志失败，失败原因：{ex.Message},StackTrace:{ex.StackTrace}";
+            }
+            return messageModelDto;
         }
     }
 }

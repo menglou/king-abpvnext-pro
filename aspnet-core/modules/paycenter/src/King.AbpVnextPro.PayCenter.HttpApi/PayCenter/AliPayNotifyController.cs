@@ -1,5 +1,6 @@
 ﻿using King.AbpVnextPro.Paylink.Alipy;
 using King.AbpVnextPro.Paylink.Alipy.Notify;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,6 +12,7 @@ using Volo.Abp;
 
 namespace King.AbpVnextPro.PayCenter.PayCenter
 {
+    [Authorize]
     [RemoteService(Name = "AlipayNotify")]
     [ControllerName("AlipayNotify")]
     [Area("AlipayNotify")]
@@ -36,7 +38,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// <returns></returns>
         [Route("gateway")]
         [HttpPost]
-        public async Task<IActionResult> Gateway()
+        public virtual async Task<IActionResult> Gateway()
         {
             try
             {
@@ -119,7 +121,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [Route("precreate")]
         [HttpPost]
-        public async Task<IActionResult> Precreate()
+        public virtual async Task<IActionResult> Precreate()
         {
             try
             {
@@ -148,7 +150,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [Route("apppay")]
         [HttpPost]
-        public async Task<IActionResult> AppPay()
+        public virtual async Task<IActionResult> AppPay()
         {
             try
             {
@@ -180,7 +182,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [Route("pagepay")]
         [HttpPost]
-        public async Task<IActionResult> PagePay()
+        public virtual async Task<IActionResult> PagePay()
         {
             try
             {
@@ -212,7 +214,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [Route("wappay")]
         [HttpPost]
-        public async Task<IActionResult> WapPay()
+        public virtual async Task<IActionResult> WapPay()
         {
             try
             {
@@ -244,7 +246,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [Route("close")]
         [HttpPost]
-        public async Task<IActionResult> Close()
+        public virtual async Task<IActionResult> Close()
         {
             try
             {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Volo.Abp;
 using Volo.Abp.Http;
+using Volo.Abp.Settings;
 
 namespace King.AbpVnextPro.File.Filess
 {
@@ -55,6 +56,15 @@ namespace King.AbpVnextPro.File.Filess
                 FileName = file.FileName
             });
             return new JsonResult(result);
+        }
+
+        [HttpPost]
+        [Route("getfileurl")]
+        [Authorize]
+        public virtual async Task<string> GetFileUrl(string blobName)
+        {
+            string baseurl=await FileAppService.GetFileUrl(blobName);
+            return baseurl;
         }
     }
 }

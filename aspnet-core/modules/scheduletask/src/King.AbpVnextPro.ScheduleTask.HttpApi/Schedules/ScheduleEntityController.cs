@@ -80,20 +80,20 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         [Authorize(ScheduleTaskPermissions.ScheduleTask.Start)]
         [HttpGet]
         [Route("start/{sid}")]
-        public Task<bool> StartAsync(Guid sid)
+        public virtual Task<bool> StartAsync(Guid sid)
         {
             return  _scheduleEntityAppService.StartAsync(sid);
         }
         [Authorize(ScheduleTaskPermissions.ScheduleTask.Stop)]
         [HttpGet]
         [Route("stop/{sid}")]
-        public Task<bool> StopAsync(Guid sid)
+        public virtual Task<bool> StopAsync(Guid sid)
         {
             return  _scheduleEntityAppService.StopAsync(sid);
         }
         [HttpGet]
         [Route("all")]
-        public Task<List<ScheduleManagerDto>> GetListAllAsync(GetScheduleTaskListDto input)
+        public virtual Task<List<ScheduleManagerDto>> GetListAllAsync(GetScheduleTaskListDto input)
         {
             return _scheduleEntityAppService.GetListAllAsync(input);
         }

@@ -11,5 +11,6 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
     {
         Task DeleteAsync(BatchDeleteDictionaryDto input);
         Task<PagedResultDto<DictionaryDetailDto>> GetDetailListByDictionaryId(GetDictionaryDetailByDtIdDto input);
+        Task<List<DictionaryDetailDto>> GetDictionartDetailByDicNameAsync(string dicName);
     }
 }

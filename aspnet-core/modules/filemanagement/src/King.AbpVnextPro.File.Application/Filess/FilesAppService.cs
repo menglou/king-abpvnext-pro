@@ -9,17 +9,22 @@ using Volo.Abp.Settings;
 using Volo.Abp.Validation;
 using Volo.Abp;
 using King.AbpVnextPro.File.Settings;
+using Microsoft.Extensions.Configuration;
 
 namespace King.AbpVnextPro.File.Filess
 {
     public class FilesAppService : FileAppService, IFilesAppService
     {
         protected IFilesManager FileManager { get; }
-        protected ISettingProvider _settingProvider;
-        public FilesAppService(IFilesManager fileManager, ISettingProvider settingProvider)
+        protected ISettingProvider _settingProvider { get; }
+
+        protected IConfiguration _configuration;
+
+        public FilesAppService(IFilesManager fileManager, ISettingProvider settingProvider, IConfiguration configuration)
         {
             FileManager = fileManager;
-            _settingProvider= settingProvider;
+            _settingProvider = settingProvider;
+            _configuration = configuration;
         }
 
         public virtual async Task<FileDto> FindByBlobNameAsync(string blobName)
@@ -36,7 +41,7 @@ namespace King.AbpVnextPro.File.Filess
             };
         }
 
-       
+
         public virtual async Task<string> CreateAsync(FileDto input)
         {
             await CheckFile(input);
@@ -51,6 +56,17 @@ namespace King.AbpVnextPro.File.Filess
             var res = await FileManager.DeleteAsync(blobName);
 
             return res;
+        }
+        //获取文件读取url
+        public virtual async Task<string> GetFileUrl(string blobName)
+        {
+            string baseurl = string.Empty;
+            baseurl = await _settingProvider.GetOrNullAsync(FileSettings.BaseUploadUrl);
+            if (baseurl == null)
+            {
+                baseurl = _configuration.GetSection("AuthServer:Authority").Value;
+            }
+            return $"{baseurl}/api/file-management/files/{blobName}";
         }
 
         protected virtual async Task CheckFile(FileDto input)

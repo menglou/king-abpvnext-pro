@@ -1,4 +1,5 @@
 ﻿using King.AbpVnextPro.Dictionary.DataDictionarys.Dto;
+using King.AbpVnextPro.Dictionary.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,6 +26,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             _dictionaryDetailAppService = dictionaryDetailAppService;
         }
         [HttpPost]
+        [Authorize(DictionaryPermissions.DataDictionaryDetail.Create)]
         public virtual Task<DictionaryDetailDto> CreateAsync(CreateDataDictionaryDetailDto input)
         {
             return _dictionaryDetailAppService.CreateAsync(input);
@@ -38,12 +40,14 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         }
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(DictionaryPermissions.DataDictionaryDetail.Delete)]
         public virtual Task DeleteAsync(Guid id)
         {
             return _dictionaryDetailAppService.DeleteAsync(id);
         }
         [HttpGet]
         [Route("{id}")]
+        [Authorize(DictionaryPermissions.DataDictionaryDetail.Delete)]
         public virtual Task<DictionaryDetailDto> GetAsync(Guid id)
         {
             return _dictionaryDetailAppService.GetAsync(id);
@@ -55,6 +59,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         }
         [HttpPut]
         [Route("{id}")]
+        [Authorize(DictionaryPermissions.DataDictionaryDetail.Update)]
         public virtual Task<DictionaryDetailDto> UpdateAsync(Guid id, UpdateDataDictionaryDetailDto input)
         {
             return _dictionaryDetailAppService.UpdateAsync(id, input);
@@ -64,6 +69,13 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         public virtual Task<PagedResultDto<DictionaryDetailDto>> GetDetailListByDictionaryId(GetDictionaryDetailByDtIdDto input)
         {
             return _dictionaryDetailAppService.GetDetailListByDictionaryId(input);
+        }
+
+        [HttpGet]
+        [Route("getdicdetailbydicname/{dicName}")]
+        public virtual Task<List<DictionaryDetailDto>> GetDictionartDetailByDicNameAsync(string dicName)
+        {
+            return _dictionaryDetailAppService.GetDictionartDetailByDicNameAsync(dicName);
         }
     }
 }

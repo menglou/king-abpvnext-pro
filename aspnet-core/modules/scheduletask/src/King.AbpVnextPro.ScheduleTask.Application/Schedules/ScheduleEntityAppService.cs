@@ -40,7 +40,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
-        public async Task<bool> CreateAsync(CreateScheduleInfoDto task)
+        public virtual async Task<bool> CreateAsync(CreateScheduleInfoDto task)
         {
 
             Guid scheduleid = GuidGenerator.Create();
@@ -122,7 +122,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// <param name="sid"></param>
         /// <returns></returns>
         /// <exception cref="UserFriendlyException"></exception>
-        public async Task<bool> StartAsync(Guid sid)
+        public virtual async Task<bool> StartAsync(Guid sid)
         {
             var tasksQz = await _scheduleEntityRepository.FindAsync(m => m.Id == sid);
             if (tasksQz == null)
@@ -185,7 +185,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// <param name="sid"></param>
         /// <returns></returns>
         /// <exception cref="UserFriendlyException"></exception>
-        public async Task<bool> StopAsync(Guid sid)
+        public virtual async Task<bool> StopAsync(Guid sid)
         {
             var tasksQz = await _scheduleEntityRepository.FindAsync(m => m.Id == sid);
             if (tasksQz == null)
@@ -213,7 +213,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// <param name="sid"></param>
         /// <returns></returns>
         /// <exception cref="UserFriendlyException"></exception>
-        public async Task<bool> PauseAsync(Guid sid)
+        public virtual async Task<bool> PauseAsync(Guid sid)
         {
             var tasksQz = await _scheduleEntityRepository.FindAsync(m => m.Id == sid);
             if (tasksQz == null)
@@ -242,7 +242,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// <param name="sid"></param>
         /// <returns></returns>
         /// <exception cref="UserFriendlyException"></exception>
-        public async Task<bool> ResumeAsync(Guid sid)
+        public virtual async Task<bool> ResumeAsync(Guid sid)
         {
             var tasksQz = await _scheduleEntityRepository.FindAsync(m => m.Id == sid);
             if (tasksQz == null)
@@ -269,7 +269,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// <param name="sid"></param>
         /// <returns></returns>
         /// <exception cref="UserFriendlyException"></exception>
-        public async Task<bool> DeleteAsync(Guid sid)
+        public virtual async Task<bool> DeleteAsync(Guid sid)
         {
             var tasksQz = await _scheduleEntityRepository.FindAsync(m => m.Id == sid);
             if (tasksQz == null)
@@ -294,7 +294,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// </summary>
         /// <param name="sid"></param>
         /// <returns></returns>
-        public async Task<bool> RunOnceAsync(Guid sid)
+        public virtual async Task<bool> RunOnceAsync(Guid sid)
         {
             var tasksQz = await _scheduleEntityRepository.FindAsync(m => m.Id == sid);
             if (tasksQz == null)
@@ -317,7 +317,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<ScheduleEntityDto>> GetListAsync(ScheduleTaskPagedListDto input)
+        public virtual async Task<PagedResultDto<ScheduleEntityDto>> GetListAsync(ScheduleTaskPagedListDto input)
         {
             //获取当天登录人 获取所有的任务
             var currentuserallkeepers = (await _scheduleKeeperEntityRepository.GetQueryableAsync()).Where(x => x.UserId == CurrentUser.Id).Select(x => x.ScheduleId);
@@ -369,7 +369,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// </summary>
         /// <param name="sid"></param>
         /// <returns></returns>
-        public async Task<ScheduleEntityDto> GetAsync(Guid sid)
+        public virtual async Task<ScheduleEntityDto> GetAsync(Guid sid)
         {
 
             var query = (from schedule in await _scheduleEntityRepository.GetListAsync()
@@ -429,7 +429,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync(UpdateScheduleInfoDto input)
+        public virtual async Task<bool> UpdateAsync(UpdateScheduleInfoDto input)
         {
             ScheduleEntity schedule = await _scheduleEntityRepository.FindAsync(x => x.Id == input.Id);
             ScheduleEntity restmp = new ScheduleEntity();
@@ -520,7 +520,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
             return true;
         }
 
-        public async Task<List<ScheduleManagerDto>> GetListAllAsync(GetScheduleTaskListDto input)
+        public virtual async Task<List<ScheduleManagerDto>> GetListAllAsync(GetScheduleTaskListDto input)
         {
             var query = from schedule in await _scheduleEntityRepository.GetListAsync()
                         join schedulehttpoption in await _scheduleHttpOptionEntityRepository.GetListAsync()
@@ -574,7 +574,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<PagedResultDto<ScheduleLogEntityDto>> GetScheduleLogListAsync(ScheduleLogPagedListDto input)
+        public virtual async Task<PagedResultDto<ScheduleLogEntityDto>> GetScheduleLogListAsync(ScheduleLogPagedListDto input)
         {
             var logs = (await _scheduleLogEntityRepository.GetQueryableAsync())
                 .WhereIf(!input.Status.IsNullOrWhiteSpace(), x => x.Status.Contains(input.Status))

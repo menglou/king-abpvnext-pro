@@ -9,5 +9,6 @@ namespace King.AbpVnextPro.File.Filess
 
         Task<string> CreateAsync(FileDto input);
         Task<bool> DeleteAsync(string blobName);
+        Task<string> GetFileUrl(string blobName);
     }
 }

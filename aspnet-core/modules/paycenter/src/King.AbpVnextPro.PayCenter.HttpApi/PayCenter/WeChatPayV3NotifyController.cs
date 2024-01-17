@@ -1,6 +1,7 @@
 ﻿using King.AbpVnextPro.Paylink.WeChat;
 using King.AbpVnextPro.Paylink.WeChat.V3;
 using King.AbpVnextPro.Paylink.WeChat.V3.Notify;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,6 +13,7 @@ using Volo.Abp;
 
 namespace King.AbpVnextPro.PayCenter.PayCenter
 {
+    [Authorize]
     [RemoteService(Name = "WeChatPayV3Notify")]
     [ControllerName("WeChatPayV3Notify")]
     [Area("WeChatPayV3Notify")]

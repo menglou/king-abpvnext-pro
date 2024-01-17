@@ -24,7 +24,6 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
            CreateDataDictionaryDetailDto, UpdateDataDictionaryDetailDto>, IDictionaryDetailAppService
     {
         protected IRepository<DataDictionary, Guid> MasterRepository { get; }
-
         public DictionaryDetailAppService(IRepository<DataDictionaryDetail, Guid> repository,
             IRepository<DataDictionary, Guid> masterRepository) : base(repository)
         {
@@ -32,7 +31,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             LocalizationResource = typeof(DictionaryResource);
         }
 
-        [Authorize(DictionaryPermissions.DataDictionaryDetail.Create)]
+        
         public override async Task<DictionaryDetailDto> CreateAsync(CreateDataDictionaryDetailDto input)
         {
             var master = await MasterRepository.FindAsync(d => d.Id == input.DataDictionaryId);
@@ -60,7 +59,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             return ObjectMapper.Map<DataDictionaryDetail, DictionaryDetailDto>(result);
         }
 
-        [Authorize(DictionaryPermissions.DataDictionaryDetail.Update)]
+       
         public override async Task<DictionaryDetailDto> UpdateAsync(Guid id, UpdateDataDictionaryDetailDto input)
         {
             var detail = await Repository.GetAsync(id);
@@ -71,7 +70,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             return ObjectMapper.Map<DataDictionaryDetail, DictionaryDetailDto>(result);
         }
 
-        [Authorize(DictionaryPermissions.DataDictionaryDetail.Delete)]
+       
         public virtual async Task DeleteAsync(BatchDeleteDictionaryDto input)
         {
             foreach (var id in input.Ids)
@@ -85,6 +84,22 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             var list = (await Repository.GetQueryableAsync()).Where(x => x.DataDictionaryId == input.DictionaryId).PageBy(input.SkipCount,input.MaxResultCount).ToList();
             var count = (await Repository.GetQueryableAsync()).Where(x => x.DataDictionaryId == input.DictionaryId).Count();
             return  new PagedResultDto<DictionaryDetailDto>(count, ObjectMapper.Map<List<DataDictionaryDetail>, List<DictionaryDetailDto>>(list));
+        }
+
+        //根据字段名称获取详情
+        public virtual async Task<List<DictionaryDetailDto>> GetDictionartDetailByDicNameAsync(string dicName)
+        {
+            var dic = await MasterRepository.FindAsync(x => x.Name == dicName);
+            if (dic != null)
+            {
+                var dicdetails = (await Repository.GetQueryableAsync()).Where(x => x.DataDictionaryId == dic.Id).ToList();
+
+                return ObjectMapper.Map<List<DataDictionaryDetail>, List<DictionaryDetailDto>>(dicdetails);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

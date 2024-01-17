@@ -30,7 +30,18 @@ public class FileSettingDefinitionProvider : SettingDefinitionProvider
                 )
                     .WithProperty("Group1", "File")
                     .WithProperty("Group2", "Upload")
+                    .WithProperty("Type", "text"),
+
+                new SettingDefinition(
+                    FileSettings.BaseUploadUrl,
+                    "",
+                    L("DisplayName:FileManagement.BaseUploadUrl"),
+                    L("Description:FileManagement.BaseUploadUrl")
+                )
+                    .WithProperty("Group1", "File")
+                    .WithProperty("Group2", "Upload")
                     .WithProperty("Type", "text")
+                
                 );
     }
     private static LocalizableString L(string name)

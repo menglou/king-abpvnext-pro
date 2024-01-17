@@ -1,5 +1,6 @@
 ﻿using King.AbpVnextPro.Paylink.Alipy;
 using King.AbpVnextPro.Paylink.Alipy.Notify;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,6 +12,7 @@ using Volo.Abp;
 
 namespace King.AbpVnextPro.PayCenter.PayCenter
 {
+    [Authorize]
     [RemoteService(Name = "AliPayReturn")]
     [ControllerName("AliPayReturn")]
     [Area("AliPayReturn")]
@@ -34,7 +36,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [Route("pagepay")]
         [HttpGet]
-        public async Task<IActionResult> PagePay()
+        public virtual async Task<IActionResult> PagePay()
         {
             try
             {
@@ -55,7 +57,7 @@ namespace King.AbpVnextPro.PayCenter.PayCenter
         /// </summary>
         [HttpGet]
         [Route("wappay")]
-        public async Task<IActionResult> WapPay()
+        public virtual async Task<IActionResult> WapPay()
         {
             try
             {
