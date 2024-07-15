@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
-    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
-    <ProjectReference Include="..\King.AbpVnextPro.Institution.Domain\King.AbpVnextPro.Institution.Domain.csproj" />
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Users\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" />
+    <ProjectReference Include="..\King.AbpVnextPro.Institution.Domain\King.AbpVnextPro.Institution.Domain.csproj" />
   </ItemGroup>
 
 </Project>

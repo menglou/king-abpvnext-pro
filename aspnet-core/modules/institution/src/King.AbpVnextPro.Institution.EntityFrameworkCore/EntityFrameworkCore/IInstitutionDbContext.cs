@@ -13,6 +13,6 @@ public interface IInstitutionDbContext : IEfCoreDbContext
      * DbSet<Question> Questions { get; }
      */
 
-    DbSet<DepartmentUnit> DepartmentUnits { get; }
-    DbSet<Poster> Posters { get; }
+    DbSet<DepartmentUnit> DepartmentUnit { get; }
+    DbSet<Poster> Poster { get; }
 }

@@ -11,8 +11,8 @@ public interface IScheduleTaskDbContext : IEfCoreDbContext
     /* Add DbSet for each Aggregate Root here. Example:
      * DbSet<Question> Questions { get; }
      */
-    DbSet<ScheduleEntity> ScheduleEntitys { get; }
-    DbSet<ScheduleHttpOptionEntity> ScheduleHttpOptionEntitys { get; }
-    DbSet<ScheduleKeeperEntity> ScheduleKeeperEntitys { get; }
-    DbSet<ScheduleLogEntity> ScheduleLogEntitys { get; }
+    DbSet<ScheduleEntity> ScheduleEntity { get; }
+    DbSet<ScheduleHttpOptionEntity> ScheduleHttpOptionEntity { get; }
+    DbSet<ScheduleKeeperEntity> ScheduleKeeperEntity { get; }
+    DbSet<ScheduleLogEntity> ScheduleLogEntity{ get; }
 }

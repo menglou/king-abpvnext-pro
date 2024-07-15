@@ -12,7 +12,7 @@ public interface IDictionaryDbContext : IEfCoreDbContext
      * DbSet<Question> Questions { get; }
      */
 
-    DbSet<DataDictionary> DataDictionarys { get; }
+    DbSet<DataDictionary> DataDictionary { get; }
 
-    DbSet<DataDictionaryDetail> DataDictionaryDetails { get; }
+    DbSet<DataDictionaryDetail> DataDictionaryDetail { get; }
 }

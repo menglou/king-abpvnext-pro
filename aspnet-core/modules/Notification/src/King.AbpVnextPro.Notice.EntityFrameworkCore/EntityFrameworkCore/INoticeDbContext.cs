@@ -12,5 +12,5 @@ public interface INoticeDbContext : IEfCoreDbContext
      * DbSet<Question> Questions { get; }
      */
 
-    DbSet<Notification> Notifications { get; }
+    DbSet<Notification> Notification { get; }
 }
