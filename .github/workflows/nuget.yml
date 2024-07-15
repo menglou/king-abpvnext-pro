@@ -24,4 +24,6 @@ jobs:
       - name: Pack
         run: dotnet pack aspnet-core/King.AbpVnext.Nuget.sln  --include-source --include-symbols /p:Configuration=Release -p:PackageVersion=${GITHUB_REF:10} --output nupkgs
       - name: Push
-        run: dotnet nuget push nupkgs/*.symbols.nupkg -k ${{secrets.NUGET_KEY}} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push nupkgs/*.symbols.nupkg -k ${{secrets.NUGET_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        env:
+          NUGET_KEY: ${{ secrets.NUGET_KEY }}
