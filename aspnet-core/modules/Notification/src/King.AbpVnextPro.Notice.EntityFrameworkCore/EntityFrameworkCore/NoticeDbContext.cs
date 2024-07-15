@@ -20,7 +20,7 @@ public class NoticeDbContext : AbpDbContext<NoticeDbContext>, INoticeDbContext
 
     }
 
-    public DbSet<Notification> Notifications { get ; set; }
+    public virtual DbSet<Notification> Notification { get ; set; }
   
     protected override void OnModelCreating(ModelBuilder builder)
     {

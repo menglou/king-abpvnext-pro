@@ -22,11 +22,11 @@ namespace King.AbpVnextPro.WorkFlow.Flows
         /// <summary>
         /// 流程设计id
         /// </summary>
-        public string DesignId { get; set; } = string.Empty;
+        public Guid DesignId { get; set; } 
+         
         /// <summary>
-        /// 流程类型
+        /// 流程类型名称
         /// </summary>
-        public int DesignType { get; set; } = 0;
         public string DesignName { get; set; } = string.Empty;
         /// <summary>
         /// 当前节点id
@@ -93,7 +93,13 @@ namespace King.AbpVnextPro.WorkFlow.Flows
         /// </summary>
         public int InstanceResult { get; set; } = 0;
 
+        /// <summary>
+        /// 申请人id
+        /// </summary>
         public Guid ApplyUserId { get; set; }
+        /// <summary>
+        /// 申请部门id
+        /// </summary>
         public Guid ApplyDepartId { get; set; }
 
         public Guid? TenantId { get; set; }

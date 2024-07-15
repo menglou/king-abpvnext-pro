@@ -18,9 +18,9 @@ public class DictionaryDbContext : AbpDbContext<DictionaryDbContext>, IDictionar
 
     }
 
-    public DbSet<DataDictionary> DataDictionarys { get; set; }
+    public virtual DbSet<DataDictionary> DataDictionary { get; set; }
 
-    public DbSet<DataDictionaryDetail> DataDictionaryDetails { get; set; }
+    public virtual DbSet<DataDictionaryDetail> DataDictionaryDetail { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

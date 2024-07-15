@@ -53,7 +53,10 @@ Vue.use(VXETable)
 VXETable.use(VXETablePluginExportXLSX)
 
 VXETable.setup({
-  i18n: (key, args) => i18n.t(key, args)
+  i18n: (key, args) => i18n.t(key, args),
+  table: {
+    minHeight: 0
+  }
 })
 
 // register global utility filters

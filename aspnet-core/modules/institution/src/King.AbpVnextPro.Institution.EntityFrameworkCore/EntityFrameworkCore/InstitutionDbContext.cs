@@ -23,9 +23,9 @@ public class InstitutionDbContext : AbpDbContext<InstitutionDbContext>, IInstitu
 
     }
 
-    public DbSet<DepartmentUnit> DepartmentUnits { get; set; }
+    public virtual DbSet<DepartmentUnit> DepartmentUnit { get; set; }
 
-    public DbSet<Poster> Posters { get; set; }
+    public virtual DbSet<Poster> Poster { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

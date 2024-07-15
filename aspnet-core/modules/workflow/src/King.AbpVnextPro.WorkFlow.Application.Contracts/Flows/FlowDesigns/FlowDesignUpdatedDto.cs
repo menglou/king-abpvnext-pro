@@ -11,10 +11,7 @@ namespace King.AbpVnextPro.WorkFlow.Flows.FlowDesigns
         /// 流程模板名称
         /// </summary>
         public string Name { get; set; }
-        /// <summary>
-        /// 模板类型 1 考勤管理 2 财务管理 3行政管理
-        /// </summary>
-        public int DesignType { get; set; } = 0;
+       
         /// <summary>
         /// 设计内容
         /// </summary>

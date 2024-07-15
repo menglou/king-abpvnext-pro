@@ -21,7 +21,7 @@ public static class InstitutionDbContextModelCreatingExtensions
 
         builder.Entity<DepartmentUnit>(b =>
         {
-            b.ToTable("DepartmentUnits", InstitutionDbProperties.DbSchema);
+            b.ToTable("DepartmentUnit", InstitutionDbProperties.DbSchema);
 
             b.ConfigureByConvention();
 
@@ -43,7 +43,7 @@ public static class InstitutionDbContextModelCreatingExtensions
 
         builder.Entity<UserDepartmentUnit>(b =>
         {
-            b.ToTable("UserDepartmentUnits", InstitutionDbProperties.DbSchema);
+            b.ToTable("UserDepartmentUnit", InstitutionDbProperties.DbSchema);
 
             b.ConfigureByConvention();
 
@@ -58,7 +58,7 @@ public static class InstitutionDbContextModelCreatingExtensions
 
         builder.Entity<Poster>(b =>
         {
-            b.ToTable("Posters", InstitutionDbProperties.DbSchema);
+            b.ToTable("Poster", InstitutionDbProperties.DbSchema);
             b.ConfigureByConvention();
             b.Property(ou => ou.Code).IsRequired().HasMaxLength(100).HasColumnName(nameof(DepartmentUnit.Code));
             b.Property(ou => ou.Name).IsRequired().HasMaxLength(200).HasColumnName(nameof(Poster.Name));
@@ -69,7 +69,7 @@ public static class InstitutionDbContextModelCreatingExtensions
 
         builder.Entity<UserPoster>(b =>
         {
-            b.ToTable("UserPosters", InstitutionDbProperties.DbSchema);
+            b.ToTable("UserPoster", InstitutionDbProperties.DbSchema);
             b.ConfigureByConvention();
             b.HasKey(ou => new { ou.PotserId, ou.UserId });
             b.HasIndex(ou => new { ou.PotserId, ou.UserId });

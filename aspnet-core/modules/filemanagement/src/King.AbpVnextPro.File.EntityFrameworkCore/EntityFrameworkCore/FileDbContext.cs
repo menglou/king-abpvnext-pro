@@ -18,7 +18,7 @@ public class FileDbContext : AbpDbContext<FileDbContext>, IFileDbContext
 
     }
 
-    public DbSet<Files> Files { get; set; }
+    public virtual DbSet<Files> Files { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

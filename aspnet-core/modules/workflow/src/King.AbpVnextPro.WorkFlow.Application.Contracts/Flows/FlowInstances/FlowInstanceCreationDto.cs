@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace King.AbpVnextPro.WorkFlow.Flows.FlowInstances
 {
-    internal class FlowInstanceCreationDto
+    public class FlowInstanceCreationDto:EntityDto
     {
         /// <summary>
         /// 流程名称 (自定义)
@@ -13,12 +14,8 @@ namespace King.AbpVnextPro.WorkFlow.Flows.FlowInstances
         /// <summary>
         /// 流程模板id
         /// </summary>
-        public string DesignId { get; set; }
-        /// <summary>
-        /// 流程类型
-        /// </summary>
-        public int DesignType { get; set; } = 0;
-
+        public Guid DesignId { get; set; }
+      
         /// <summary>
         /// 当前节点id
         /// </summary>
@@ -39,12 +36,12 @@ namespace King.AbpVnextPro.WorkFlow.Flows.FlowInstances
         /// </summary>
         public string PreviousId { get; set; } = string.Empty;
         /// <summary>
-        /// 流程模板内容
+        /// 流程模板内容（模板中得流程图）
         /// </summary>
         public string DesignContent { get; set; } = string.Empty;
 
         /// <summary>
-        /// 表单模板内容
+        /// 表单模板内容（模板中得form 表单）
         /// </summary>
         public string FormContent { get; set; } = string.Empty;
 

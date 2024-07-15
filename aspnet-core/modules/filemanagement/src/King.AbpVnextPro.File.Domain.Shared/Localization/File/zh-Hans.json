@@ -13,7 +13,7 @@
     "Permission:FileManagement.AllowedUploadFormats": "允许上传格式",
     "DisplayName:FileManagement.BaseUploadUrl": "文件url根路径",
     "Permission:FileManagement.BaseUploadUrl": "文件url根路径",
-    "Description:FileManagement.AllowedUploadFormats": "允许上传格式（多种格式使用‘,’隔开）",
+    "Description:FileManagement.BaseUploadUrl": "读取文件url根路径",
     "FileManagement.ExceedsTheMaximumSize": "文件超过最大上传大小（{0}kb）！",
     "FileManagement.NotValidFormat": "无效的文件格式！",
     "FileManagement.NotHave": "上传的文件不能为空"

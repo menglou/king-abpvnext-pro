@@ -15,16 +15,13 @@ namespace King.AbpVnextPro.WorkFlow.Flows
         /// 流程模板名称
         /// </summary>
         public string Name { get; set; } = string.Empty;
+
         /// <summary>
-        /// 模板类型 1 考勤管理 2 财务管理 3行政管理
+        /// 设计内容（审批流程设置得流程图）
         /// </summary>
-        public int DesignType { get; set; }
+        public string DesignContent { get; set; }
         /// <summary>
-        /// 设计内容
-        /// </summary>
-        public string DesignContent { get; set; } 
-        /// <summary>
-        /// 表单内容
+        /// 表单内容 (流程字段设置得东西，一些按钮，文本等)
         /// </summary>
         public string FormContent { get; set; } 
         /// <summary>
@@ -32,12 +29,12 @@ namespace King.AbpVnextPro.WorkFlow.Flows
         /// </summary>
         public string PrintContent { get; set; } 
         /// <summary>
-        /// 使用权限
+        /// 使用权限(基础信息里面 流程适用得范围)
         /// </summary>
-        public string Permission { get; set; } 
+        public string Permission { get; set; }
 
         /// <summary>
-        /// 申请时字段权限
+        /// 申请时字段权限（流程字段设置得一些按钮，文本展示权限）
         /// </summary>
         public string ColnumPermission { get; set; } 
         /// <summary>
@@ -48,10 +45,9 @@ namespace King.AbpVnextPro.WorkFlow.Flows
         public Guid? TenantId { get; set; }
 
 
-        public FlowDesign(string name,int designType, string designContent, string formContent, string printContent, string permission, string colnumPermission, bool isEnable, string remark,Guid? tenantId=null)
+        public FlowDesign(string name,string designContent, string formContent, string printContent, string permission, string colnumPermission, bool isEnable, string remark,Guid? tenantId=null)
         {
             Name = name;
-            DesignType = designType;
             DesignContent = designContent;
             FormContent = formContent;
             PrintContent = printContent;

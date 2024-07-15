@@ -18,13 +18,13 @@ public class ScheduleTaskDbContext : AbpDbContext<ScheduleTaskDbContext>, ISched
 
     }
 
-    public DbSet<ScheduleEntity> ScheduleEntitys { get; set; }
+    public virtual DbSet<ScheduleEntity> ScheduleEntity { get; set; }
 
-    public DbSet<ScheduleHttpOptionEntity> ScheduleHttpOptionEntitys { get; set; }
+    public virtual DbSet<ScheduleHttpOptionEntity> ScheduleHttpOptionEntity { get; set; }
 
-    public DbSet<ScheduleKeeperEntity> ScheduleKeeperEntitys { get; set; }
+    public virtual DbSet<ScheduleKeeperEntity> ScheduleKeeperEntity { get; set; }
 
-    public DbSet<ScheduleLogEntity> ScheduleLogEntitys { get; set; }
+    public virtual DbSet<ScheduleLogEntity> ScheduleLogEntity { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

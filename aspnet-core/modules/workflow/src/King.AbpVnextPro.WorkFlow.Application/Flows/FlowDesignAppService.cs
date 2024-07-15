@@ -26,6 +26,12 @@ namespace King.AbpVnextPro.WorkFlow.Flows
             _asyncExecuter = asyncExecuter;
         }
 
+        /// <summary>
+        /// 创建流程模板
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        /// <exception cref="UserFriendlyException"></exception>
         public async Task<bool> CreateAsync(FlowDesignCreationDto input)
         {
             var isexit = await _flowDesignRepository.FindAsync(x => x.Name == input.Name);
@@ -44,7 +50,7 @@ namespace King.AbpVnextPro.WorkFlow.Flows
 
                 flowNodeDto = ObjectMapper.Map<FlowInstanceModel, FlowNodeDto>(flowModel);
 
-                FlowDesign flowDesign = new FlowDesign(input.Name, input.DesignType, input.DesignContent, input.FormContent, input.PrintContent, input.Permission, JsonConvert.SerializeObject(flowNodeDto.ColnumPermissions), input.IsEnable, input.Remark, CurrentTenant.Id);
+                FlowDesign flowDesign = new FlowDesign(input.Name,input.DesignContent, input.FormContent, input.PrintContent, input.Permission, JsonConvert.SerializeObject(flowNodeDto.ColnumPermissions), input.IsEnable, input.Remark, CurrentTenant.Id);
 
                 await _flowDesignRepository.InsertAsync(flowDesign);
             }
@@ -52,6 +58,13 @@ namespace King.AbpVnextPro.WorkFlow.Flows
             return true;
         }
 
+        /// <summary>
+        /// 修改流程模板
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        /// <exception cref="UserFriendlyException"></exception>
         public async Task<bool> UpdateAsync(Guid id, FlowDesignUpdatedDto input)
         {
             var res=await _flowDesignRepository.FindAsync(x => x.Id == id);
@@ -78,7 +91,6 @@ namespace King.AbpVnextPro.WorkFlow.Flows
                     flowNodeDto = ObjectMapper.Map<FlowInstanceModel, FlowNodeDto>(flowModel);
 
                     res.DesignContent = input.DesignContent;
-                    res.DesignType = input.DesignType;
                     res.Name = input.Name;
                     res.Permission = input.Permission;
                     res.PrintContent = input.PrintContent;
@@ -110,6 +122,11 @@ namespace King.AbpVnextPro.WorkFlow.Flows
             return ObjectMapper.Map<FlowDesign, FlowDesignDto>(res);
         }
 
+        /// <summary>
+        /// 流程模板列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<PagedResultDto<FlowDesignDto>> GetListAsync(GetFlowDesignPageListDto input)
         {
             var count=await _asyncExecuter.CountAsync((await _flowDesignRepository.GetQueryableAsync()).WhereIf(!input.Name.IsNullOrWhiteSpace(),x=>x.Name.Contains(input.Name)).WhereIf(input.IsEnable.HasValue,x=>x.IsEnable==input.IsEnable.Value));
