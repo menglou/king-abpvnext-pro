@@ -22,7 +22,7 @@ namespace King.AbpVnextPro.File.Filess
 
         protected Files() { }
 
-        public Files(Guid id, Guid? tenantId, [NotNull] string fileName, [NotNull] string blobName, long byteSize) : base(id)
+        public Files(Guid id,[NotNull] string fileName, [NotNull] string blobName, long byteSize, Guid? tenantId=null) : base(id)
         {
             TenantId = tenantId;
             FileName = Check.NotNullOrWhiteSpace(fileName, nameof(fileName));

@@ -24,10 +24,9 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
 
         public DataDictionaryDetail(Guid id,
             [NotNull] Guid dataDictionaryId,
-            [CanBeNull] Guid? tenantId,
             [NotNull] string label,
             [NotNull] string value,
-            short sort = 0)
+            short sort = 0, Guid? tenantId = null)
         {
             Check.NotNull(dataDictionaryId, nameof(dataDictionaryId));
             Check.NotNullOrEmpty(label, nameof(label), DataDictionaryConsts.MaxNameLength);
