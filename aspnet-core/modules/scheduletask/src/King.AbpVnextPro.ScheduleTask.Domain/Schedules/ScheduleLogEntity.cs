@@ -42,6 +42,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
         /// 执行用时，毫秒
         /// </summary>
         public double Elapsed { get; set; }
+
         public Guid? TenantId { get; set; }
     }
 }
