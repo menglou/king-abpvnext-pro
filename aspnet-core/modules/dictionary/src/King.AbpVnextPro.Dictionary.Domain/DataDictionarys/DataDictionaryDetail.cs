@@ -22,6 +22,10 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
         public Guid? TenantId { get; set; }
         public bool IsDeleted { get; set; }
 
+        protected DataDictionaryDetail()
+        {
+
+        }
         public DataDictionaryDetail(Guid id,
             [NotNull] Guid dataDictionaryId,
             [NotNull] string label,
