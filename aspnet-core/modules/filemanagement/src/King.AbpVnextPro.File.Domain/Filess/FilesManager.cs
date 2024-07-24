@@ -34,7 +34,7 @@ namespace King.AbpVnextPro.File.Filess
             Check.NotNullOrWhiteSpace(fileName, nameof(fileName));
             var blobName = Guid.NewGuid().ToString("N");
 
-            var file = await FileRepository.InsertAsync(new Files(GuidGenerator.Create(), CurrentTenant.Id, fileName, blobName, bytes.Length));
+            var file = await FileRepository.InsertAsync(new Files(GuidGenerator.Create(), fileName, blobName, bytes.Length, CurrentTenant.Id));
 
             await BlobContainer.SaveAsync(blobName, bytes);
 

@@ -51,10 +51,9 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
             var result = await Repository.InsertAsync(new DataDictionaryDetail(
                 GuidGenerator.Create(),
                 input.DataDictionaryId,
-                CurrentTenant.Id,
                 input.Label,
                 input.Value,
-                input.Sort)
+                input.Sort, CurrentTenant.Id)
             );
             return ObjectMapper.Map<DataDictionaryDetail, DictionaryDetailDto>(result);
         }
