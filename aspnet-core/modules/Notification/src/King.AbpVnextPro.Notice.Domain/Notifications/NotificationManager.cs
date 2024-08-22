@@ -75,10 +75,10 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Warning, senderId, 0, from, true);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Warning, senderId, 0, from, true,CurrentTenant.Id);
             foreach (var item in receiveIds)
             {
-                entity.AddNotificationSubscription(GuidGenerator.Create(), item);
+                entity.AddNotificationSubscription(GuidGenerator.Create(), item,CurrentTenant.Id);
             }
 
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
@@ -106,10 +106,10 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Information, senderId, 0, from, true);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Information, senderId, 0, from, true, CurrentTenant.Id);
             foreach (var item in receiveIds)
             {
-                entity.AddNotificationSubscription(GuidGenerator.Create(), item);
+                entity.AddNotificationSubscription(GuidGenerator.Create(), item,CurrentTenant.Id);
             }
 
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
@@ -134,10 +134,10 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Error, senderId, 0, from, true);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.Common, MessageLevel.Error, senderId, 0, from, true, CurrentTenant.Id);
             foreach (var item in receiveIds)
             {
-                entity.AddNotificationSubscription(GuidGenerator.Create(), item);
+                entity.AddNotificationSubscription(GuidGenerator.Create(), item, CurrentTenant.Id);
             }
 
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
@@ -161,7 +161,7 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId, status, from, iscreate);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Warning, senderId, status, from, iscreate, CurrentTenant.Id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
             if (iscreate == false)
             {
@@ -192,7 +192,7 @@ namespace King.AbpVnextPro.Notice.Notifications
                 senderId = _currentUser.Id.Value;
             }
 
-            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId, status, from, iscreate);
+            var entity = new Notification(GuidGenerator.Create(), title, content, MessageType.BroadCast, MessageLevel.Information, senderId, status, from, iscreate, CurrentTenant.Id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
 
             if (status == 0)
@@ -290,7 +290,7 @@ namespace King.AbpVnextPro.Notice.Notifications
             if (notification.MessageType == MessageType.BroadCast)
             {
                 //如果类型是广播消息，用户设置为已读，在插入一条数据
-                notification.AddBroadCastNotificationSubscription(GuidGenerator.Create(), _currentUser.GetId(), Clock.Now);
+                notification.AddBroadCastNotificationSubscription(GuidGenerator.Create(), _currentUser.GetId(), Clock.Now,CurrentTenant.Id);
                 return;
             }
             else

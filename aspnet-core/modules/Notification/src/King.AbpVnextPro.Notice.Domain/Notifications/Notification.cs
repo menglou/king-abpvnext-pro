@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using System.Text;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.MultiTenancy;
 
 namespace King.AbpVnextPro.Notice.Notifications
 {
     /// <summary>
     /// 消息通知 
     /// </summary>
-    public class Notification : FullAuditedAggregateRoot<Guid>
+    public class Notification : FullAuditedAggregateRoot<Guid>, IMultiTenant
     {
         /// <summary>
         /// 消息标题
@@ -58,6 +59,8 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// </summary>
         public List<NotificationSubscription> NotificationSubscriptions { get; private set; }
 
+        public Guid? TenantId { get; set; }
+
         protected Notification()
         {
             NotificationSubscriptions = new List<NotificationSubscription>();
@@ -72,7 +75,8 @@ namespace King.AbpVnextPro.Notice.Notifications
             Guid? senderId,
             int status,
             Guid? from,
-            bool IsSend
+            bool IsSend,
+            Guid? tenantId=null
         ) : base(id)
         {
             NotificationSubscriptions = new List<NotificationSubscription>();
@@ -97,7 +101,8 @@ namespace King.AbpVnextPro.Notice.Notifications
             Guid? senderId,
             int status,
             Guid? from,
-            bool isSend
+            bool isSend,
+            Guid? tenantId=null
         )
         {
             SetTitle(title);
@@ -108,6 +113,7 @@ namespace King.AbpVnextPro.Notice.Notifications
             SetStatus(status);
             SetFrom(from);
             SetIsSend(isSend);
+            TenantId= tenantId;
         }
 
         internal void SetSenderId(Guid? senderId)
@@ -175,24 +181,24 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <summary>
         /// 新增非广播消息订阅人
         /// </summary>
-        public void AddNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId)
+        public void AddNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId,Guid? tenantId=null)
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId)) return;
             NotificationSubscriptions.Add(
-                new NotificationSubscription(notificationSubscriptionId, Id, receiveId));
+                new NotificationSubscription(notificationSubscriptionId, Id, receiveId, tenantId));
         }
 
         /// <summary>
         /// 新增消息类型为广播订阅人
         /// </summary>
-        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId, DateTime readTime)
+        public void AddBroadCastNotificationSubscription(Guid notificationSubscriptionId, Guid receiveId, DateTime readTime, Guid? tenantId = null)
         {
             if (NotificationSubscriptions.Any(e => e.ReceiveId == receiveId))
             {
                 return;
             }
 
-            var temp = new NotificationSubscription(notificationSubscriptionId, Id, receiveId);
+            var temp = new NotificationSubscription(notificationSubscriptionId, Id, receiveId, tenantId);
             temp.SetRead(readTime);
             NotificationSubscriptions.Add(temp);
         }

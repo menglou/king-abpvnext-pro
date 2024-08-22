@@ -6,16 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp;
+using Volo.Abp.DependencyInjection;
 
 namespace King.AbpVnextPro.FreeRedis.King.AbpVnextPro.FreeRedis
 {
-    public abstract class FreeRedisRepository : IBasicFreeRedisRepository
+    public abstract class FreeRedisRepository : IFreeRedisRepository, ITransientDependency
     {
         protected abstract int DB { get; }
 
         private readonly IFreeRedisProvider _freeRedisProvider;
 
-        protected FreeRedisRepository(IFreeRedisProvider freeRedisProvider)
+        public FreeRedisRepository(IFreeRedisProvider freeRedisProvider)
         {
             _freeRedisProvider = freeRedisProvider;
         }

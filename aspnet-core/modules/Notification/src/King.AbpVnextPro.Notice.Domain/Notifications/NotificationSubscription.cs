@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.MultiTenancy;
 
 namespace King.AbpVnextPro.Notice.Notifications
 {
     /// <summary>
     /// 消息订阅者 
     /// </summary>
-    public class NotificationSubscription : FullAuditedEntity<Guid>
+    public class NotificationSubscription : FullAuditedEntity<Guid>,IMultiTenant
     {
         /// <summary>
         /// 消息Id
@@ -30,6 +31,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// </summary>
         public DateTime? ReadTime { get; private set; }
 
+        public Guid? TenantId { get; set; }
 
         protected NotificationSubscription()
         {
@@ -38,13 +40,15 @@ namespace King.AbpVnextPro.Notice.Notifications
         public NotificationSubscription(
             Guid id,
             Guid notificationId,
-            Guid receiveId
+            Guid receiveId,
+            Guid? tenantId=null
         ) : base(id)
         {
             SetNotificationId(notificationId);
             SetReceiveId(receiveId);
             Read = false;
             ReadTime = null;
+            TenantId = tenantId;
         }
 
         private void SetNotificationId(Guid notificationId)

@@ -457,6 +457,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.Htt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.HttpApi.Host", "..\templates\king-abpvnext-pro-simplify-openididct\aspnet-core\src\CompanyName.ProjectName.HttpApi.Host\CompanyName.ProjectName.HttpApi.Host.csproj", "{D0EF6E4F-8D8B-4DAD-A33E-04EB6FFF42B6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyName.ProjectName.IdentityServer", "..\templates\king-abp-vnext-pro-nuget-identityserver4-all\aspnet-core\src\CompanyName.ProjectName.IdentityServer\CompanyName.ProjectName.IdentityServer.csproj", "{D36A5E04-9039-4432-874F-CF111967BC5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1091,6 +1093,10 @@ Global
 		{D0EF6E4F-8D8B-4DAD-A33E-04EB6FFF42B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0EF6E4F-8D8B-4DAD-A33E-04EB6FFF42B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0EF6E4F-8D8B-4DAD-A33E-04EB6FFF42B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36A5E04-9039-4432-874F-CF111967BC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36A5E04-9039-4432-874F-CF111967BC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36A5E04-9039-4432-874F-CF111967BC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36A5E04-9039-4432-874F-CF111967BC5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1299,6 +1305,7 @@ Global
 		{AD9C2794-72FC-4E7D-B878-AB80B3458391} = {80AF5CFC-B50E-4150-8D9E-D6002269F910}
 		{D06B4758-F97E-4679-9AB5-BBEF94CFE11D} = {80AF5CFC-B50E-4150-8D9E-D6002269F910}
 		{D0EF6E4F-8D8B-4DAD-A33E-04EB6FFF42B6} = {80AF5CFC-B50E-4150-8D9E-D6002269F910}
+		{D36A5E04-9039-4432-874F-CF111967BC5B} = {D1747E29-1FCB-4C1C-9580-23753E74F493}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D34721E-F993-4630-9DFC-639A1BB72F0D}

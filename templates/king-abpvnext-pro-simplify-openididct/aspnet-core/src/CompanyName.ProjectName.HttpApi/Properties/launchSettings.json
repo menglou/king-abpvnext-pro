@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CompanyName.ProjectName.HttpApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50631;http://localhost:50632"
+    }
+  }
+}
