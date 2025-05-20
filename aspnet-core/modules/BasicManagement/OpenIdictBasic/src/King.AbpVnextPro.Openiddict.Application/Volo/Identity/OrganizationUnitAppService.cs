@@ -104,7 +104,7 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
             return root;
         }
 
-        public Task<string> GetNextChildCodeAsync(Guid? parentId)
+        public virtual Task<string> GetNextChildCodeAsync(Guid? parentId)
         {
             return UnitManager.GetNextChildCodeAsync(parentId);
         }
@@ -113,7 +113,7 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
         /// 获取所有组织 不存在级联关系的
         /// </summary>
         /// <returns></returns>
-        public async Task<List<OrganizationUnitDto>> GetAllListAsync()
+        public virtual async Task<List<OrganizationUnitDto>> GetAllListAsync()
         {
             var query = await UnitRepository.GetListAsync();
             var result = query.Where(x => x.IsDeleted == false).ToList();

@@ -133,7 +133,7 @@ namespace King.AbpVnextPro.Institution.Departments
             }
         }
 
-        public async Task<List<DepartmentUnit>> FindChildrenAsync(Guid? parentId, bool recursive = false)
+        public virtual async Task<List<DepartmentUnit>> FindChildrenAsync(Guid? parentId, bool recursive = false)
         {
             if (!recursive)
             {

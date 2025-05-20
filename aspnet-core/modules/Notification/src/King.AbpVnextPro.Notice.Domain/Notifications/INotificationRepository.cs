@@ -9,14 +9,8 @@ namespace King.AbpVnextPro.Notice.Notifications
     /// <summary>
     /// 消息通知 仓储接口
     /// </summary>
-    public partial interface INotificationRepository : IBasicRepository<Notification, Guid>
+    public partial interface INotificationRepository : IRepository<Notification, Guid>
     {
-        /// <summary>
-        /// 查找用户消息
-        /// </summary>
-        /// <param name="id"></param>
-        Task<Notification> FindByIdAsync(Guid id);
-
         /// <summary>
         /// 分页获取消息
         /// </summary>

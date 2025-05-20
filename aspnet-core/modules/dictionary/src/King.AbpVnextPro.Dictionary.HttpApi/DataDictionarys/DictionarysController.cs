@@ -19,7 +19,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
     [Route("/api/data-dictionary/dictionary")]
     public class DictionarysController : DictionaryController, IDictionaryAppService
     {
-        private IDictionaryAppService _dictionaryAppService { get; set; }
+        protected IDictionaryAppService _dictionaryAppService { get; set; }
         public DictionarysController(IDictionaryAppService dictionaryAppService)
         {
             _dictionaryAppService = dictionaryAppService;

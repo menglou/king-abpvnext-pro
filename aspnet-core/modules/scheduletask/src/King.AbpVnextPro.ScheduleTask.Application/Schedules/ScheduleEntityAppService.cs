@@ -19,12 +19,12 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
 {
     public class ScheduleEntityAppService : ScheduleTaskAppService, IScheduleEntityAppService
     {
-        private readonly IAsyncQueryableExecuter _asyncExecuter;
-        private IScheduleKeeperEntityRepository _scheduleKeeperEntityRepository;
-        private IQuartzManager _quartzManager { get; set; }
-        private IScheduleEntityRepository _scheduleEntityRepository { get; set; }
-        private IScheduleHttpOptionEntityRepository _scheduleHttpOptionEntityRepository { get; set; }
-        private IScheduleLogEntityRepository _scheduleLogEntityRepository { get; set; }
+        protected readonly IAsyncQueryableExecuter _asyncExecuter;
+        protected IScheduleKeeperEntityRepository _scheduleKeeperEntityRepository;
+        protected IQuartzManager _quartzManager { get; set; }
+        protected IScheduleEntityRepository _scheduleEntityRepository { get; set; }
+        protected IScheduleHttpOptionEntityRepository _scheduleHttpOptionEntityRepository { get; set; }
+        protected IScheduleLogEntityRepository _scheduleLogEntityRepository { get; set; }
         public ScheduleEntityAppService(IQuartzManager quartzManager, IScheduleEntityRepository scheduleEntityRepository, IScheduleHttpOptionEntityRepository scheduleHttpOptionEntityRepository, IScheduleKeeperEntityRepository scheduleKeeperEntityRepository, IScheduleLogEntityRepository scheduleLogEntityRepository, IAsyncQueryableExecuter asyncExecuter)
         {
             _quartzManager = quartzManager;

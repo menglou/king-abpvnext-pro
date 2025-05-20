@@ -12,11 +12,11 @@ namespace King.AbpVnextPro.Institution.Departments
 {
     public class DepartmentUnitAppService:InstitutionAppService, IDepartmentUnitAppService
     {
-        private DepartmentUnitManager UnitManager;
-        private IDepartmentUnitRepository DepartmentUnitRepository; 
+        protected DepartmentUnitManager UnitManager;
+        protected IDepartmentUnitRepository DepartmentUnitRepository;
         protected IIdentityUserAppService UserAppService { get; }
         protected IIdentityUserRepository UserRepository { get; }
-        private IUserDepartmentUnitRepository UserDepRepository; 
+        protected IUserDepartmentUnitRepository UserDepRepository; 
         public DepartmentUnitAppService(DepartmentUnitManager unitManager, IDepartmentUnitRepository departmentUnitRepository, IIdentityUserAppService userAppService, IIdentityUserRepository userRepository, IUserDepartmentUnitRepository userDepRepository)
         {
             UnitManager = unitManager;
@@ -110,7 +110,7 @@ namespace King.AbpVnextPro.Institution.Departments
         /// 获取所有组织 不存在级联关系的
         /// </summary>
         /// <returns></returns>
-        public async Task<List<DepartmentUnitDto>> GetAllDepListAsync(GetAllDepartmentUnitInput input)
+        public virtual async Task<List<DepartmentUnitDto>> GetAllDepListAsync(GetAllDepartmentUnitInput input)
         {
             var query = await DepartmentUnitRepository.GetListAsync(input.Sorting);
             var result = query.WhereIf(!input.Filter.IsNullOrWhiteSpace(),x => x.DisplayName == input.Filter).Where(x => x.IsDeleted == false).ToList();
@@ -265,6 +265,7 @@ namespace King.AbpVnextPro.Institution.Departments
                            Id = user.Id,
                            Name = user.Name,
                            UserName = user.UserName,
+                           
                        };
             return list.ToList();
         }

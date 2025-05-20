@@ -24,7 +24,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <summary>
         /// 分页获取消息
         /// </summary>
-        public async Task<List<Notification>> GetPagingListAsync(
+        public virtual async Task<List<Notification>> GetPagingListAsync(
             Guid? userId,
             MessageType messageType,
               int status,
@@ -38,7 +38,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <summary>
         /// 分页获取消息
         /// </summary>
-        public async Task<List<Notification>> GetNoPagingListAsync(
+        public virtual async Task<List<Notification>> GetNoPagingListAsync(
             Guid? userId,
             MessageType messageType,
              int status,
@@ -51,7 +51,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <summary>
         /// 获取消息总条数
         /// </summary>
-        public async Task<long> GetPagingCountAsync(Guid? userId, MessageType messageType, int status, string title)
+        public virtual async Task<long> GetPagingCountAsync(Guid? userId, MessageType messageType, int status, string title)
         {
             return await _notificationRepository.GetPagingCountAsync(userId, messageType, status, title);
         }
@@ -62,7 +62,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <param name="title">标题</param>
         /// <param name="content">消息内容</param>
         /// <param name="receiveIds">接受人，发送给谁。</param>
-        public async Task SendCommonWarningMessageAsync(string title, string content, Guid? from, List<Guid> receiveIds)
+        public virtual async Task SendCommonWarningMessageAsync(string title, string content, Guid? from, List<Guid> receiveIds)
         {
             if (receiveIds is { Count: 0 })
             {
@@ -93,7 +93,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <param name="title">标题</param>
         /// <param name="content">消息内容</param>
         /// <param name="receiveIds">接受人，发送给谁。</param>
-        public async Task SendCommonInformationMessageAsync(string title, string content, Guid? from, List<Guid> receiveIds)
+        public virtual async Task SendCommonInformationMessageAsync(string title, string content, Guid? from, List<Guid> receiveIds)
         {
             if (receiveIds is { Count: 0 })
             {
@@ -121,7 +121,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <summary>
         /// 发送错误文本消息
         /// </summary>
-        public async Task SendCommonErrorMessageAsync(string title, string content, Guid? from, List<Guid> receiveIds)
+        public virtual async Task SendCommonErrorMessageAsync(string title, string content, Guid? from, List<Guid> receiveIds)
         {
             if (receiveIds is { Count: 0 })
             {
@@ -153,7 +153,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <param name="content">消息内容</param>
         /// <param name="status">状态 0 代表正常 1 代表关闭</param>
         /// <param name="iscreate">是否仅仅只创建消息</param>
-        public async Task SendBroadCastWarningMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false)
+        public virtual async Task SendBroadCastWarningMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false)
         {
             var senderId = Guid.Empty;
             if (_currentUser?.Id != null)
@@ -184,7 +184,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <param name="content">消息内容</param>
         /// <param name="status">状态 0 代表正常 1 代表关闭</param>
         /// <param name="iscreate">是否仅仅只创建消息</param>
-        public async Task SendBroadCastInformationMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false)
+        public virtual async Task SendBroadCastInformationMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false)
         {
             var senderId = Guid.Empty;
             if (_currentUser?.Id != null)
@@ -220,7 +220,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <param name="content">消息内容</param>
         /// <param name="status">状态 0 代表正常 1 代表关闭</param>
         /// <param name="iscreate">是否仅仅只创建消息</param>
-        public async Task SendBroadCastErrorMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false)
+        public virtual async Task SendBroadCastErrorMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false)
         {
             var senderId = Guid.Empty;
             if (_currentUser?.Id != null)
@@ -242,7 +242,7 @@ namespace King.AbpVnextPro.Notice.Notifications
             }
         }
 
-        public async Task SendOnlyBroadCastMessageAsync(Guid id)
+        public virtual async Task SendOnlyBroadCastMessageAsync(Guid id)
         {
             var entity = await _notificationRepository.FindAsync(id);
             var notificationEto = ObjectMapper.Map<Notification, NotificationEto>(entity);
@@ -258,7 +258,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// <summary>
         /// 更新消息
         /// </summary>
-        public async Task UpdateBroadCastMessageAsync(Guid id, string title, string content, int status)
+        public virtual async Task UpdateMessageAsync(Guid id, string title, string content, int status)
         {
             var res = await _notificationRepository.FindAsync(id);
             if (res != null)
@@ -280,11 +280,11 @@ namespace King.AbpVnextPro.Notice.Notifications
         /// 消息设置为已读
         /// </summary>
         /// <param name="id">消息Id</param>
-        public async Task SetReadAsync(Guid id)
+        public virtual async Task SetReadAsync(Guid id)
         {
             if (_currentUser is not { IsAuthenticated: true }) throw new AbpAuthorizationException();
 
-            var notification = await _notificationRepository.FindByIdAsync(id);
+            var notification = await _notificationRepository.FindAsync(id);
 
             if (notification == null) throw new NotificationDomainException(NoticeErrorCodes.MessageNotExist);
             if (notification.MessageType == MessageType.BroadCast)

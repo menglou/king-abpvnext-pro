@@ -74,28 +74,28 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
         [Authorize(BasicIdentityPermissions.Users.LoclUnLock)]
         [HttpPut]
         [Route("unlockuser/{id}")]
-        public Task<bool> UpdateUseLockAsync(Guid id)
+        public virtual Task<bool> UpdateUseLockAsync(Guid id)
         {
             return UserAppService.UpdateUseLockAsync(id);
         }
         [Authorize]
         [HttpGet]
         [Route("allusers")]
-        public Task<List<IdentityUserDto>> GetListAllAsync()
+        public virtual Task<List<IdentityUserDto>> GetListAllAsync()
         {
             return UserAppService.GetListAllAsync();
         }
         [Authorize(BasicIdentityPermissions.Users.RestPwd)]
         [HttpPost]
         [Route("resetpwd")]
-        public Task<bool> RestPassWordAsync(PasswordResetDto input)
+        public virtual Task<bool> RestPassWordAsync(PasswordResetDto input)
         {
             return UserAppService.RestPassWordAsync(input);
         }
         [Authorize(BasicIdentityPermissions.Users.ActiveIsActive)]
         [HttpPut]
         [Route("updateuseractive")]
-        public Task<bool> UpdateUseActiveAsync(UpdateUseActiveDto input)
+        public virtual Task<bool> UpdateUseActiveAsync(UpdateUseActiveDto input)
         {
             return UserAppService.UpdateUseActiveAsync(input);
         }

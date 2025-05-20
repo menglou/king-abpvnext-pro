@@ -25,7 +25,7 @@ namespace King.AbpVnextPro.Openiddict.Verification
 
         [HttpGet]
         [Route("verification-code")]
-        public VerifyCode GetVerificationCode()
+        public virtual VerifyCode GetVerificationCode()
         {
             var veryCode = _verificationAppService.GetVerificationCode();
             //验证码统一转成小写MD5
@@ -40,7 +40,7 @@ namespace King.AbpVnextPro.Openiddict.Verification
         }
         [HttpGet]
         [Route("vertifyveriCode/{id}/{code}")]
-        public Task<string> GetVerifyCodeMd5FromCache(string id, string code)
+        public virtual Task<string> GetVerifyCodeMd5FromCache(string id, string code)
         {
             return _verificationAppService.GetVerifyCodeMd5FromCache(id, code);
         }

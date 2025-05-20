@@ -162,7 +162,7 @@ namespace King.AbpVnextPro.IdentityServer.Volo.Identity
         /// 解锁
         /// </summary>
         /// <returns></returns>
-        public async Task<bool> UpdateUseLockAsync(Guid id)
+        public virtual async Task<bool> UpdateUseLockAsync(Guid id)
         {
             var res = await UserRepository.FindAsync(id);
             if (res == null)

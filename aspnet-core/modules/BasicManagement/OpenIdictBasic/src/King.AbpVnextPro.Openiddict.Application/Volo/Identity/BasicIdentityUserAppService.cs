@@ -27,7 +27,7 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
       typeof(BasicIdentityUserAppService))]
     public class BasicIdentityUserAppService:IdentityUserAppService, IBasicIdentityUserAppService
     {
-        private readonly IStringLocalizer<OpeniddictResource> _localizer;
+        protected readonly IStringLocalizer<OpeniddictResource> _localizer;
         protected IOrganizationUnitRepository _organizationUnitRepository { get; }
         protected IdentityUserStore _store { get; set; }
         protected IdentityUserManager _userManager { get; set; }

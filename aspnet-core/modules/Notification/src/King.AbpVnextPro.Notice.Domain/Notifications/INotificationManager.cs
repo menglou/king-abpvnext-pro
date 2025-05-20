@@ -78,7 +78,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         Task SendBroadCastErrorMessageAsync(string title, string content, int status, Guid? from, bool iscreate = false);
 
         Task SendOnlyBroadCastMessageAsync(Guid id);
-        Task UpdateBroadCastMessageAsync(Guid id, string title, string content, int status);
+        Task UpdateMessageAsync(Guid id, string title, string content, int status);
         /// <summary>
         /// 消息设置为已读
         /// </summary>

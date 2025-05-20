@@ -65,49 +65,49 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
 
         [HttpPut]
         [Route("move")]
-        public Task MoveAsync(Guid id, Guid? parentId)
+        public virtual Task MoveAsync(Guid id, Guid? parentId)
         {
             return UnitAppService.MoveAsync(id, parentId);
         }
 
         [HttpGet]
         [Route("{id}/details")]
-        public Task<OrganizationUnitDto> GetDetailsAsync(Guid id)
+        public virtual Task<OrganizationUnitDto> GetDetailsAsync(Guid id)
         {
             return UnitAppService.GetDetailsAsync(id);
         }
 
         [HttpGet]
         [Route("details")]
-        public Task<PagedResultDto<OrganizationUnitDto>> GetListDetailsAsync(GetOrganizationUnitInput input)
+        public virtual Task<PagedResultDto<OrganizationUnitDto>> GetListDetailsAsync(GetOrganizationUnitInput input)
         {
             return UnitAppService.GetListDetailsAsync(input);
         }
 
         [HttpGet]
         [Route("all/details")]
-        public Task<ListResultDto<OrganizationUnitDto>> GetAllListDetailsAsync(GetAllOrgnizationUnitInput input)
+        public virtual Task<ListResultDto<OrganizationUnitDto>> GetAllListDetailsAsync(GetAllOrgnizationUnitInput input)
         {
             return UnitAppService.GetAllListDetailsAsync(input);
         }
 
         [HttpGet]
         [Route("children/{parentId}")]
-        public Task<List<OrganizationUnitDto>> GetChildrenAsync(Guid parentId)
+        public virtual Task<List<OrganizationUnitDto>> GetChildrenAsync(Guid parentId)
         {
             return UnitAppService.GetChildrenAsync(parentId);
         }
 
         [HttpGet]
         [Route("root")]
-        public Task<ListResultDto<OrganizationUnitDto>> GetRootListAsync()
+        public virtual Task<ListResultDto<OrganizationUnitDto>> GetRootListAsync()
         {
             return UnitAppService.GetRootListAsync();
         }
 
         [HttpGet]
         [Route("next-code")]
-        public Task<string> GetNextChildCodeAsync(Guid? parentId)
+        public virtual Task<string> GetNextChildCodeAsync(Guid? parentId)
         {
             return UnitAppService.GetNextChildCodeAsync(parentId);
         }
@@ -120,14 +120,14 @@ namespace King.AbpVnextPro.Openiddict.Volo.Identity
 
         [HttpGet]
         [Route("users")]
-        public Task<PagedResultDto<IdentityUserDto>> GetUsersAsync(Guid? ouId, GetIdentityUsersInputExtensionDto usersInput)
+        public virtual Task<PagedResultDto<IdentityUserDto>> GetUsersAsync(Guid? ouId, GetIdentityUsersInputExtensionDto usersInput)
         {
             return UnitAppService.GetUsersAsync(ouId, usersInput);
         }
 
         [HttpGet]
         [Route("roles")]
-        public Task<PagedResultDto<IdentityRoleDto>> GetRolesAsync(Guid? ouId, GetIdentityRolesInput roleInput)
+        public virtual Task<PagedResultDto<IdentityRoleDto>> GetRolesAsync(Guid? ouId, GetIdentityRolesInput roleInput)
         {
             return UnitAppService.GetRolesAsync(ouId, roleInput);
         }

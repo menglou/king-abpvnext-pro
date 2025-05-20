@@ -15,9 +15,9 @@ namespace King.AbpVnextPro.Institution.Posters
 {
     public class PosterAppService:InstitutionAppService, IPosterAppService
     {
-        private readonly IAsyncQueryableExecuter AsyncExecuter;
-        private readonly IPosterRepository PosterRepository;
-        private readonly IUserPosterRepository UserPosterRepository;
+        protected readonly IAsyncQueryableExecuter AsyncExecuter;
+        protected readonly IPosterRepository PosterRepository;
+        protected readonly IUserPosterRepository UserPosterRepository;
         protected IIdentityUserRepository UserRepository { get; }
 
         public PosterAppService(IPosterRepository posterRepository, IAsyncQueryableExecuter asyncExecuter,IUserPosterRepository userPosterRepository, IIdentityUserRepository userRepository)

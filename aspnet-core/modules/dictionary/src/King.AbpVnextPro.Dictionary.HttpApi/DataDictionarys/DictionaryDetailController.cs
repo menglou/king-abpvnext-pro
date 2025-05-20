@@ -19,7 +19,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
     [Route("/api/data-dictionary-detail/dictionary-detail")]
     public class DictionaryDetailController : DictionaryController, IDictionaryDetailAppService
     {
-        private IDictionaryDetailAppService _dictionaryDetailAppService { get; set; }
+        protected IDictionaryDetailAppService _dictionaryDetailAppService { get; set; }
 
         public DictionaryDetailController(IDictionaryDetailAppService dictionaryDetailAppService)
         {

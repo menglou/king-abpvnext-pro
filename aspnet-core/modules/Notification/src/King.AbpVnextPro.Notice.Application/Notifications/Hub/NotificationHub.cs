@@ -13,7 +13,7 @@ namespace King.AbpVnextPro.Notice.Notifications.Hub
     [Authorize]
     public class NotificationHub : AbpHub<INotificationHub>
     {
-        private INotificationAppService _notificationAppService;
+        protected INotificationAppService _notificationAppService;
         public NotificationHub(INotificationAppService notificationAppService)
         {
             

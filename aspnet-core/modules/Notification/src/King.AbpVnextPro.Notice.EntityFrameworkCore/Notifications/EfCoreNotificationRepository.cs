@@ -19,19 +19,7 @@ namespace King.AbpVnextPro.Notice.Notifications
         {
         }
 
-        /// <summary>
-        /// 查找用户消息
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public async Task<Notification> FindByIdAsync(Guid id)
-        {
-            return await (await GetDbSetAsync())
-                .IncludeDetails()
-                .Where(e => e.Id == id)
-                .FirstOrDefaultAsync();
-        }
-
+       
         public async Task<List<Notification>> GetPagingListAsync(
             Guid? userId,
             MessageType messageType,

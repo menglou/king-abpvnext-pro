@@ -56,7 +56,7 @@ namespace King.AbpVnextPro.Notice.Notifications.EventBus
         /// <param name="id"></param>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task UpdateBroadCastMessageAsync(Guid id, SendBroadCastMessageInput input);
+        Task UpdateMessageAsync(Guid id, SendBroadCastMessageInput input);
         /// <summary>
         /// 消息设置为已读
         /// </summary>

@@ -17,9 +17,9 @@ namespace King.AbpVnextPro.Notice.Notifications.Hub
     [DisableAuditing]
     public class NotificationHubAppService : NoticeAppService, INotificationHubAppService
     {
-        private readonly IHubContext<NotificationHub, INotificationHub> _hubContext;
-        private readonly ILogger<NotificationHubAppService> _logger;
-        private readonly IJsonSerializer _jsonSerializer;
+        protected readonly IHubContext<NotificationHub, INotificationHub> _hubContext;
+        protected readonly ILogger<NotificationHubAppService> _logger;
+        protected readonly IJsonSerializer _jsonSerializer;
         public NotificationHubAppService(
             IHubContext<NotificationHub, INotificationHub> hubContext,
             ILogger<NotificationHubAppService> logger,

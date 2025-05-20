@@ -18,7 +18,7 @@ namespace King.AbpVnextPro.Notice.Notifications
     [Route("/api/notifications/notification")]
     public class NotificationController: NoticeController, INotificationAppService
     {
-        private readonly INotificationAppService _notificationAppService;
+        protected  INotificationAppService _notificationAppService;
 
         public NotificationController(
             INotificationAppService notificationAppService)
@@ -113,14 +113,14 @@ namespace King.AbpVnextPro.Notice.Notifications
             return _notificationAppService.SetReadAsync(input);
         }
         [HttpDelete("DeleteBroadCast/{id}")]
-        public Task DeleteBroadCastMessageAsync(Guid id)
+        public virtual Task DeleteBroadCastMessageAsync(Guid id)
         {
             return _notificationAppService.DeleteBroadCastMessageAsync(id);
         }
-        [HttpPut("UpdateBroadCast/{id}")]
-        public virtual Task UpdateBroadCastMessageAsync(Guid id, SendBroadCastMessageInput input)
+        [HttpPut("UpdateMessage/{id}")]
+        public virtual Task UpdateMessageAsync(Guid id, SendBroadCastMessageInput input)
         {
-            return _notificationAppService.UpdateBroadCastMessageAsync(id, input);
+            return _notificationAppService.UpdateMessageAsync(id, input);
         }
     }
 }

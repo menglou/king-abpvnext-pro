@@ -16,7 +16,7 @@ namespace King.AbpVnextPro.Notice.Notifications.EventBus.LocalEventHandlers
     /// </summary>
     public class NotificationCreatedLocalEventHandler : IDistributedEventHandler<CreatedNotificationLocalEvent>, ITransientDependency
     {
-        private readonly INotificationHubAppService _hubAppService;
+        protected readonly INotificationHubAppService _hubAppService;
 
         public NotificationCreatedLocalEventHandler(INotificationHubAppService hubAppService)
         {

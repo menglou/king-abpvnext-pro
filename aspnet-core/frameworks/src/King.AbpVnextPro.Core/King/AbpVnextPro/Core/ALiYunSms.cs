@@ -7,8 +7,8 @@ namespace King.AbpVnextPro.Core.King.AbpVnextPro.Core
         /// <summary>
         /// 阿里云--发送短信
         /// </summary>
-        /// <param name="ACCESSKEYID">如：LTAI4Fr2FDUGtKqNR8MPAYVB，参考阿里云短信开发者文档</param>
-        /// <param name="ACCESSSECRET">如：Qy1gS1FFENHUkLpTH7c0r3hLBxRuAb，参考阿里云短信开发者文档</param>
+        /// <param name="ACCESSKEYID">如：，参考阿里云短信开发者文档</param>
+        /// <param name="ACCESSSECRET">如：，参考阿里云短信开发者文档</param>
         /// <param name="domain">如：dysmsapi.aliyuncs.com，参考阿里云短信开发者文档</param>
         /// <param name="version">如：版本号：2017-05-25，参考阿里云短信开发者文档</param>
         /// <param name="signName">如：华控二供，参考阿里云短信开发者文档</param>

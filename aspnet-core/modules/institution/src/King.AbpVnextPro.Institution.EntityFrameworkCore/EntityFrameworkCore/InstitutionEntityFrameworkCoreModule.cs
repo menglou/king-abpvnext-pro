@@ -19,6 +19,7 @@ public class InstitutionEntityFrameworkCoreModule : AbpModule
             /* Add custom repositories here. Example:
              * options.AddRepository<Question, EfCoreQuestionRepository>();
              */
+            options.AddDefaultRepositories(true);
             options.AddRepository<DepartmentUnit, EfCoreDepartmentUnitRepository>();
             options.AddRepository<Poster, EfCorePosterRepository>();
         });

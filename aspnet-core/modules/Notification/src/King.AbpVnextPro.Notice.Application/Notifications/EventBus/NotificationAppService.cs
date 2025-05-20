@@ -14,9 +14,9 @@ namespace King.AbpVnextPro.Notice.Notifications.EventBus
     [DisableAuditing]
     public class NotificationAppService : NoticeAppService, INotificationAppService
     {
-        private readonly INotificationManager _notificationManager;
-        private readonly ICurrentUser _currentUser;
-        private INotificationRepository _notificationRepository;
+        protected INotificationManager _notificationManager;
+        protected ICurrentUser _currentUser;
+        protected INotificationRepository _notificationRepository;
 
         public NotificationAppService(
             INotificationManager notificationManager,
@@ -95,9 +95,9 @@ namespace King.AbpVnextPro.Notice.Notifications.EventBus
         /// <summary>
         /// 更新消息
         /// </summary>
-        public virtual async Task UpdateBroadCastMessageAsync(Guid id, SendBroadCastMessageInput input)
+        public virtual async Task UpdateMessageAsync(Guid id, SendBroadCastMessageInput input)
         {
-            await _notificationManager.UpdateBroadCastMessageAsync(id, input.Title, input.Content, input.Status);
+            await _notificationManager.UpdateMessageAsync(id, input.Title, input.Content, input.Status);
         }
 
         public virtual Task SetReadAsync(SetReadInput input)

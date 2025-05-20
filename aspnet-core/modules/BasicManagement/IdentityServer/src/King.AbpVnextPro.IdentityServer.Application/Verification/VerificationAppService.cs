@@ -16,14 +16,14 @@ namespace King.AbpVnextPro.IdentityServer.Verification
     [RemoteService(false)]
     public class VerificationAppService : IdentityServerAppService, IVerificationAppService
     {
-        private readonly IDistributedCache<string> _verifyCodecache;
+        protected readonly IDistributedCache<string> _verifyCodecache;
 
         public VerificationAppService(IDistributedCache<string> verifyCodecache)
         {
             _verifyCodecache = verifyCodecache;
         }
 
-        public VerifyCode GetVerificationCode()
+        public virtual VerifyCode GetVerificationCode()
         {
             var veryCode = CreateVerifyCode(4);
 
@@ -37,7 +37,7 @@ namespace King.AbpVnextPro.IdentityServer.Verification
 
        
 
-        public  async Task<string> GetVerifyCodeMd5FromCache(string id,string code)
+        public virtual async Task<string> GetVerifyCodeMd5FromCache(string id,string code)
         {
             string result = "SUCCESS";
             var veryCodeMd5FromCache=await _verifyCodecache.GetAsync(id);

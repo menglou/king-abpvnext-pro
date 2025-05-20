@@ -19,7 +19,7 @@ namespace King.AbpVnextPro.ScheduleTask.Schedules
     [Route("/api/schedule-task/schedule")]
     public class ScheduleEntityController : ScheduleTaskController, IScheduleEntityAppService
     {
-        private IScheduleEntityAppService _scheduleEntityAppService { get; set; }
+        protected IScheduleEntityAppService _scheduleEntityAppService { get; set; }
         public ScheduleEntityController(IScheduleEntityAppService scheduleEntityAppService)
         {
             _scheduleEntityAppService = scheduleEntityAppService;

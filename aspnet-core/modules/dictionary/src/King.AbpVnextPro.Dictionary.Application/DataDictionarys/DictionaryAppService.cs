@@ -19,7 +19,7 @@ namespace King.AbpVnextPro.Dictionary.DataDictionarys
     {
 
 
-        private readonly IRepository<DataDictionaryDetail, Guid> _dictionaryDetail;
+        protected  IRepository<DataDictionaryDetail, Guid> _dictionaryDetail;
 
         public DictionaryAppService(IRepository<DataDictionary, Guid> repository,
             IRepository<DataDictionaryDetail, Guid> dictionaryDetail) : base(repository)
